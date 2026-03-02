@@ -1,0 +1,556 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "SmsHttps API",
+    "version": "1.0.0",
+    "description": "Swagger definition for xStore Web Services<br/><br/><br/><h2 id=\"request\">Request Parameters (Required)</h2>\n\n\nCN= Session ID received after login<br/>DN= The Device Name is used allow only web services with this namespace<br/>BW= Client browser ID (IE, FF, CH, OP)\n"
+  },
+  "components": {
+    "securitySchemes": {
+      "SessionCN": {
+        "type": "apiKey",
+        "in": "query",
+        "name": "CN",
+        "description": "Session token obtained after login (CN= value)."
+      }
+    },
+    "parameters": {
+      "DisableCache": {
+        "name": "_dc",
+        "in": "query",
+        "required": true,
+        "description": "Disable cache",
+        "schema": {
+          "type": "string",
+          "example": "1761056377507"
+        }
+      },
+      "DN": {
+        "name": "DN",
+        "in": "query",
+        "required": true,
+        "description": "The Device Name is used allow only web services with this namespace (eStore, mStore)",
+        "properties": { "x-ui-bg": "#fff0f0"},
+        "schema": {
+          "type": "string",
+          "enum": ["eStore", "mStore"]
+        }
+      },
+      "DatabaseTimeout": {
+        "name": "dbase_timeout",
+        "in": "query",
+        "required": true,
+        "description": "Database timeout in seconds",
+        "schema": {
+          "type": "integer",
+          "default": 20
+        }
+      },
+      "BW": {
+        "name": "BW",
+        "in": "query",
+        "required": true,
+        "description": "Client browser ID (IE, FF, CH, OP)",
+        "schema": {
+          "type": "string"
+        },
+        "example": "CH"
+      }
+    }
+  },
+  "tags": [
+    { "name": "Account", "description": "Login, Registration and Account" },
+    { "name": "Items", "description": "Product listing, details, and pricing" },
+    { "name": "Coupons", "description": "Coupon retrieval, clipping, and redemption" },
+    { "name": "Stores", "description": "Nearby store selection and GPS coordinates" }
+  ],
+  "servers": [
+    {
+      "url": "http://localhost:8126/scripts",
+      "description": "Local eStore Server"
+    }
+  ],
+  "paths": {
+    "/trs.exe?FCT=10010&LOGIN_TYPE=ANONYMOUS": {
+      "get": {
+        "tags": ["Account"],
+        "summary": "Login as Anonymous (Guest)",
+        "description": "Logs in a customer as anonymous. \n\n <a href=\"#request\">Request Parameters</a>",
+        "parameters": [
+          { "name": "CN", "in": "query", "required": true, "schema": { "type": "string" }, "example": "PUBLIC" },
+          { "$ref": "#/components/parameters/DN" },
+          { "$ref": "#/components/parameters/DisableCache" },
+          { "$ref": "#/components/parameters/DatabaseTimeout" },
+          { "$ref": "#/components/parameters/BW" },
+          {
+            "name": "LOGIN_PRM",
+            "in": "query",
+            "schema": { "type": "string", "example": "HOOKINNER=1,SenchaVer=46010,LANGUAGE=EN"},
+            "description": "Login parameters, version and language etc."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Loads the session params and values. Loads the communication preferences of the customer. Load some items from the profile table used in the application. Loads the default route options. Returns customer balances. Returns the transaction mode. ",
+            "content": {
+              "application/xml": {
+                "schema": { "type": "object", "xml": { "name": "root" } },
+                "example": "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n<root>\n  <hooks>\n    <hook>\n      <type>login</type>\n      <data>\n        <record>\n          <key>session</key>\n          <param>CN</param>\n          <value>REVPWBLQDONBWAEW</value>\n        </record>\n      </data>\n    </hook>\n  </hooks>\n</root>"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/trs.exe?FCT=10010&LOGIN_TYPE=B2B": {
+      "get": {
+        "tags": ["Account"],
+        "summary": "Login as user with an account",
+        "description": "Log in customer as with a username and password. \n\n <a href=\"#request\">Request Parameters</a>",
+        "parameters": [
+          { "name": "entry", "in": "query", "schema": { "type": "string" }, "example": "customer@locsoftware.com" , "description": "Usercode or email"},
+          { "name": "PASSWORD", "in": "query", "schema": { "type": "string" }, "example": "" },
+          { "name": "CN", "in": "query", "required": true, "schema": { "type": "string" }, "example": "PUBLIC" },
+          {
+            "name": "LOGIN_PRM",
+            "in": "query",
+            "schema": { "type": "string" },
+            "example": "'HOOKINNER=1,SenchaVer=46010,LANGUAGE=EN'",
+            "description": "Login parameters, version and language etc."
+          },
+          { "$ref": "#/components/parameters/DN" },
+          { "$ref": "#/components/parameters/DisableCache" },
+          { "$ref": "#/components/parameters/DatabaseTimeout" },
+          { "$ref": "#/components/parameters/BW" }
+        ],
+        "responses": {
+          "200": {
+            "description": "Loads the session params and values. Loads the communication preferences of the customer. Load some items from the profile table used in the application. Loads the default route options. Doesn't return balances.",
+            "content": {
+              "application/xml": {
+                "schema": { "type": "object", "xml": { "name": "root" } },
+                "example": "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n<root>\n  <hooks>\n    <hook>\n      <type>login</type>\n      <data>\n        <record>\n          <key>session</key>\n          <param>CN</param>\n          <value>REVPWBLQDONBWAEW</value>\n        </record>\n      </data>\n    </hook>\n  </hooks>\n</root>"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/trs.exe?sqi=eStore_clt_new": {
+      "get": {
+        "tags": ["Account"],
+        "summary": "Create New Customer Account",
+        "description": "Executes the script to create a new customer account.\n\nParameters correspond to customer information fields in the SMS database (e.g., F1149 for first name, F1150 for last name, F1573 for email, etc.).",
+        "parameters": [
+          { "name": "sqi", "in": "query", "required": true, "schema": { "type": "string" }, "example": "eStore_clt_new" },
+          { "name": "CN", "in": "query", "required": true, "schema": { "type": "string" }, "example": "PUBLIC" },
+          { "name": "F1148", "in": "query", "schema": { "type": "string" }, "example": "", "x-invisible": true},
+          { "name": "F1149", "in": "query", "schema": { "type": "string" }, "example": "John", "description": "First name" },
+          { "name": "F1150", "in": "query", "schema": { "type": "string" }, "example": "Doe", "description": "Last name" },
+          { "name": "F1155", "in": "query", "schema": { "type": "string" }, "example": "", "x-invisible": true},
+          { "name": "F1156", "in": "query", "schema": { "type": "string" }, "example": "123 Red Road", "description": "Address"  },
+          { "name": "F1158", "in": "query", "schema": { "type": "string" }, "example": "Los Angeles", "description": "City" },
+          { "name": "F1159", "in": "query", "schema": { "type": "string" }, "example": "90210" , "description": "Zip"},
+          { "name": "F1172", "in": "query", "required": true, "schema": { "type": "string" }, "example": "9874563218", "description": "Phone number" },
+          { "name": "F1504", "in": "query", "schema": { "type": "string" }, "example": "", "x-invisible": true},
+          { "name": "F1520", "in": "query", "schema": { "type": "string" }, "example": "10/23/2025"   },
+          { "name": "F1525", "in": "query", "schema": { "type": "string" }, "example": "001", "description": "Store number" },
+          { "name": "F1573", "in": "query", "required": true, "schema": { "type": "string" }, "example": "tes1@locsoftware.com", "description": "Email address" },
+          { "name": "F1581", "in": "query", "required": true, "schema": { "type": "string" }, "example": "Loc12345!", "description": "Password" },
+          { "$ref": "#/components/parameters/DN" },
+          { "$ref": "#/components/parameters/DisableCache" },
+          { "$ref": "#/components/parameters/DatabaseTimeout" },
+          { "$ref": "#/components/parameters/BW" }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful XML response confirming account creation.",
+            "content": {
+              "application/xml": {
+                "schema": { "type": "object", "xml": { "name": "root" } },
+                "example": "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n<root>\n  <hooks>\n    <hook>\n      <type>hookExec</type>\n      <alias>TrsCltNew</alias>\n      <data>\n        <record>\n          <CLT_TAB-F1148>0198216141</CLT_TAB-F1148>\n          <CLT_TAB-F902>DIRECT</CLT_TAB-F902>\n          <CLT_TAB-F1000>PAL</CLT_TAB-F1000>\n          <CLT_TAB-F1001>1</CLT_TAB-F1001>\n          <CLT_TAB-F1150>Doe</CLT_TAB-F1150>\n          <CLT_TAB-F1149>John</CLT_TAB-F1149>\n          <CLT_TAB-F1156>123 Biscayne</CLT_TAB-F1156>\n          <CLT_TAB-F1158>Los Angeles</CLT_TAB-F1158>\n          <CLT_TAB-F1159>90210</CLT_TAB-F1159>\n          <CLT_TAB-F1573>tes1@locsoftware.com</CLT_TAB-F1573>\n          <CLT_TAB-F1172>9874563218</CLT_TAB-F1172>\n          <CLT_TAB-F1525>001</CLT_TAB-F1525>\n          <CLT_TAB-F1581>{Z}VzNwcXl6QT0=</CLT_TAB-F1581>\n        </record>\n      </data>\n    </hook>\n  </hooks>\n</root>"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/trs.exe?cgi=eStore_pos_itm_list.xml": {
+      "get": {
+        "summary": "Retrieve filtered items",
+        "description": "Requires session CN from login. ",
+        "tags": ["Items"],
+        "security": [{ "SessionCN": [] }],
+        "parameters": [
+
+          {
+            "name": "F03",
+            "in": "query",
+            "required": false,
+            "schema": { "type": "string" },
+            "example": "",
+            "description": "Optional item department filter (maps to F03)."
+          },
+          {
+            "name": "F17",
+            "in": "query",
+            "required": false,
+            "schema": { "type": "string" },
+            "example": "",
+            "description": "Optional sub department filter (maps to F17)."
+          },
+          { "name": "CN", "in": "query", "schema": { "type": "string" }, "example": ""},
+          { "$ref": "#/components/parameters/DN" },
+          { "$ref": "#/components/parameters/DisableCache" },
+          { "$ref": "#/components/parameters/DatabaseTimeout" },
+          { "$ref": "#/components/parameters/BW" }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response returning XML records and metadata",
+            "content": {
+              "application/xml": {
+                "schema": {
+                  "type": "object", "xml": { "name": "root" } ,
+                  "example": "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n<root>\n  <hooks>\n    <hook>\n      <type>hookExec</type>\n      <alias>EmbeddedGrid</alias>\n      <data>\n        <record>\n          <F1000>PAL</F1000>\n          <F01>0006041003527</F01>\n          <F29>ALL DRESSED POTATO</F29>\n          <F155>RUFFLES</F155>\n          <UNITPRICE>2.99</UNITPRICE>\n        </record>\n      </data>\n    </hook>\n  </hooks>\n</root>"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/trs.exe?FCT=720": {
+      "get": {
+        "summary": "Retrieve items in basket",
+        "description": "Requires session CN from login. ",
+        "tags": ["Items"],
+        "security": [{ "SessionCN": [] }],
+        "parameters": [
+          { "$ref": "#/components/parameters/DN" },
+          { "$ref": "#/components/parameters/DisableCache" },
+          { "$ref": "#/components/parameters/DatabaseTimeout" },
+          { "$ref": "#/components/parameters/BW" },
+          { "name": "CN", "in": "query", "schema": { "type": "string" }, "example": ""}
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response returning XML records and metadata",
+            "content": {
+              "application/xml": {
+                "schema": {
+                  "type": "object", "xml": { "name": "root" } ,
+                  "example": "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n<root>\n  <hooks>\n    <hook>\n      <type>hookExec</type>\n      <alias>EmbeddedGrid</alias>\n      <data>\n        <record>\n          <F1000>PAL</F1000>\n          <F01>0006041003527</F01>\n          <F29>ALL DRESSED POTATO</F29>\n          <F155>RUFFLES</F155>\n          <UNITPRICE>2.99</UNITPRICE>\n        </record>\n      </data>\n    </hook>\n  </hooks>\n</root>"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/trs.exe?sqi=eStore_pos_itm_add&HOT=1&TENTATIVE=1": {
+      "get": {
+        "summary": "Get Item detail specifying entry (UPC code)",
+        "description": "Requires session CN from login",
+        "tags": ["Items"],
+        "security": [{ "SessionCN": [] }],
+        "parameters": [
+          { "name": "_dc", "in": "query", "schema": { "type": "string" }, "example": "1761063682693", "description": "Disable cache"  },
+          { "name": "ENTRY", "in": "query", "schema": { "type": "string" }, "example": "0000000004011" },
+          { "name": "CN", "in": "query", "schema": { "type": "string" }, "example": "" },
+          { "$ref": "#/components/parameters/DN" },
+          { "$ref": "#/components/parameters/DisableCache" },
+          { "$ref": "#/components/parameters/DatabaseTimeout" },
+          { "$ref": "#/components/parameters/BW" }
+        ],
+        "responses": {
+          "200": {
+            "description": "XML response",
+            "content": {
+              "application/xml": {
+                "schema": { "type": "object", "xml": { "name": "root" } },
+                "example": "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n<root>\n  <hooks>\n   \n    <hook>\n      <type>hookExec</type>\n      <alias>PosItmDetail</alias>\n      <data>\n        <record>\n          <SAL_REG-F1032>71</SAL_REG-F1032>\n          <SAL_REG-F1101>3</SAL_REG-F1101>\n          <SAL_REG-F1063>710</SAL_REG-F1063>\n          <SAL_REG-F01>0000000004011</SAL_REG-F01>\n          <SAL_REG-F1041>BANANAS</SAL_REG-F1041>\n          <RCT_QTY>1.00 lb @ $0.70/lb</RCT_QTY>\n          <ENTRYQTY>1</ENTRYQTY>\n          <SAL_REG-F30>0.7</SAL_REG-F30>\n          <SAL_REG-F31>1</SAL_REG-F31>\n          <SAL_REG-F113>REG</SAL_REG-F113>\n          <OBJ_TAB-F155>PREMIER</OBJ_TAB-F155>\n          <OBJ_TAB-F29>BANANAS</OBJ_TAB-F29>\n          <OBJ_TAB-F17>803000</OBJ_TAB-F17>\n          <CAT_TAB-F1023>FRUITS</CAT_TAB-F1023>\n          <SDP_TAB-F1022>PRODUCE</SDP_TAB-F1022>\n          <DEPT_TAB-F238>PRODUCE</DEPT_TAB-F238>\n          <BMP_TAB-F2929>0000000004011.bmp</BMP_TAB-F2929>\n        </record>\n      </data>\n      <bitmaps>\n        <record>\n          <F2926>MAIN</F2926>\n          <F2928>THUMB</F2928>\n          <F2929>0000000004011.bmp</F2929>\n        </record>\n      </bitmaps>\n      <coupon>\n        <record>\n          <offerValid>MISS</offerValid>\n          <offerStatus>ECPN</offerStatus>\n          <offerCode>0962303415603</offerCode>\n          <offerDesc>2% OFF the order for seniors</offerDesc>\n          <offerCriteria>Shopper:level:2:3</offerCriteria>\n        </record>\n        <record>\n          <offerValid>MISS</offerValid>\n          <offerStatus>ECPN</offerStatus>\n          <offerCode>0962303415603</offerCode>\n          <offerDesc>2% OFF the order for seniors</offerDesc>\n          <offerCriteria>Shopper:level:2:3</offerCriteria>\n        </record>\n      </coupon>\n    </hook>\n  </hooks>\n</root>"
+
+              }
+            }
+          }
+        }
+      }
+    },
+    "/trs.exe?sqi=eStore_pos_itm_add&HOT=1": {
+      "get": {
+        "summary": "Add to cart (UPC code) item",
+        "description": "Requires session CN from login",
+        "tags": ["Items"],
+        "security": [{ "SessionCN": [] }],
+        "parameters": [
+          { "name": "ENTRY", "in": "query", "schema": { "type": "string" }, "example": "0000000000050" },
+          { "name": "UNIT", "in": "query", "schema": { "type": "integer" }, "example": "1" },
+          { "name": "WEIGHT", "in": "query", "schema": { "type": "number", "format": "float" }, "example": "" },
+          { "name": "CN", "in": "query", "schema": { "type": "string" }, "example": "" },
+          { "$ref": "#/components/parameters/DN" },
+          { "$ref": "#/components/parameters/DisableCache" },
+          { "$ref": "#/components/parameters/DatabaseTimeout" },
+          { "$ref": "#/components/parameters/BW" }
+        ],
+        "responses": {
+          "200": {
+            "description": "XML response",
+            "content": {
+              "application/xml": {
+                "schema": { "type": "object", "xml": { "name": "root" } },
+                "example": "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n<root>\n  <hooks>\n   \n    <hook>\n      <type>hookExec</type>\n      <alias>PosItmDetail</alias>\n      <data>\n        <record>\n          <SAL_REG-F1032>71</SAL_REG-F1032>\n          <SAL_REG-F1101>3</SAL_REG-F1101>\n          <SAL_REG-F1063>710</SAL_REG-F1063>\n          <SAL_REG-F01>0000000004011</SAL_REG-F01>\n          <SAL_REG-F1041>BANANAS</SAL_REG-F1041>\n          <RCT_QTY>1.00 lb @ $0.70/lb</RCT_QTY>\n          <ENTRYQTY>1</ENTRYQTY>\n          <SAL_REG-F30>0.7</SAL_REG-F30>\n          <SAL_REG-F31>1</SAL_REG-F31>\n          <SAL_REG-F113>REG</SAL_REG-F113>\n          <OBJ_TAB-F155>PREMIER</OBJ_TAB-F155>\n          <OBJ_TAB-F29>BANANAS</OBJ_TAB-F29>\n          <OBJ_TAB-F17>803000</OBJ_TAB-F17>\n          <CAT_TAB-F1023>FRUITS</CAT_TAB-F1023>\n          <SDP_TAB-F1022>PRODUCE</SDP_TAB-F1022>\n          <DEPT_TAB-F238>PRODUCE</DEPT_TAB-F238>\n          <BMP_TAB-F2929>0000000004011.bmp</BMP_TAB-F2929>\n        </record>\n      </data>\n      <bitmaps>\n        <record>\n          <F2926>MAIN</F2926>\n          <F2928>THUMB</F2928>\n          <F2929>0000000004011.bmp</F2929>\n        </record>\n      </bitmaps>\n      <coupon>\n        <record>\n          <offerValid>MISS</offerValid>\n          <offerStatus>ECPN</offerStatus>\n          <offerCode>0962303415603</offerCode>\n          <offerDesc>2% OFF the order for seniors</offerDesc>\n          <offerCriteria>Shopper:level:2:3</offerCriteria>\n        </record>\n        <record>\n          <offerValid>MISS</offerValid>\n          <offerStatus>ECPN</offerStatus>\n          <offerCode>0962303415603</offerCode>\n          <offerDesc>2% OFF the order for seniors</offerDesc>\n          <offerCriteria>Shopper:level:2:3</offerCriteria>\n        </record>\n      </coupon>\n    </hook>\n  </hooks>\n</root>"
+
+              }
+            }
+          }
+        }
+      }
+    },
+    "/trs.exe?cgi=eStore_pos_cpn_list.xml": {
+      "get": {
+        "tags": ["Coupons"],
+        "summary": "Retrieve a list of coupons",
+        "description": "Requires session CN from login",
+        "security": [{ "SessionCN": [] }],
+        "parameters": [
+          { "name": "CN", "in": "query", "schema": { "type": "string" }, "example": "" },
+          { "$ref": "#/components/parameters/DN" },
+          { "$ref": "#/components/parameters/DisableCache" },
+          { "$ref": "#/components/parameters/DatabaseTimeout" },
+          { "$ref": "#/components/parameters/BW" }
+
+        ],
+        "responses": {
+          "200": {
+            "description": "XML response",
+            "content": {
+              "application/xml": {
+                "schema": { "type": "object", "xml": { "name": "root" } },
+                "example": "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n<root>\n  <hooks>\n   \n    <hook>\n      <type>hookExec</type>\n      <alias>PosItmDetail</alias>\n      <data>\n        <record>\n          <SAL_REG-F1032>71</SAL_REG-F1032>\n          <SAL_REG-F1101>3</SAL_REG-F1101>\n          <SAL_REG-F1063>710</SAL_REG-F1063>\n          <SAL_REG-F01>0000000004011</SAL_REG-F01>\n          <SAL_REG-F1041>BANANAS</SAL_REG-F1041>\n          <RCT_QTY>1.00 lb @ $0.70/lb</RCT_QTY>\n          <ENTRYQTY>1</ENTRYQTY>\n          <SAL_REG-F30>0.7</SAL_REG-F30>\n          <SAL_REG-F31>1</SAL_REG-F31>\n          <SAL_REG-F113>REG</SAL_REG-F113>\n          <OBJ_TAB-F155>PREMIER</OBJ_TAB-F155>\n          <OBJ_TAB-F29>BANANAS</OBJ_TAB-F29>\n          <OBJ_TAB-F17>803000</OBJ_TAB-F17>\n          <CAT_TAB-F1023>FRUITS</CAT_TAB-F1023>\n          <SDP_TAB-F1022>PRODUCE</SDP_TAB-F1022>\n          <DEPT_TAB-F238>PRODUCE</DEPT_TAB-F238>\n          <BMP_TAB-F2929>0000000004011.bmp</BMP_TAB-F2929>\n        </record>\n      </data>\n      <bitmaps>\n        <record>\n          <F2926>MAIN</F2926>\n          <F2928>THUMB</F2928>\n          <F2929>0000000004011.bmp</F2929>\n        </record>\n      </bitmaps>\n      <coupon>\n        <record>\n          <offerValid>MISS</offerValid>\n          <offerStatus>ECPN</offerStatus>\n          <offerCode>0962303415603</offerCode>\n          <offerDesc>2% OFF the order for seniors</offerDesc>\n          <offerCriteria>Shopper:level:2:3</offerCriteria>\n        </record>\n        <record>\n          <offerValid>MISS</offerValid>\n          <offerStatus>ECPN</offerStatus>\n          <offerCode>0962303415603</offerCode>\n          <offerDesc>2% OFF the order for seniors</offerDesc>\n          <offerCriteria>Shopper:level:2:3</offerCriteria>\n        </record>\n      </coupon>\n    </hook>\n  </hooks>\n</root>"
+
+              }
+            }
+          }
+        }
+      }
+    },
+    "/trs.exe?cgi=eStore_trs_cpn_detail.xml": {
+      "get": {
+        "tags": ["Coupons"],
+        "summary": "Get Coupon detail specifying entry (code)",
+        "description": "Requires session CN from login",
+        "security": [{ "SessionCN": [] }],
+        "parameters": [
+          { "name": "offerCode", "in": "query", "schema": { "type": "string" }, "example": "0960210001702" },
+          { "name": "CN", "in": "query", "schema": { "type": "string" }, "example": ""},
+          { "$ref": "#/components/parameters/DN" },
+          { "$ref": "#/components/parameters/DisableCache" },
+          { "$ref": "#/components/parameters/DatabaseTimeout" },
+          { "$ref": "#/components/parameters/BW" }
+        ],
+        "responses": {
+          "200": {
+            "description": "XML response",
+            "content": {
+              "application/xml": {
+                "schema": { "type": "object", "xml": { "name": "root" } },
+                "example": "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n<root>\n  <hooks>\n    <hook>\n      <type>hookExec</type>\n      <alias>TrsCpnDetail</alias>\n      <data>\n        <record>\n          <offerCode>0960210001702</offerCode>\n          <offerDesc>Fuel at $1.99 per gallon with voucher</offerDesc>\n          <offerType>BUNDLE</offerType>\n          <offerLimitQty>15</offerLimitQty>\n          <offerCriteria>\n            <cpn>\n              <ecl>\n                <F1033>ITM</F1033>\n                <F01>0960210001402</F01>\n                <desc>Voucher for $1.99 per gallon on fuel</desc>\n              </ecl>\n            </cpn>\n          </offerCriteria>\n        </record>\n      </data>\n    </hook>\n  </hooks>\n</root>"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/trs.exe?sqi=eStore_trs_cpn_clip": {
+      "get": {
+        "tags": ["Coupons"],
+        "summary": "Clip a coupon entry",
+        "description": "Requires session CN from login",
+        "security": [{ "SessionCN": [] }],
+        "parameters": [
+          { "name": "ENTRY", "in": "query", "schema": { "type": "string" }, "example": "0960500000001" },
+          { "name": "offerClip", "in": "query", "schema": { "type": "string" }, "example": "CLIP" },
+          { "name": "CN", "in": "query", "schema": { "type": "string" }, "example": ""},
+          { "$ref": "#/components/parameters/DN" },
+          { "$ref": "#/components/parameters/DisableCache" },
+          { "$ref": "#/components/parameters/DatabaseTimeout" },
+          { "$ref": "#/components/parameters/BW" }
+        ],
+        "responses": {
+          "200": {
+            "description": "XML response",
+            "content": {
+              "application/xml": {
+                "schema": { "type": "object", "xml": { "name": "root" } },
+                "example": "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n<root>\n  <hooks>\n    <hook>\n      <type>hookExec</type>\n      <alias>TrsCpnClip</alias>\n      <data>\n        <success>true</success>\n        <record>\n          <offerCode>0960500000001</offerCode>\n          <offerStatus>CPN</offerStatus>\n        </record>\n      </data>\n    </hook>\n  </hooks>\n</root>"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/trs.exe?cgi=eStore_clt_edit_get.xml": {
+      "get": {
+        "tags": ["Account"],
+        "summary": "Retrieve all the fields in the clt table",
+        "description": "Requires session CN from login",
+        "security": [{ "SessionCN": [] }],
+        "parameters": [
+          { "name": "CN", "in": "query", "schema": { "type": "string" }, "example": ""},
+          { "$ref": "#/components/parameters/DN" },
+          { "$ref": "#/components/parameters/DisableCache" },
+          { "$ref": "#/components/parameters/DatabaseTimeout" },
+          { "$ref": "#/components/parameters/BW" }
+        ],
+        "responses": {
+          "200": {
+            "description": "XML response",
+            "content": {
+              "application/xml": {
+                "schema": { "type": "object", "xml": { "name": "root" } },
+                "example": "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n<root>\n  <hooks>\n    <hook>\n      <type>hookExec</type>\n      <alias>TrsCltEdit</alias>\n      <data>\n        <record>\n          <CLT_TAB-F1148>2</CLT_TAB-F1148>\n          <CLT_TAB-F902>ESTORE</CLT_TAB-F902>\n          <CLT_TAB-F1000>PAL</CLT_TAB-F1000>\n          <CLT_TAB-F1001></CLT_TAB-F1001>\n          <CLT_TAB-F1150>Customer</CLT_TAB-F1150>\n          <CLT_TAB-F1152></CLT_TAB-F1152>\n          <CLT_TAB-F1153></CLT_TAB-F1153>\n          <CLT_TAB-F1172>6019521325</CLT_TAB-F1172>\n          <CLT_TAB-F1573>nick.alexiou@gmail.com</CLT_TAB-F1573>\n          <CLT_TAB-F253>09/09/2025</CLT_TAB-F253>\n          <CLT_TAB-F1149>Jonkd</CLT_TAB-F1149>\n          <CLT_TAB-F1155>Select customer</CLT_TAB-F1155>\n          <CLT_TAB-F1156>1867 berlier</CLT_TAB-F1156>\n          <CLT_TAB-F1158>Laval</CLT_TAB-F1158>\n          <CLT_TAB-F1159>H7L3S4</CLT_TAB-F1159>\n          <CLT_TAB-F1170>Québec</CLT_TAB-F1170>\n          <CLT_TAB-F1171>Canada</CLT_TAB-F1171>\n          <CLT_TAB-F1264>05/15/2018</CLT_TAB-F1264>\n          <CLT_TAB-F1525>001</CLT_TAB-F1525>\n          <CLT_TAB-F1964>001</CLT_TAB-F1964>\n          <CLT_TAB-F2875>5147267441</CLT_TAB-F2875>\n          <!-- Delivery Address (eStore) -->\n          <CLT_TAB-F1643></CLT_TAB-F1643>\n          <CLT_TAB-F1644></CLT_TAB-F1644>\n          <CLT_TAB-F1645></CLT_TAB-F1645>\n          <CLT_TAB-F1646></CLT_TAB-F1646>\n          <CLT_TAB-F1647></CLT_TAB-F1647>\n          <CLT_TAB-F1648></CLT_TAB-F1648>\n          <CLT_TAB-F1649></CLT_TAB-F1649>\n          <CLT_TAB-F1650></CLT_TAB-F1650>\n          <CLT_TAB-F2889></CLT_TAB-F2889>\n          <!-- Store Information -->\n          <STD_TAB-F1056>001</STD_TAB-F1056>\n          <STD_TAB-F1531>Company Name</STD_TAB-F1531>\n          <STD_TAB-F1532>Address</STD_TAB-F1532>\n          <STD_TAB-F1534>City</STD_TAB-F1534>\n          <STD_TAB-F1549>State</STD_TAB-F1549>\n          <STD_TAB-F2842>75</STD_TAB-F2842>\n          <STD_TAB-F2843>-43</STD_TAB-F2843>\n        </record>\n      </data>\n      <comm>\n        <record><data>HOTSMS</data><caption>Immediate offers</caption></record>\n        <record><data>OFFER</data><caption>Receive offers by email</caption></record>\n        <record><data>BIRTHDAY</data><caption>Receive birthday offers by email</caption></record>\n        <record><data>NEWS</data><caption>Receive our newsletter by email</caption></record>\n        <record><data>FLYER</data><caption>Email me deals and recommendations</caption></record>\n        <record><data>RECEIPTS</data><caption>Receive eReceipt by email</caption></record>\n      </comm>\n      <food>\n        <record><data>VEGE</data><caption>Vegetarian</caption></record>\n        <record><data>VEGA</data><caption>Vegan</caption></record>\n        <record><data>GLUTEN</data><caption>Gluten free</caption></record>\n        <record><data>NUTFREE</data><caption>Nut free</caption></record>\n        <record><data>LOWCARB</data><caption>Reduced/low carb</caption></record>\n        <record><data>LOWSODIUM</data><caption>Reduced/low sodium</caption></record>\n        <record><data>DAIRYFREE</data><caption>Lactose free</caption></record>\n        <record><data>SUGARFREE</data><caption>Sugar free</caption></record>\n      </food>\n    </hook>\n  </hooks>\n</root>"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/trs.exe?cgi=eStore_clt_edit_set.xml": {
+      "get": {
+        "tags": [
+          "Account"
+        ],
+        "summary": "Update Customer Record",
+        "description": "Updates the customer record in the CLT Table",
+        "security": [{ "SessionCN": [] }],
+        "parameters": [
+          {
+            "name": "CLT_TAB[F1149]",
+            "in": "query",
+            "allowReserved": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Customer first name",
+            "example": "John"
+          },
+          {
+            "name": "CLT_TAB[F1150]",
+            "in": "query",
+            "allowReserved": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Customer last name",
+            "example": "Doe"
+          },
+          {
+            "name": "CLT_TAB[F1172]",
+            "in": "query",
+            "allowReserved": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Primary phone number",
+            "example": "4507775555"
+          },
+          {
+            "name": "CLT_TAB[F1520]",
+            "in": "query",
+            "allowReserved": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Date of birth (MM/DD/YYYY)",
+            "example": "06/25/1975"
+          },
+          {
+            "name": "CLT_TAB[F2875]",
+            "in": "query",
+            "allowReserved": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Alternate phone number",
+            "example": "5147775555"
+          },
+          { "$ref": "#/components/parameters/DN" },
+          { "$ref": "#/components/parameters/DisableCache" },
+          { "$ref": "#/components/parameters/DatabaseTimeout" },
+          { "$ref": "#/components/parameters/BW" }
+        ],
+        "responses": {
+          "200": {
+            "description": "Customer record successfully updated",
+            "content": {
+              "application/xml": {
+                "schema": {
+                  "type": "object",
+                  "xml": {
+                    "name": "root"
+                  }
+                },
+                "example": "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n<root>\n  <hooks>\n    <hook>\n      <type>hookExec</type>\n      <alias>TrsCltEdit</alias>\n      <data>\n        <record>\n          <CLT_TAB-F1148>2</CLT_TAB-F1148>\n          <CLT_TAB-F902>ESTORE</CLT_TAB-F902>\n          <CLT_TAB-F1000>PAL</CLT_TAB-F1000>\n          <CLT_TAB-F1001></CLT_TAB-F1001>\n          <CLT_TAB-F1150>Customer</CLT_TAB-F1150>\n          <CLT_TAB-F1152></CLT_TAB-F1152>\n          <CLT_TAB-F1153></CLT_TAB-F1153>\n          <CLT_TAB-F1172>6019521325</CLT_TAB-F1172>\n          <CLT_TAB-F1573>nick.alexiou@gmail.com</CLT_TAB-F1573>\n          <CLT_TAB-F253>09/09/2025</CLT_TAB-F253>\n          <CLT_TAB-F1149>Jonkd</CLT_TAB-F1149>\n          <CLT_TAB-F1155>Select customer</CLT_TAB-F1155>\n          <CLT_TAB-F1156>1867 berlier</CLT_TAB-F1156>\n          <CLT_TAB-F1158>Laval</CLT_TAB-F1158>\n          <CLT_TAB-F1159>H7L3S4</CLT_TAB-F1159>\n          <CLT_TAB-F1170>Québec</CLT_TAB-F1170>\n          <CLT_TAB-F1171>Canada</CLT_TAB-F1171>\n          <CLT_TAB-F1264>05/15/2018</CLT_TAB-F1264>\n          <CLT_TAB-F1525>001</CLT_TAB-F1525>\n          <CLT_TAB-F1964>001</CLT_TAB-F1964>\n          <CLT_TAB-F2875>5147267441</CLT_TAB-F2875>\n          <!-- Delivery Address (eStore) -->\n          <CLT_TAB-F1643></CLT_TAB-F1643>\n          <CLT_TAB-F1644></CLT_TAB-F1644>\n          <CLT_TAB-F1645></CLT_TAB-F1645>\n          <CLT_TAB-F1646></CLT_TAB-F1646>\n          <CLT_TAB-F1647></CLT_TAB-F1647>\n          <CLT_TAB-F1648></CLT_TAB-F1648>\n          <CLT_TAB-F1649></CLT_TAB-F1649>\n          <CLT_TAB-F1650></CLT_TAB-F1650>\n          <CLT_TAB-F2889></CLT_TAB-F2889>\n          <!-- Store Information -->\n          <STD_TAB-F1056>001</STD_TAB-F1056>\n          <STD_TAB-F1531>Company Name</STD_TAB-F1531>\n          <STD_TAB-F1532>Address</STD_TAB-F1532>\n          <STD_TAB-F1534>City</STD_TAB-F1534>\n          <STD_TAB-F1549>State</STD_TAB-F1549>\n          <STD_TAB-F2842>75</STD_TAB-F2842>\n          <STD_TAB-F2843>-43</STD_TAB-F2843>\n        </record>\n      </data>\n      <comm>\n        <record><data>HOTSMS</data><caption>Immediate offers</caption></record>\n        <record><data>OFFER</data><caption>Receive offers by email</caption></record>\n        <record><data>BIRTHDAY</data><caption>Receive birthday offers by email</caption></record>\n        <record><data>NEWS</data><caption>Receive our newsletter by email</caption></record>\n        <record><data>FLYER</data><caption>Email me deals and recommendations</caption></record>\n        <record><data>RECEIPTS</data><caption>Receive eReceipt by email</caption></record>\n      </comm>\n      <food>\n        <record><data>VEGE</data><caption>Vegetarian</caption></record>\n        <record><data>VEGA</data><caption>Vegan</caption></record>\n        <record><data>GLUTEN</data><caption>Gluten free</caption></record>\n        <record><data>NUTFREE</data><caption>Nut free</caption></record>\n        <record><data>LOWCARB</data><caption>Reduced/low carb</caption></record>\n        <record><data>LOWSODIUM</data><caption>Reduced/low sodium</caption></record>\n        <record><data>DAIRYFREE</data><caption>Lactose free</caption></record>\n        <record><data>SUGARFREE</data><caption>Sugar free</caption></record>\n      </food>\n    </hook>\n  </hooks>\n</root>"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/trs.exe?cgi=eStore_clt_programs_get.xml": {
+      "get": {
+        "tags": ["Account"],
+        "summary": "Retrieve a list of loyalty programs, status and balances",
+        "description": "Requires session CN from login",
+        "security": [{ "SessionCN": [] }],
+        "parameters": [
+          { "name": "CN", "in": "query", "schema": { "type": "string" }, "example": ""},
+          { "$ref": "#/components/parameters/DN" },
+          { "$ref": "#/components/parameters/DisableCache" },
+          { "$ref": "#/components/parameters/DatabaseTimeout" },
+          { "$ref": "#/components/parameters/BW" }
+        ],
+        "responses": {
+          "200": {
+            "description": "XML response",
+            "content": {
+              "application/xml": {
+                "schema": { "type": "object", "xml": { "name": "root" } },
+                "example": "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n<root>\n  <hooks>\n    <hook>\n      <type>hookExec</type>\n      <alias>TrsCltPrograms</alias>\n      <data>\n        <record>\n          <letter>1</letter>\n          <num>1</num>\n          <desc>Points balance</desc>\n          <optin>1</optin>\n          <balance>4</balance>\n        </record>\n        <record>\n          <letter>2</letter>\n          <num>2</num>\n          <desc>Accumulated spending balance</desc>\n          <optin>1</optin>\n          <balance>182</balance>\n        </record>\n        ... (etc.) ...\n      </data>\n    </hook>\n  </hooks>\n</root>"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/trs.exe?cgi=eStore_base_store_list.xml": {
+      "get": {
+        "tags": ["Stores"],
+        "summary": "Retrieve a list of stores using your location (latitude and longitude)",
+        "description": "PUBLIC CN or session CN from login",
+        "security": [{ "SessionCN": [] }],
+        "parameters": [
+          { "name": "F2842", "in": "query", "schema": { "type": "number", "format": "float" }, "example": -72.4926464, "description": "Longitude" },
+          { "name": "F2843", "in": "query", "schema": { "type": "number", "format": "float" }, "example": 45.8784768, "description": "Latitude" },
+          { "name": "CN", "in": "query", "schema": { "type": "string" }, "example": "PUBLIC"},
+          { "$ref": "#/components/parameters/DN" },
+          { "$ref": "#/components/parameters/DisableCache" },
+          { "$ref": "#/components/parameters/DatabaseTimeout" },
+          { "$ref": "#/components/parameters/BW" }
+                 ],
+        "responses": {
+          "200": {
+            "description": "XML response",
+            "content": {
+              "application/xml": {
+                "schema": { "type": "object", "xml": { "name": "root" } },
+                "example": "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n<root>\n  <hooks>\n    <hook>\n      <type>hookExec</type>\n      <alias>PopupStoreSelect</alias>\n      <data>\n        <record>\n          <F1056>001</F1056>\n          <F1531>Company Name</F1531>\n          <F1532>Address</F1532>\n          <F1534>City</F1534>\n          <F1549>State</F1549>\n          <F2842>75</F2842>\n          <F2843>-43</F2843>\n          <F2937>WEB</F2937>\n          <distance>17430.6824889372</distance>\n        </record>\n      </data>\n    </hook>\n  </hooks>\n</root>"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
