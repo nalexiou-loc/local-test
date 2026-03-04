@@ -62,12 +62,12 @@
     { "name": "Account", "description": "Login, Registration and Account" },
     { "name": "Items", "description": "Product listing, details, and pricing" },
     { "name": "Coupons", "description": "Coupon retrieval, clipping, and redemption" },
-    { "name": "Stores", "description": "Nearby store selection and GPS coordinates" }
+    { "name": "Auxiliaries", "description": "List of stores, departments, categories, subdepartments, recipes, family code and classification" }
   ],
   "servers": [
     {
       "url": "http://localhost:8126/scripts",
-      "description": "Local eStore Server"
+      "description": "Local Server"
     }
   ],
   "paths": {
@@ -91,11 +91,11 @@
         ],
         "responses": {
           "200": {
-            "description": "Loads the session params and values. Loads the communication preferences of the customer. Load some items from the profile table used in the application. Loads the default route options. Returns customer balances. Returns the transaction mode. ",
+            "description": "Loads the session params and values. <br> Loads the communication preferences of the customer. Load some items from the profile table used in the application. Loads the default route options. Returns customer balances. Returns the transaction mode. ",
             "content": {
               "application/xml": {
                 "schema": { "type": "object", "xml": { "name": "root" } },
-                "example": "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n<root>\n  <hooks>\n    <hook>\n      <type>login</type>\n      <data>\n        <record>\n          <key>session</key>\n          <param>CN</param>\n          <value>REVPWBLQDONBWAEW</value>\n        </record>\n      </data>\n    </hook>\n  </hooks>\n</root>"
+                "example": "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n  <root>\n    <hooks>\n      <hook>\n        <type>login</type>\n        <data>\n          <record>\n            <key>session</key>\n            <param>SenchaApp</param>\n            <value>\n            </value>\n          </record>\n          <record>\n            <key>session</key>\n            <param>CN</param>\n            <value>RCKTFRSKUGVLNLKK</value>\n          </record>\n          <record>\n            <key>session</key>\n            <param>DN</param>\n            <value>eStore</value>\n          </record>\n          <record>\n            <key>session</key>\n            <param>SN</param>\n            <value>001</value>\n          </record>\n          <record>\n            <key>session</key>\n            <param>TN</param>\n            <value>901</value>\n          </record>\n          <record>\n            <key>session</key>\n            <param>unitVolume</param>\n            <value>gallon</value>\n          </record>\n          <record>\n            <key>session</key>\n            <param>unitWeight</param>\n            <value>lb</value>\n          </record>\n          <record>\n            <key>session</key>\n            <param>F1126</param>\n            <value>1901</value>\n          </record>\n          <record>\n            <key>session</key>\n            <param>F1127</param>\n            <value>eCommerce</value>\n          </record>\n          <record>\n            <key>session</key>\n            <param>F1185</param>\n            <value>1901</value>\n          </record>\n          <record>\n            <key>session</key>\n            <param>F1142</param>\n            <value>1</value>\n          </record>\n          <record>\n            <key>session</key>\n            <param>F2597</param>\n            <value>XSTORE</value>\n          </record>\n          <record>\n            <key>session</key>\n            <param>F1590</param>\n            <value>\n            </value>\n          </record>\n          <record>\n            <key>session</key>\n            <param>F1148</param>\n            <value>0174605137</value>\n          </record>\n          <record>\n            <key>session</key>\n            <param>secureLogin</param>\n            <value>7034305632342F3254692B59494350564C475359335274544F7151394636324C2F6331384873453D</value>\n          </record>\n          <record>\n            <key>session</key>\n            <param>secureType</param>\n            <value>A</value>\n          </record>\n          <record>\n            <key>session</key>\n            <param>F1149</param>\n            <value>\n            </value>\n          </record>\n          <record>\n            <key>session</key>\n            <param>F1150</param>\n            <value>\n            </value>\n          </record>\n          <record>\n            <key>session</key>\n            <param>F1573</param>\n            <value>\n            </value>\n          </record>\n          <record>\n            <key>session</key>\n            <param>F1582</param>\n            <value>\n            </value>\n          </record>\n          <record>\n            <key>session</key>\n            <param>F1957</param>\n            <value>\n            </value>\n          </record>\n          <record>\n            <key>session</key>\n            <param>F1152</param>\n            <value>n/a</value>\n          </record>\n          <record>\n            <key>session</key>\n            <param>F1174</param>\n            <value>\n            </value>\n          </record>\n          <record>\n            <key>session</key>\n            <param>F1151</param>\n            <value>\n            </value>\n          </record>\n          <record>\n            <key>session</key>\n            <param>F1056</param>\n            <value>001</value>\n          </record>\n          <record>\n            <key>session</key>\n            <param>F1531</param>\n            <value>Company Name</value>\n          </record>\n          <record>\n            <key>session</key>\n            <param>F1057</param>\n            <value>901</value>\n          </record>\n          <record>\n            <key>session</key>\n            <param>F253</param>\n            <value>03/03/2026</value>\n          </record>\n          <record>\n            <key>session</key>\n            <param>F254</param>\n            <value>03/03/2026</value>\n          </record>\n          <record>\n            <key>session</key>\n            <param>lat</param>\n            <value>-43</value>\n          </record>\n          <record>\n            <key>session</key>\n            <param>lng</param>\n            <value>75</value>\n          </record>\n          <record>\n            <key>session</key>\n            <param>demoMode</param>\n            <value>1</value>\n          </record>\n          <record>\n            <key>session</key>\n            <param>securMode</param>\n            <value>2</value>\n          </record>\n          <record>\n            <key>session</key>\n            <param>xStoreDeleteAccount</param>\n            <value>\n            </value>\n          </record>\n          <record>\n            <key>session</key>\n            <param>AgeEntryMethod</param>\n            <value>4</value>\n          </record>\n          <record>\n            <profile>XSTORE</profile>\n            <key>eStore_base_delivery</key>\n            <param>default</param>\n            <value>\n            </value>\n          </record>\n          <record>\n            <profile>XSTORE</profile>\n            <key>eStore_base_delivery</key>\n            <param>minimum</param>\n            <value>\n            </value>\n          </record>\n          <record>\n            <profile>XSTORE</profile>\n            <key>eStore_base_donation</key>\n            <param>default</param>\n            <value>\n            </value>\n          </record>\n          <record>\n            <profile>XSTORE</profile>\n            <key>eStore_base_donation</key>\n            <param>docUrl</param>\n            <value>\n            </value>\n          </record>\n          <record>\n            <profile>XSTORE</profile>\n            <key>eStore_base_donation</key>\n            <param>docUrlFr</param>\n            <value>\n            </value>\n          </record>\n          <record>\n            <profile>XSTORE</profile>\n            <key>eStore_base_donation</key>\n            <param>endDate</param>\n            <value>\n            </value>\n          </record>\n          <record>\n            <profile>XSTORE</profile>\n            <key>eStore_base_donation</key>\n            <param>name</param>\n            <value>\n            </value>\n          </record>\n          <record>\n            <profile>XSTORE</profile>\n            <key>eStore_base_donation</key>\n            <param>startDate</param>\n            <value>\n            </value>\n          </record>\n          <record>\n            <profile>XSTORE</profile>\n            <key>eStore_base_handling</key>\n            <param>future</param>\n            <value>3</value>\n          </record>\n          <record>\n            <profile>XSTORE</profile>\n            <key>eStore_base_pickup</key>\n            <param>minimum</param>\n            <value>\n            </value>\n          </record>\n          <record>\n            <profile>XSTORE</profile>\n            <key>eStore_base_pos</key>\n            <param>driverName</param>\n            <value>\n            </value>\n          </record>\n          <record>\n            <profile>XSTORE</profile>\n            <key>eStore_base_pos</key>\n            <param>inventory</param>\n            <value>0</value>\n          </record>\n          <record>\n            <profile>XSTORE</profile>\n            <key>eStore_base_pos</key>\n            <param>overshoot</param>\n            <value>0</value>\n          </record>\n          <record>\n            <profile>XSTORE</profile>\n            <key>eStore_base_pos</key>\n            <param>tender_delivery</param>\n            <value>104;106</value>\n          </record>\n          <record>\n            <profile>XSTORE</profile>\n            <key>eStore_base_pos</key>\n            <param>tender_pickup</param>\n            <value>104;106</value>\n          </record>\n          <record>\n            <profile>XSTORE</profile>\n            <key>eStore_base_pos</key>\n            <param>tenders</param>\n            <value>104;106</value>\n          </record>\n          <record>\n            <profile>XSTORE</profile>\n            <key>eStore_base_trs</key>\n            <param>clientSearch</param>\n            <value>1</value>\n          </record>\n          <record>\n            <profile>XSTORE</profile>\n            <key>eStore_base_trs</key>\n            <param>stores</param>\n            <value>1</value>\n          </record>\n          <record>\n            <profile>XSTORE</profile>\n            <key>eStore_flyer_dates</key>\n            <param>future</param>\n            <value>0</value>\n          </record>\n          <record>\n            <profile>XSTORE</profile>\n            <key>eStore_flyer_dates</key>\n            <param>past</param>\n            <value>0</value>\n          </record>\n          <record>\n            <profile>XSTORE</profile>\n            <key>eStore_kiosk</key>\n            <param>deli_category</param>\n            <value>130</value>\n          </record>\n          <record>\n            <profile>XSTORE</profile>\n            <key>eStore_kiosk</key>\n            <param>isCellRequired</param>\n            <value>1</value>\n          </record>\n          <record>\n            <profile>XSTORE</profile>\n            <key>eStore_kiosk</key>\n            <param>isNameRequired</param>\n            <value>1</value>\n          </record>\n          <record>\n            <profile>XSTORE</profile>\n            <key>eStore_kiosk</key>\n            <param>isOrderLoginRequired</param>\n            <value>0</value>\n          </record>\n          <record>\n            <profile>XSTORE</profile>\n            <key>eStore_kiosk</key>\n            <param>kioskCarousel</param>\n            <value>1</value>\n          </record>\n          <record>\n            <profile>XSTORE</profile>\n            <key>eStore_kiosk</key>\n            <param>kioskCarouselTime</param>\n            <value>5</value>\n          </record>\n          <record>\n            <profile>XSTORE</profile>\n            <key>eStore_kiosk</key>\n            <param>kioskMiniCart</param>\n            <value>0</value>\n          </record>\n          <record>\n            <profile>XSTORE</profile>\n            <key>eStore_kiosk</key>\n            <param>OrderMode</param>\n            <value>ORDER</value>\n          </record>\n          <record>\n            <profile>XSTORE</profile>\n            <key>eStore_kiosk</key>\n            <param>OrderText</param>\n            <value>Order for pickup/delivery</value>\n          </record>\n          <record>\n            <profile>XSTORE</profile>\n            <key>eStore_kiosk</key>\n            <param>timeout</param>\n            <value>60</value>\n          </record>\n          <record>\n            <profile>XSTORE</profile>\n            <key>eStore_kiosk/PRN1</key>\n            <param>OrderMode</param>\n            <value>DELI</value>\n          </record>\n          <record>\n            <profile>XSTORE</profile>\n            <key>eStore_kiosk/PRN1</key>\n            <param>OrderText</param>\n            <value>Order from deli counter</value>\n          </record>\n          <record>\n            <profile>XSTORE</profile>\n            <key>eStore_kiosk/PRN2</key>\n            <param>OrderMode</param>\n            <value>FOODB</value>\n          </record>\n          <record>\n            <profile>XSTORE</profile>\n            <key>eStore_kiosk/PRN2</key>\n            <param>OrderText</param>\n            <value>Order from food counter</value>\n          </record>\n          <record>\n            <profile>XSTORE</profile>\n            <key>eStore_kiosk/PRN3</key>\n            <param>OrderMode</param>\n            <value>FOODT</value>\n          </record>\n          <record>\n            <profile>XSTORE</profile>\n            <key>eStore_kiosk/PRN3</key>\n            <param>OrderText</param>\n            <value>Order from coffee shop</value>\n          </record>\n          <record>\n            <profile>XSTORE</profile>\n            <key>eStore_start_links</key>\n            <param>home</param>\n            <value>\n            </value>\n          </record>\n          <record>\n            <key>notify</key>\n            <param>HOTSMS</param>\n            <value>Immediate offers</value>\n          </record>\n          <record>\n            <key>notify</key>\n            <param>OFFER</param>\n            <value>Receive offers by email</value>\n          </record>\n          <record>\n            <key>notify</key>\n            <param>BIRTHDAY</param>\n            <value>Receive birthday offers by email</value>\n          </record>\n          <record>\n            <key>notify</key>\n            <param>NEWS</param>\n            <value>Receive our newsletter by email</value>\n          </record>\n          <record>\n            <key>notify</key>\n            <param>FLYER</param>\n            <value>Email me deals and recommendations</value>\n          </record>\n          <record>\n            <key>notify</key>\n            <param>RECEIPTS</param>\n            <value>Receive eReceipt by email</value>\n          </record>\n          <record>\n            <key>preference</key>\n            <param>VEGE</param>\n            <value>Vegetarian</value>\n          </record>\n          <record>\n            <key>preference</key>\n            <param>VEGA</param>\n            <value>Vegan</value>\n          </record>\n          <record>\n            <key>preference</key>\n            <param>GLUTEN</param>\n            <value>Gluten free</value>\n          </record>\n          <record>\n            <key>preference</key>\n            <param>NUTFREE</param>\n            <value>Nut free</value>\n          </record>\n          <record>\n            <key>preference</key>\n            <param>LOWCARB</param>\n            <value>Reduced/low carb</value>\n          </record>\n          <record>\n            <key>preference</key>\n            <param>LOWSODIUM</param>\n            <value>Reduced/low sodium</value>\n          </record>\n          <record>\n            <key>preference</key>\n            <param>DAIRYFREE</param>\n            <value>Lactose free</value>\n          </record>\n          <record>\n            <key>preference</key>\n            <param>SUGARFREE</param>\n            <value>Sugar free</value>\n          </record>\n          <record>\n            <key>routes</key>\n            <param>DELIVERY</param>\n            <value>Delivery</value>\n          </record>\n          <record>\n            <key>routes</key>\n            <param>PICKUP</param>\n            <value>Pickup</value>\n          </record>\n          <record>\n            <key>routes</key>\n            <param>CURBSIDE</param>\n            <value>Curbside</value>\n          </record>\n          <record>\n            <key>routes</key>\n            <param>LOCKER</param>\n            <value>Locker</value>\n          </record>\n        </data>\n      </hook>\n      <hook>\n        <type>hookExec</type>\n        <alias>BaseRights</alias>\n        <data>\n          <record>\n            <win>AnyXType</win>\n            <query>#configBtn</query>\n            <level>7</level>\n            <action>disable</action>\n            <comment>Remove general config except for level 7</comment>\n          </record>\n        </data>\n      </hook>\n      <hook>\n        <type>hookExec</type>\n        <alias>TrsCltBalance</alias>\n        <data>\n          <record>\n            <F1034>14</F1034>\n            <F1039>Personalized offers</F1039>\n            <F64>0</F64>\n          </record>\n        </data>\n      </hook>\n      <hook>\n        <type>modeChange</type>\n        <mode>CLT</mode>\n        <state>2</state>\n        <step>2</step>\n      </hook>\n      <hook>\n        <type>hookExec</type>\n        <alias>PosSalHdr</alias>\n        <data>\n          <record>\n            <SAL_HDR-F1032>100</SAL_HDR-F1032>\n            <SAL_HDR-F1068>ORDER</SAL_HDR-F1068>\n            <SAL_HDR-F1067>001901</SAL_HDR-F1067>\n            <SAL_HDR-F1763>00000077</SAL_HDR-F1763>\n            <SAL_HDR-F1764>\n            </SAL_HDR-F1764>\n            <SAL_HDR-F254>03/03/2026</SAL_HDR-F254>\n            <SAL_HDR-F1185>\n            </SAL_HDR-F1185>\n            <SAL_HDR-F1127>eCommerce</SAL_HDR-F1127>\n            <SAL_HDR-F1245>\n            </SAL_HDR-F1245>\n            <SAL_HDR-F1056>001</SAL_HDR-F1056>\n            <SAL_HDR-F1057>901</SAL_HDR-F1057>\n            <CLT_TAB-F1583>\n            </CLT_TAB-F1583>\n            <CLT_TAB-F1584>\n            </CLT_TAB-F1584>\n            <cltTokenExists>0</cltTokenExists>\n            <STD_TAB-F1531>Company Name</STD_TAB-F1531>\n            <STD_TAB-F1532>Address</STD_TAB-F1532>\n            <STD_TAB-F1533>\n            </STD_TAB-F1533>\n            <STD_TAB-F1534>City</STD_TAB-F1534>\n            <STD_TAB-F1535>\n            </STD_TAB-F1535>\n            <STD_TAB-F1536>\n            </STD_TAB-F1536>\n            <STD_TAB-F1538>nick.alexiou@locsoftware.com</STD_TAB-F1538>\n            <STD_TAB-F1549>State</STD_TAB-F1549>\n            <STD_TAB-F2842>75</STD_TAB-F2842>\n            <STD_TAB-F2843>-43</STD_TAB-F2843>\n            <preAuthAmount>\n            </preAuthAmount>\n            <SAL_HDR-TRACK>\n            </SAL_HDR-TRACK>\n            <SAL_HDR-F1148>0174605137</SAL_HDR-F1148>\n            <SAL_HDR-F1149>\n            </SAL_HDR-F1149>\n            <SAL_HDR-F1150>\n            </SAL_HDR-F1150>\n            <SAL_HDR-F1155>\n            </SAL_HDR-F1155>\n            <SAL_HDR-F1156>\n            </SAL_HDR-F1156>\n            <SAL_HDR-F1157>\n            </SAL_HDR-F1157>\n            <SAL_HDR-F1158>\n            </SAL_HDR-F1158>\n            <SAL_HDR-F1159>\n            </SAL_HDR-F1159>\n            <SAL_HDR-F1170>\n            </SAL_HDR-F1170>\n            <SAL_HDR-F1171>\n            </SAL_HDR-F1171>\n            <SAL_HDR-F1172>\n            </SAL_HDR-F1172>\n            <SAL_HDR-F1173>\n            </SAL_HDR-F1173>\n            <SAL_HDR-F1573>\n            </SAL_HDR-F1573>\n            <SAL_HDR-F1642>\n            </SAL_HDR-F1642>\n            <SAL_HDR-F1643>\n            </SAL_HDR-F1643>\n            <SAL_HDR-F1644>\n            </SAL_HDR-F1644>\n            <SAL_HDR-F1645>\n            </SAL_HDR-F1645>\n            <SAL_HDR-F1646>\n            </SAL_HDR-F1646>\n            <SAL_HDR-F1647>\n            </SAL_HDR-F1647>\n            <SAL_HDR-F1648>\n            </SAL_HDR-F1648>\n            <SAL_HDR-F1649>\n            </SAL_HDR-F1649>\n            <SAL_HDR-F1650>\n            </SAL_HDR-F1650>\n            <SAL_HDR-F1651>\n            </SAL_HDR-F1651>\n            <SAL_HDR-F1692>\n            </SAL_HDR-F1692>\n            <SAL_HDR-F2934>\n            </SAL_HDR-F2934>\n            <SAL_HDR-F2904>\n            </SAL_HDR-F2904>\n            <SAL_HDR-F1697>\n            </SAL_HDR-F1697>\n            <SAL_HDR-F2889>\n            </SAL_HDR-F2889>\n            <SAL_HDR-F2816>\n            </SAL_HDR-F2816>\n            <SAL_HDR-F1654>0</SAL_HDR-F1654>\n            <SAL_HDR-F1655>0</SAL_HDR-F1655>\n            <SAL_HDR-F2619>0</SAL_HDR-F2619>\n            <SAL_HDR-F91>\n            </SAL_HDR-F91>\n            <SAL_HDR-F1152>1</SAL_HDR-F1152>\n            <SAL_HDR-F1153>1</SAL_HDR-F1153>\n            <SAL_TTL-T2>0</SAL_TTL-T2>\n            <SAL_TTL-T3>0</SAL_TTL-T3>\n            <SAL_TTL-T3F64>0</SAL_TTL-T3F64>\n            <SAL_TTL-T22>0</SAL_TTL-T22>\n            <SAL_TTL-T26>0</SAL_TTL-T26>\n            <SAL_TTL-T30>0</SAL_TTL-T30>\n            <SAL_TTL-T34>0</SAL_TTL-T34>\n            <SAL_TTL-T37>0</SAL_TTL-T37>\n            <SAL_TTL-T39>0</SAL_TTL-T39>\n            <SAL_TTL-T40>0</SAL_TTL-T40>\n            <SAL_TTL-T42>0</SAL_TTL-T42>\n            <SAL_TTL-T49>0</SAL_TTL-T49>\n            <SAL_TTL-T51>0</SAL_TTL-T51>\n            <SAL_TTL-T52>0</SAL_TTL-T52>\n            <SAL_TTL-T53>0</SAL_TTL-T53>\n            <SAL_TTL-T54>0</SAL_TTL-T54>\n            <SAL_TTL-T90>0</SAL_TTL-T90>\n            <SAL_TTL-T92>0</SAL_TTL-T92>\n            <SAL_TTL-T1299>0</SAL_TTL-T1299>\n            <SAL_TTL-T3401>0</SAL_TTL-T3401>\n            <SAL_TTL-T3411>0</SAL_TTL-T3411>\n            <SAL_TTL-T3551>0</SAL_TTL-T3551>\n            <SAL_TTL-T7501>0</SAL_TTL-T7501>\n            <SAL_TTL-T7901>0</SAL_TTL-T7901>\n            <SAL_TTL-T3585F64>0</SAL_TTL-T3585F64>\n            <SAL_TTL-T3585F65>0</SAL_TTL-T3585F65>\n            <SAL_TTL-T29999>0</SAL_TTL-T29999>\n            <SAL_TTL-USAVE>0</SAL_TTL-USAVE>\n            <SAL_TTL-GROSS>0</SAL_TTL-GROSS>\n            <unavailRecQty>0</unavailRecQty>\n          </record>\n        </data>\n      </hook>\n      <hook>\n        <type>hookExec</type>\n        <alias>PosSalRegLoad</alias>\n        <data>\n        </data>\n      </hook>\n    </hooks>\n  </root>"
               }
             }
           }
@@ -108,14 +108,13 @@
         "summary": "Login as user with an account",
         "description": "Log in customer as with a username and password. \n\n <a href=\"#request\">Request Parameters</a>",
         "parameters": [
-          { "name": "entry", "in": "query", "schema": { "type": "string" }, "example": "customer@locsoftware.com" , "description": "Usercode or email"},
-          { "name": "PASSWORD", "in": "query", "schema": { "type": "string" }, "example": "" },
-          { "name": "CN", "in": "query", "required": true, "schema": { "type": "string" }, "example": "PUBLIC" },
+          { "name": "entry", "in": "query", "schema": { "type": "string" }, "example": "development@locsoftware.com" , "description": "Usercode or email"},
+          { "name": "PASSWORD", "in": "query", "schema": { "type": "string" }, "example": "Loc12345!" },
+          { "name": "CN", "in": "query", "required": true, "schema": { "type": "string", "default": "PUBLIC"  } },
           {
             "name": "LOGIN_PRM",
             "in": "query",
-            "schema": { "type": "string" },
-            "example": "'HOOKINNER=1,SenchaVer=46010,LANGUAGE=EN'",
+            "schema": { "type": "string", "default": "HOOKINNER=1,SenchaVer=46010,LANGUAGE=EN"},
             "description": "Login parameters, version and language etc."
           },
           { "$ref": "#/components/parameters/DN" },
@@ -125,7 +124,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Loads the session params and values. Loads the communication preferences of the customer. Load some items from the profile table used in the application. Loads the default route options. Doesn't return balances.",
+            "description": "Loads the session params and values. <br />Loads the communication preferences of the customer. <br />Load some items from the profile table used in the application. <br />Loads the default route options. <br />Return balances.",
             "content": {
               "application/xml": {
                 "schema": { "type": "object", "xml": { "name": "root" } },
@@ -139,23 +138,20 @@
     "/trs.exe?sqi=eStore_clt_new": {
       "get": {
         "tags": ["Account"],
-        "summary": "Create New Customer Account",
-        "description": "Executes the script to create a new customer account.\n\nParameters correspond to customer information fields in the SMS database (e.g., F1149 for first name, F1150 for last name, F1573 for email, etc.).",
+        "summary": "Create a new account. *",
+        "description": "*May not work as it requires captcha.<br /><br /><a href=\"#request\">Request Parameters</a><br><br>Optional Parameters\n\n<a href=\"#cltfields\">CLT_TAB fields</a>\n",
         "parameters": [
-          { "name": "sqi", "in": "query", "required": true, "schema": { "type": "string" }, "example": "eStore_clt_new" },
           { "name": "CN", "in": "query", "required": true, "schema": { "type": "string" }, "example": "PUBLIC" },
-          { "name": "F1148", "in": "query", "schema": { "type": "string" }, "example": "", "x-invisible": true},
           { "name": "F1149", "in": "query", "schema": { "type": "string" }, "example": "John", "description": "First name" },
           { "name": "F1150", "in": "query", "schema": { "type": "string" }, "example": "Doe", "description": "Last name" },
-          { "name": "F1155", "in": "query", "schema": { "type": "string" }, "example": "", "x-invisible": true},
           { "name": "F1156", "in": "query", "schema": { "type": "string" }, "example": "123 Red Road", "description": "Address"  },
           { "name": "F1158", "in": "query", "schema": { "type": "string" }, "example": "Los Angeles", "description": "City" },
           { "name": "F1159", "in": "query", "schema": { "type": "string" }, "example": "90210" , "description": "Zip"},
-          { "name": "F1172", "in": "query", "required": true, "schema": { "type": "string" }, "example": "9874563218", "description": "Phone number" },
-          { "name": "F1504", "in": "query", "schema": { "type": "string" }, "example": "", "x-invisible": true},
+          { "name": "F1172", "in": "query", "required": true, "schema": { "type": "string" }, "example": "9168675309", "description": "Phone number" },
+          { "name": "F2875", "in": "query", "required": true, "schema": { "type": "string" }, "example": "9518675309", "description": "Cell number" },
           { "name": "F1520", "in": "query", "schema": { "type": "string" }, "example": "10/23/2025"   },
           { "name": "F1525", "in": "query", "schema": { "type": "string" }, "example": "001", "description": "Store number" },
-          { "name": "F1573", "in": "query", "required": true, "schema": { "type": "string" }, "example": "tes1@locsoftware.com", "description": "Email address" },
+          { "name": "F1573", "in": "query", "required": true, "schema": { "type": "string" }, "example": "development@locsoftware.com", "description": "Email address" },
           { "name": "F1581", "in": "query", "required": true, "schema": { "type": "string" }, "example": "Loc12345!", "description": "Password" },
           { "$ref": "#/components/parameters/DN" },
           { "$ref": "#/components/parameters/DisableCache" },
@@ -169,6 +165,115 @@
               "application/xml": {
                 "schema": { "type": "object", "xml": { "name": "root" } },
                 "example": "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n<root>\n  <hooks>\n    <hook>\n      <type>hookExec</type>\n      <alias>TrsCltNew</alias>\n      <data>\n        <record>\n          <CLT_TAB-F1148>0198216141</CLT_TAB-F1148>\n          <CLT_TAB-F902>DIRECT</CLT_TAB-F902>\n          <CLT_TAB-F1000>PAL</CLT_TAB-F1000>\n          <CLT_TAB-F1001>1</CLT_TAB-F1001>\n          <CLT_TAB-F1150>Doe</CLT_TAB-F1150>\n          <CLT_TAB-F1149>John</CLT_TAB-F1149>\n          <CLT_TAB-F1156>123 Biscayne</CLT_TAB-F1156>\n          <CLT_TAB-F1158>Los Angeles</CLT_TAB-F1158>\n          <CLT_TAB-F1159>90210</CLT_TAB-F1159>\n          <CLT_TAB-F1573>tes1@locsoftware.com</CLT_TAB-F1573>\n          <CLT_TAB-F1172>9874563218</CLT_TAB-F1172>\n          <CLT_TAB-F1525>001</CLT_TAB-F1525>\n          <CLT_TAB-F1581>{Z}VzNwcXl6QT0=</CLT_TAB-F1581>\n        </record>\n      </data>\n    </hook>\n  </hooks>\n</root>"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/trs.exe?cgi=eStore_clt_new_captcha": {
+      "get": {
+        "tags": ["Account"],
+        "summary": "Web service to generate captcha.",
+        "description": "<a href=\"#request\">Request Parameters</a><br><br>Optional Parameters\n<br />NONE\n",
+        "parameters": [
+          { "name": "CN", "in": "query", "required": true, "schema": { "type": "string" }, "example": "PUBLIC" },
+          { "$ref": "#/components/parameters/DN" },
+          { "$ref": "#/components/parameters/DisableCache" },
+          { "$ref": "#/components/parameters/DatabaseTimeout" },
+          { "$ref": "#/components/parameters/BW" }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful XML response create base64 image.",
+            "content": {
+              "application/xml": {
+                "schema": { "type": "object", "xml": { "name": "root" } },
+                "example": "<hook>\n<type>hookExec</type>\n<alias>TrsCltCaptcha</alias>\n<hint>URVHRWBSHIAP</hint>\n<data>\n<html>\n<body>\n<img alt=\"cap  tcha\" src=\"data:image/bmp;base64,\" width=\"300\" height=\"75\" border=\"0\"/>\n</body>\n</html>\n</data>\n</hook>\n"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/trs.exe?sqi=eStore_clt_forgot": {
+      "get": {
+        "tags": ["Account"],
+        "summary": "Start the password recovery process.",
+        "description": "<a href=\"#request\">Request Parameters</a><br><br>Optional Parameters\n<br />NONE\n",
+        "parameters": [
+          { "name": "CN", "in": "query", "required": true, "schema": { "type": "string" }, "example": "PUBLIC" },
+          { "name": "ENTRY", "in": "query", "required": true, "schema": { "type": "string" }, "example": "development@locsoftware.com", "description": "Email address" },
+          { "$ref": "#/components/parameters/DN" },
+          { "$ref": "#/components/parameters/DisableCache" },
+          { "$ref": "#/components/parameters/DatabaseTimeout" },
+          { "$ref": "#/components/parameters/BW" }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful XML response.",
+            "content": {
+              "application/xml": {
+                "schema": { "type": "object", "xml": { "name": "root" } },
+                "example": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<root>\n\t<hooks>\n\t\t<hook>\n\t\t\t<type>popupLoginChange</type>\n\t\t\t<email>nick.alexiou@locsoftware.com</email>\n\t\t</hook>\n\t\t<hook>\n\t\t\t<type>bypass</type>\n\t\t\t<msgTag>TrsCltPassSecureCode</msgTag>\n\t\t</hook>\n\t</hooks>\n</root>\n"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/trs.exe?sqi=eStore_clt_forgot_change": {
+      "get": {
+        "tags": ["Account"],
+        "summary": "Completes the password recovery process.",
+        "description": "<a href=\"#request\">Request Parameters</a><br><br>Optional Parameters\n<br />NONE\n",
+        "parameters": [
+          { "name": "CN", "in": "query", "required": true, "schema": { "type": "string" }, "example": "PUBLIC" },
+          { "name": "ENTRY", "in": "query", "required": true, "schema": { "type": "string" }, "example": "development@locsoftware.com", "description": "Email address" },
+          { "name": "SECUR", "in": "query", "required": true, "schema": { "type": "string" }, "example": "8258d7f3", "description": "Security code" },
+          { "name": "PASS", "in": "query", "required": true, "schema": { "type": "string" }, "example": "Loc12345!" },
+          { "$ref": "#/components/parameters/DN" },
+          { "$ref": "#/components/parameters/DisableCache" },
+          { "$ref": "#/components/parameters/DatabaseTimeout" },
+          { "$ref": "#/components/parameters/BW" }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful XML response.",
+            "content": {
+              "application/xml": {
+                "schema": { "type": "object", "xml": { "name": "root" } },
+                "example": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<root>\n\t<hooks>\n\t\t<hook>\n\t\t\t<type>hookExec</type>\n\t\t\t<alias>PopupLoginForgotChange</alias>\n\t\t</hook>\n\t</hooks>\n</root>\n"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/trs.exe?sqi=eStore_pay_clt_acctlookup": {
+      "get": {
+        "tags": ["Account"],
+        "summary": "Performs account lookup and initiates recovery.",
+        "description": "<a href=\"#request\">Request Parameters</a><br><br>Optional Parameters\n<br />NONE\n",
+        "parameters": [
+          { "name": "CN", "in": "query", "required": true, "schema": { "type": "string" }, "example": "PUBLIC" },
+          { "name": "F1573", "in": "query", "required": true, "schema": { "type": "string" }, "example": "development@locsoftware.com", "description": "Email address" },
+          { "name": "F2975", "in": "query", "required": true, "schema": { "type": "string" }, "example": "1234", "description": "Secret code printed on receipt." },
+          { "name": "F1578", "in": "query", "required": true, "schema": { "type": "string" }, "example": "PS", "description": "Alternate Type" },
+          { "name": "F1172", "in": "query",  "schema": { "type": "string" }, "example": "9168675309", "description": "Phone number" },
+          { "name": "F2875", "in": "query",  "schema": { "type": "string" }, "example": "9518675309", "description": "Cell number" },
+          { "$ref": "#/components/parameters/DN" },
+          { "$ref": "#/components/parameters/DisableCache" },
+          { "$ref": "#/components/parameters/DatabaseTimeout" },
+          { "$ref": "#/components/parameters/BW" }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful XML response.",
+            "content": {
+              "application/xml": {
+                "schema": { "type": "object", "xml": { "name": "root" } },
+                "example": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<root>\n\t<hooks>\n\t\t<hook>\n\t\t\t<type>hookExec</type>\n\t\t\t<alias>PopupLoginForgotChange</alias>\n\t\t</hook>\n\t</hooks>\n</root>\n"
               }
             }
           }
@@ -393,8 +498,8 @@
     "/trs.exe?cgi=eStore_clt_edit_get.xml": {
       "get": {
         "tags": ["Account"],
-        "summary": "Retrieve all the fields in the clt table",
-        "description": "Requires session CN from login",
+        "summary": "Returns all required fields for the customer account.",
+        "description": "Store information, communication and food preferences.<br /><br /><a href=\"#request\">Request Parameters</a><br><br>Optional Parameters\n<br />NONE\n",
         "security": [{ "SessionCN": [] }],
         "parameters": [
           { "name": "CN", "in": "query", "schema": { "type": "string" }, "example": ""},
@@ -405,7 +510,7 @@
         ],
         "responses": {
           "200": {
-            "description": "XML response",
+            "description": "Successful XML response",
             "content": {
               "application/xml": {
                 "schema": { "type": "object", "xml": { "name": "root" } },
@@ -418,11 +523,9 @@
     },
     "/trs.exe?cgi=eStore_clt_edit_set.xml": {
       "get": {
-        "tags": [
-          "Account"
-        ],
-        "summary": "Update Customer Record",
-        "description": "Updates the customer record in the CLT Table",
+        "tags": ["Account"],
+        "summary": "Update customer account fields",
+        "description": "<a href=\"#request\">Request Parameters</a><br><br>Optional Parameters\n<br /><table border=\"1\" cellpadding=\"8\" cellspacing=\"0\">\n  <thead>\n    <tr>\n      <th>Field</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr><td>F1149</td><td>Cust. first name</td></tr>\n    <tr><td>F1150</td><td>Cust. last name</td></tr>\n    <tr><td>F1155</td><td>Cust. company name</td></tr>\n    <tr><td>F1156</td><td>Cust. address 1</td></tr>\n    <tr><td>F1157</td><td>Cust. address 2</td></tr>\n    <tr><td>F1158</td><td>Cust. city</td></tr>\n    <tr><td>F1159</td><td>Cust. zip/postal code</td></tr>\n    <tr><td>F1170</td><td>Cust. province/state</td></tr>\n    <tr><td>F1171</td><td>Cust. country</td></tr>\n    <tr><td>F1172</td><td>Cust. phone number</td></tr>\n    <tr><td>F1173</td><td>Cust. fax number</td></tr>\n    <tr><td>F1504</td><td>Customer language</td></tr>\n    <tr><td>F1520</td><td>Password</td></tr>\n    <tr><td>F1525</td><td>Calling store</td></tr>\n    <tr><td>F1573</td><td>Email address</td></tr>\n    <tr><td>F1743</td><td>Marketing preference</td></tr>\n    <tr><td>F2875</td><td>Cust. cell phone</td></tr>\n    <tr><td>F2900</td><td>Notification preference</td></tr>\n    <tr><td>F2997</td><td>Customer PIN</td></tr>\n  </tbody>\n</table>\n",
         "security": [{ "SessionCN": [] }],
         "parameters": [
           {
@@ -452,7 +555,7 @@
             "schema": {
               "type": "string"
             },
-            "description": "Primary phone number",
+            "description": "Phone number",
             "example": "4507775555"
           },
           {
@@ -472,7 +575,7 @@
             "schema": {
               "type": "string"
             },
-            "description": "Alternate phone number",
+            "description": "Cell phone number",
             "example": "5147775555"
           },
           { "$ref": "#/components/parameters/DN" },
@@ -482,7 +585,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Customer record successfully updated",
+            "description": "Customer account successfully updated",
             "content": {
               "application/xml": {
                 "schema": {
@@ -498,11 +601,47 @@
         }
       }
     },
-    "/trs.exe?cgi=eStore_clt_programs_get.xml": {
+    "/trs.exe?cgi=eStore_clt_programs_set": {
       "get": {
         "tags": ["Account"],
-        "summary": "Retrieve a list of loyalty programs, status and balances",
-        "description": "Requires session CN from login",
+        "summary": "Allows the customer to change the opt-in status of a program or programs.",
+        "description": "Returns balances.<br /><br />Returns Mode.<br /><br />Returns the sales header.<br /><br /><a href=\"#request\">Request Parameters</a><br /><br />Required Parameters<br /><br />\n PROGRAMx x=program number or letter=(Optin=1, Optout=0). Can be chained. i.e. program1=1&programA=0<br /><br />Optional Parameters\n<br />NONE\n",
+        "security": [{ "SessionCN": [] }],
+        "parameters": [
+          {
+            "name": "program1",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Programx=program number or letter=(Optin=1, Optout=0)",
+            "example": "1"
+          },
+          { "name": "CN", "in": "query", "schema": { "type": "string" }, "example": ""},
+          { "$ref": "#/components/parameters/DN" },
+          { "$ref": "#/components/parameters/DisableCache" },
+          { "$ref": "#/components/parameters/DatabaseTimeout" },
+          { "$ref": "#/components/parameters/BW" }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful XML response",
+            "content": {
+              "application/xml": {
+                "schema": { "type": "object", "xml": { "name": "root" } },
+                "example": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<root>\n\t<hooks>\n\t\t<hook>\n\t\t\t<type>modeChange</type>\n\t\t\t<mode>CLT</mode>\n\t\t\t<state>2</state>\n\t\t\t<step>2</step>\n\t\t</hook>\n\t\t<hook>\n\t\t\t<type>hookExec</type>\n\t\t\t<alias>PosSalHdr</alias>\n\t\t\t<data>\n\t\t\t\t<record>\n\t\t\t\t\t<SAL_HDR-F1032>439</SAL_HDR-F1032>\n\t\t\t\t\t<SAL_HDR-F1068>ORDER</SAL_HDR-F1068>\n\t\t\t\t\t<SAL_HDR-F1067>001901</SAL_HDR-F1067>\n\t\t\t\t\t<SAL_HDR-F1763>00000160</SAL_HDR-F1763>\n\t\t\t\t\t<SAL_HDR-F1764></SAL_HDR-F1764>\n\t\t\t\t\t<SAL_HDR-F254>03/04/2026</SAL_HDR-F254>\n\t\t\t\t\t<SAL_HDR-F1185></SAL_HDR-F1185>\n\t\t\t\t\t<SAL_HDR-F1127>eCommerce</SAL_HDR-F1127>\n\t\t\t\t\t<SAL_HDR-F1245></SAL_HDR-F1245>\n\t\t\t\t\t<SAL_HDR-F1056>001</SAL_HDR-F1056>\n\t\t\t\t\t<SAL_HDR-F1057>901</SAL_HDR-F1057>\n\t\t\t\t\t<CLT_TAB-F1583></CLT_TAB-F1583>\n\t\t\t\t\t<CLT_TAB-F1584></CLT_TAB-F1584>\n\t\t\t\t\t<cltTokenExists>0</cltTokenExists>\n\t\t\t\t\t<STD_TAB-F1531>SMS Store</STD_TAB-F1531>\n\t\t\t\t\t<STD_TAB-F1532>2600 W Ann Rd #1183, North</STD_TAB-F1532>\n\t\t\t\t\t<STD_TAB-F1533></STD_TAB-F1533>\n\t\t\t\t\t<STD_TAB-F1534>Las Vegas</STD_TAB-F1534>\n\t\t\t\t\t<STD_TAB-F1535>89031</STD_TAB-F1535>\n\t\t\t\t\t<STD_TAB-F1536>(555) 327-7448</STD_TAB-F1536>\n\t\t\t\t\t<STD_TAB-F1538></STD_TAB-F1538>\n\t\t\t\t\t<STD_TAB-F1549>NV</STD_TAB-F1549>\n\t\t\t\t\t<STD_TAB-F2842>-115.1797</STD_TAB-F2842>\n\t\t\t\t\t<STD_TAB-F2843>36.2626</STD_TAB-F2843>\n\t\t\t\t\t<preAuthAmount></preAuthAmount>\n\t\t\t\t\t<SAL_HDR-TRACK></SAL_HDR-TRACK>\n\t\t\t\t\t<SAL_HDR-F1148>0199804432</SAL_HDR-F1148>\n\t\t\t\t\t<SAL_HDR-F1149>Nick Alexiou</SAL_HDR-F1149>\n\t\t\t\t\t<SAL_HDR-F1150>Alexiou</SAL_HDR-F1150>\n\t\t\t\t\t<SAL_HDR-F1155>Alexiou, Nick Alexiou</SAL_HDR-F1155>\n\t\t\t\t\t<SAL_HDR-F1156>905 Las Vegas Blvd N</SAL_HDR-F1156>\n\t\t\t\t\t<SAL_HDR-F1157></SAL_HDR-F1157>\n\t\t\t\t\t<SAL_HDR-F1158>Las Vegas</SAL_HDR-F1158>\n\t\t\t\t\t<SAL_HDR-F1159>89101</SAL_HDR-F1159>\n\t\t\t\t\t<SAL_HDR-F1170>NV</SAL_HDR-F1170>\n\t\t\t\t\t<SAL_HDR-F1171>US</SAL_HDR-F1171>\n\t\t\t\t\t<SAL_HDR-F1172>5147267441</SAL_HDR-F1172>\n\t\t\t\t\t<SAL_HDR-F1173></SAL_HDR-F1173>\n\t\t\t\t\t<SAL_HDR-F1573>nick.alexiou@gmail.com</SAL_HDR-F1573>\n\t\t\t\t\t<SAL_HDR-F1238>0</SAL_HDR-F1238>\n\t\t\t\t\t<SAL_HDR-F1242>0</SAL_HDR-F1242>\n\t\t\t\t\t<SAL_HDR-F1642></SAL_HDR-F1642>\n\t\t\t\t\t<SAL_HDR-F1643></SAL_HDR-F1643>\n\t\t\t\t\t<SAL_HDR-F1644>Nicko</SAL_HDR-F1644>\n\t\t\t\t\t<SAL_HDR-F1645>468 85e av</SAL_HDR-F1645>\n\t\t\t\t\t<SAL_HDR-F1646>4545</SAL_HDR-F1646>\n\t\t\t\t\t<SAL_HDR-F1647>Laval</SAL_HDR-F1647>\n\t\t\t\t\t<SAL_HDR-F1648>AL</SAL_HDR-F1648>\n\t\t\t\t\t<SAL_HDR-F1649>H7W2Z5</SAL_HDR-F1649>\n\t\t\t\t\t<SAL_HDR-F1650>5554447777</SAL_HDR-F1650>\n\t\t\t\t\t<SAL_HDR-F1651></SAL_HDR-F1651>\n\t\t\t\t\t<SAL_HDR-F1692></SAL_HDR-F1692>\n\t\t\t\t\t<SAL_HDR-F2934></SAL_HDR-F2934>\n\t\t\t\t\t<SAL_HDR-F2904>DELIVERY</SAL_HDR-F2904>\n\t\t\t\t\t<SAL_HDR-F1697></SAL_HDR-F1697>\n\t\t\t\t\t<SAL_HDR-F2889>US</SAL_HDR-F2889>\n\t\t\t\t\t<SAL_HDR-F2816></SAL_HDR-F2816>\n\t\t\t\t\t<SAL_HDR-F1654>0</SAL_HDR-F1654>\n\t\t\t\t\t<SAL_HDR-F1655>0</SAL_HDR-F1655>\n\t\t\t\t\t<SAL_HDR-F2619>0</SAL_HDR-F2619>\n\t\t\t\t\t<SAL_HDR-F91></SAL_HDR-F91>\n\t\t\t\t\t<SAL_HDR-F1152>2</SAL_HDR-F1152>\n\t\t\t\t\t<SAL_HDR-F1153>1</SAL_HDR-F1153>\n\t\t\t\t\t<SAL_TTL-T2>0</SAL_TTL-T2>\n\t\t\t\t\t<SAL_TTL-T3>0</SAL_TTL-T3>\n\t\t\t\t\t<SAL_TTL-T3F64>0</SAL_TTL-T3F64>\n\t\t\t\t\t<SAL_TTL-T22>0</SAL_TTL-T22>\n\t\t\t\t\t<SAL_TTL-T26>0</SAL_TTL-T26>\n\t\t\t\t\t<SAL_TTL-T30>0</SAL_TTL-T30>\n\t\t\t\t\t<SAL_TTL-T34>0</SAL_TTL-T34>\n\t\t\t\t\t<SAL_TTL-T37>0</SAL_TTL-T37>\n\t\t\t\t\t<SAL_TTL-T39>0</SAL_TTL-T39>\n\t\t\t\t\t<SAL_TTL-T40>0</SAL_TTL-T40>\n\t\t\t\t\t<SAL_TTL-T42>0</SAL_TTL-T42>\n\t\t\t\t\t<SAL_TTL-T49>0</SAL_TTL-T49>\n\t\t\t\t\t<SAL_TTL-T51>0</SAL_TTL-T51>\n\t\t\t\t\t<SAL_TTL-T52>0</SAL_TTL-T52>\n\t\t\t\t\t<SAL_TTL-T53>0</SAL_TTL-T53>\n\t\t\t\t\t<SAL_TTL-T54>0</SAL_TTL-T54>\n\t\t\t\t\t<SAL_TTL-T90>0</SAL_TTL-T90>\n\t\t\t\t\t<SAL_TTL-T92>0</SAL_TTL-T92>\n\t\t\t\t\t<SAL_TTL-T1299>0</SAL_TTL-T1299>\n\t\t\t\t\t<SAL_TTL-T3401>0</SAL_TTL-T3401>\n\t\t\t\t\t<SAL_TTL-T3411>0</SAL_TTL-T3411>\n\t\t\t\t\t<SAL_TTL-T3551>0</SAL_TTL-T3551>\n\t\t\t\t\t<SAL_TTL-T7501>0</SAL_TTL-T7501>\n\t\t\t\t\t<SAL_TTL-T7901>0</SAL_TTL-T7901>\n\t\t\t\t\t<SAL_TTL-T3585F64>0</SAL_TTL-T3585F64>\n\t\t\t\t\t<SAL_TTL-T3585F65>0</SAL_TTL-T3585F65>\n\t\t\t\t\t<SAL_TTL-T29999>0</SAL_TTL-T29999>\n\t\t\t\t\t<SAL_TTL-USAVE>0</SAL_TTL-USAVE>\n\t\t\t\t\t<SAL_TTL-GROSS>0</SAL_TTL-GROSS>\n\t\t\t\t\t<unavailRecQty>0</unavailRecQty>\n\t\t\t\t</record>\n\t\t\t</data>\n\t\t</hook>\n\t\t<hook>\n\t\t\t<type>hookExec</type>\n\t\t\t<alias>PosSalRegLoad</alias>\n\t\t\t<data></data>\n\t\t</hook>\n\t\t<hook>\n\t\t\t<type>hookExec</type>\n\t\t\t<alias>TrsCltPrograms</alias>\n\t\t\t<data>\n\t\t\t\t<record>\n\t\t\t\t\t<letter>1</letter>\n\t\t\t\t\t<num>1</num>\n\t\t\t\t\t<desc>Points 1 balance</desc>\n\t\t\t\t\t<optin>0</optin>\n\t\t\t\t\t<long></long>\n\t\t\t\t\t<balance>0</balance>\n\t\t\t\t</record>\n\t\t\t</data>\n\t\t</hook>\n\t</hooks>\n</root>\n\n"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/trs.exe?cgi=eStore_clt_programs_get": {
+      "get": {
+        "tags": ["Account"],
+        "summary": "Returns the points programs letter, number, opt in status and balance. ",
+        "description": "<a href=\"#request\">Request Parameters</a><br><br>Required Parameters\n<br />NONE<br><br>Optional Parameters\n<br />NONE\n",
         "security": [{ "SessionCN": [] }],
         "parameters": [
           { "name": "CN", "in": "query", "schema": { "type": "string" }, "example": ""},
@@ -513,11 +652,229 @@
         ],
         "responses": {
           "200": {
-            "description": "XML response",
+            "description": "Successful XML response",
             "content": {
               "application/xml": {
                 "schema": { "type": "object", "xml": { "name": "root" } },
-                "example": "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n<root>\n  <hooks>\n    <hook>\n      <type>hookExec</type>\n      <alias>TrsCltPrograms</alias>\n      <data>\n        <record>\n          <letter>1</letter>\n          <num>1</num>\n          <desc>Points balance</desc>\n          <optin>1</optin>\n          <balance>4</balance>\n        </record>\n        <record>\n          <letter>2</letter>\n          <num>2</num>\n          <desc>Accumulated spending balance</desc>\n          <optin>1</optin>\n          <balance>182</balance>\n        </record>\n        ... (etc.) ...\n      </data>\n    </hook>\n  </hooks>\n</root>"
+                "example": "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n<root>\n  <hooks>\n    <hook>\n      <type>hookExec</type>\n      <alias>TrsCltPrograms</alias>\n      <data>\n        <record>\n          <letter>1</letter>\n          <num>1</num>\n          <desc>Points balance</desc>\n          <optin>1</optin>\n          <balance>4</balance>\n        </record>\n        <record>\n          <letter>2</letter>\n          <num>2</num>\n          <desc>Accumulated spending balance</desc>\n          <optin>1</optin>\n          <balance>182</balance>\n        </record>\n      </data>\n    </hook>\n  </hooks>\n</root>\n"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/trs.exe?cgi=eStore_clt_point_history": {
+      "get": {
+        "tags": ["Account"],
+        "summary": "Return the point history can be filtered by point program.",
+        "description": "Returns balances.<br /><br />Returns Mode.<br /><br />Returns the sales header.<br /><br /><a href=\"#request\">Request Parameters</a><br /><br />Required Parameters<br /><br />\n PROGRAMx x=program number or letter=(Optin=1, Optout=0). Can be chained. i.e. program1=1&programA=0\n",
+        "security": [{ "SessionCN": [] }],
+        "parameters": [
+          {
+            "name": "pointprogram",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "number or letter",
+            "example": "1"
+          },
+          {
+            "name": "ExtGridStart",
+            "in": "query",
+            "schema": {
+              "type": "number"
+            },
+            "description": "Grid start index",
+            "example": "0"
+          },
+          {
+            "name": "ExtMaxRecords",
+            "in": "query",
+            "schema": {
+              "type": "number"
+            },
+            "description": "Maximum number of records.",
+            "example": "50"
+          },
+          { "name": "CN", "in": "query", "schema": { "type": "string" }, "example": ""},
+          { "$ref": "#/components/parameters/DN" },
+          { "$ref": "#/components/parameters/DisableCache" },
+          { "$ref": "#/components/parameters/DatabaseTimeout" },
+          { "$ref": "#/components/parameters/BW" }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful XML response",
+            "content": {
+              "application/xml": {
+                "schema": { "type": "object", "xml": { "name": "root" } },
+                "example": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<root>\n\t<hooks>\n\t\t<hook>\n\t\t\t<type>modeChange</type>\n\t\t\t<mode>CLT</mode>\n\t\t\t<state>2</state>\n\t\t\t<step>2</step>\n\t\t</hook>\n\t\t<hook>\n\t\t\t<type>hookExec</type>\n\t\t\t<alias>PosSalHdr</alias>\n\t\t\t<data>\n\t\t\t\t<record>\n\t\t\t\t\t<SAL_HDR-F1032>439</SAL_HDR-F1032>\n\t\t\t\t\t<SAL_HDR-F1068>ORDER</SAL_HDR-F1068>\n\t\t\t\t\t<SAL_HDR-F1067>001901</SAL_HDR-F1067>\n\t\t\t\t\t<SAL_HDR-F1763>00000160</SAL_HDR-F1763>\n\t\t\t\t\t<SAL_HDR-F1764></SAL_HDR-F1764>\n\t\t\t\t\t<SAL_HDR-F254>03/04/2026</SAL_HDR-F254>\n\t\t\t\t\t<SAL_HDR-F1185></SAL_HDR-F1185>\n\t\t\t\t\t<SAL_HDR-F1127>eCommerce</SAL_HDR-F1127>\n\t\t\t\t\t<SAL_HDR-F1245></SAL_HDR-F1245>\n\t\t\t\t\t<SAL_HDR-F1056>001</SAL_HDR-F1056>\n\t\t\t\t\t<SAL_HDR-F1057>901</SAL_HDR-F1057>\n\t\t\t\t\t<CLT_TAB-F1583></CLT_TAB-F1583>\n\t\t\t\t\t<CLT_TAB-F1584></CLT_TAB-F1584>\n\t\t\t\t\t<cltTokenExists>0</cltTokenExists>\n\t\t\t\t\t<STD_TAB-F1531>SMS Store</STD_TAB-F1531>\n\t\t\t\t\t<STD_TAB-F1532>2600 W Ann Rd #1183, North</STD_TAB-F1532>\n\t\t\t\t\t<STD_TAB-F1533></STD_TAB-F1533>\n\t\t\t\t\t<STD_TAB-F1534>Las Vegas</STD_TAB-F1534>\n\t\t\t\t\t<STD_TAB-F1535>89031</STD_TAB-F1535>\n\t\t\t\t\t<STD_TAB-F1536>(555) 327-7448</STD_TAB-F1536>\n\t\t\t\t\t<STD_TAB-F1538></STD_TAB-F1538>\n\t\t\t\t\t<STD_TAB-F1549>NV</STD_TAB-F1549>\n\t\t\t\t\t<STD_TAB-F2842>-115.1797</STD_TAB-F2842>\n\t\t\t\t\t<STD_TAB-F2843>36.2626</STD_TAB-F2843>\n\t\t\t\t\t<preAuthAmount></preAuthAmount>\n\t\t\t\t\t<SAL_HDR-TRACK></SAL_HDR-TRACK>\n\t\t\t\t\t<SAL_HDR-F1148>0199804432</SAL_HDR-F1148>\n\t\t\t\t\t<SAL_HDR-F1149>Nick Alexiou</SAL_HDR-F1149>\n\t\t\t\t\t<SAL_HDR-F1150>Alexiou</SAL_HDR-F1150>\n\t\t\t\t\t<SAL_HDR-F1155>Alexiou, Nick Alexiou</SAL_HDR-F1155>\n\t\t\t\t\t<SAL_HDR-F1156>905 Las Vegas Blvd N</SAL_HDR-F1156>\n\t\t\t\t\t<SAL_HDR-F1157></SAL_HDR-F1157>\n\t\t\t\t\t<SAL_HDR-F1158>Las Vegas</SAL_HDR-F1158>\n\t\t\t\t\t<SAL_HDR-F1159>89101</SAL_HDR-F1159>\n\t\t\t\t\t<SAL_HDR-F1170>NV</SAL_HDR-F1170>\n\t\t\t\t\t<SAL_HDR-F1171>US</SAL_HDR-F1171>\n\t\t\t\t\t<SAL_HDR-F1172>5147267441</SAL_HDR-F1172>\n\t\t\t\t\t<SAL_HDR-F1173></SAL_HDR-F1173>\n\t\t\t\t\t<SAL_HDR-F1573>nick.alexiou@gmail.com</SAL_HDR-F1573>\n\t\t\t\t\t<SAL_HDR-F1238>0</SAL_HDR-F1238>\n\t\t\t\t\t<SAL_HDR-F1242>0</SAL_HDR-F1242>\n\t\t\t\t\t<SAL_HDR-F1642></SAL_HDR-F1642>\n\t\t\t\t\t<SAL_HDR-F1643></SAL_HDR-F1643>\n\t\t\t\t\t<SAL_HDR-F1644>Nicko</SAL_HDR-F1644>\n\t\t\t\t\t<SAL_HDR-F1645>468 85e av</SAL_HDR-F1645>\n\t\t\t\t\t<SAL_HDR-F1646>4545</SAL_HDR-F1646>\n\t\t\t\t\t<SAL_HDR-F1647>Laval</SAL_HDR-F1647>\n\t\t\t\t\t<SAL_HDR-F1648>AL</SAL_HDR-F1648>\n\t\t\t\t\t<SAL_HDR-F1649>H7W2Z5</SAL_HDR-F1649>\n\t\t\t\t\t<SAL_HDR-F1650>5554447777</SAL_HDR-F1650>\n\t\t\t\t\t<SAL_HDR-F1651></SAL_HDR-F1651>\n\t\t\t\t\t<SAL_HDR-F1692></SAL_HDR-F1692>\n\t\t\t\t\t<SAL_HDR-F2934></SAL_HDR-F2934>\n\t\t\t\t\t<SAL_HDR-F2904>DELIVERY</SAL_HDR-F2904>\n\t\t\t\t\t<SAL_HDR-F1697></SAL_HDR-F1697>\n\t\t\t\t\t<SAL_HDR-F2889>US</SAL_HDR-F2889>\n\t\t\t\t\t<SAL_HDR-F2816></SAL_HDR-F2816>\n\t\t\t\t\t<SAL_HDR-F1654>0</SAL_HDR-F1654>\n\t\t\t\t\t<SAL_HDR-F1655>0</SAL_HDR-F1655>\n\t\t\t\t\t<SAL_HDR-F2619>0</SAL_HDR-F2619>\n\t\t\t\t\t<SAL_HDR-F91></SAL_HDR-F91>\n\t\t\t\t\t<SAL_HDR-F1152>2</SAL_HDR-F1152>\n\t\t\t\t\t<SAL_HDR-F1153>1</SAL_HDR-F1153>\n\t\t\t\t\t<SAL_TTL-T2>0</SAL_TTL-T2>\n\t\t\t\t\t<SAL_TTL-T3>0</SAL_TTL-T3>\n\t\t\t\t\t<SAL_TTL-T3F64>0</SAL_TTL-T3F64>\n\t\t\t\t\t<SAL_TTL-T22>0</SAL_TTL-T22>\n\t\t\t\t\t<SAL_TTL-T26>0</SAL_TTL-T26>\n\t\t\t\t\t<SAL_TTL-T30>0</SAL_TTL-T30>\n\t\t\t\t\t<SAL_TTL-T34>0</SAL_TTL-T34>\n\t\t\t\t\t<SAL_TTL-T37>0</SAL_TTL-T37>\n\t\t\t\t\t<SAL_TTL-T39>0</SAL_TTL-T39>\n\t\t\t\t\t<SAL_TTL-T40>0</SAL_TTL-T40>\n\t\t\t\t\t<SAL_TTL-T42>0</SAL_TTL-T42>\n\t\t\t\t\t<SAL_TTL-T49>0</SAL_TTL-T49>\n\t\t\t\t\t<SAL_TTL-T51>0</SAL_TTL-T51>\n\t\t\t\t\t<SAL_TTL-T52>0</SAL_TTL-T52>\n\t\t\t\t\t<SAL_TTL-T53>0</SAL_TTL-T53>\n\t\t\t\t\t<SAL_TTL-T54>0</SAL_TTL-T54>\n\t\t\t\t\t<SAL_TTL-T90>0</SAL_TTL-T90>\n\t\t\t\t\t<SAL_TTL-T92>0</SAL_TTL-T92>\n\t\t\t\t\t<SAL_TTL-T1299>0</SAL_TTL-T1299>\n\t\t\t\t\t<SAL_TTL-T3401>0</SAL_TTL-T3401>\n\t\t\t\t\t<SAL_TTL-T3411>0</SAL_TTL-T3411>\n\t\t\t\t\t<SAL_TTL-T3551>0</SAL_TTL-T3551>\n\t\t\t\t\t<SAL_TTL-T7501>0</SAL_TTL-T7501>\n\t\t\t\t\t<SAL_TTL-T7901>0</SAL_TTL-T7901>\n\t\t\t\t\t<SAL_TTL-T3585F64>0</SAL_TTL-T3585F64>\n\t\t\t\t\t<SAL_TTL-T3585F65>0</SAL_TTL-T3585F65>\n\t\t\t\t\t<SAL_TTL-T29999>0</SAL_TTL-T29999>\n\t\t\t\t\t<SAL_TTL-USAVE>0</SAL_TTL-USAVE>\n\t\t\t\t\t<SAL_TTL-GROSS>0</SAL_TTL-GROSS>\n\t\t\t\t\t<unavailRecQty>0</unavailRecQty>\n\t\t\t\t</record>\n\t\t\t</data>\n\t\t</hook>\n\t\t<hook>\n\t\t\t<type>hookExec</type>\n\t\t\t<alias>PosSalRegLoad</alias>\n\t\t\t<data></data>\n\t\t</hook>\n\t\t<hook>\n\t\t\t<type>hookExec</type>\n\t\t\t<alias>TrsCltPrograms</alias>\n\t\t\t<data>\n\t\t\t\t<record>\n\t\t\t\t\t<letter>1</letter>\n\t\t\t\t\t<num>1</num>\n\t\t\t\t\t<desc>Points 1 balance</desc>\n\t\t\t\t\t<optin>0</optin>\n\t\t\t\t\t<long></long>\n\t\t\t\t\t<balance>0</balance>\n\t\t\t\t</record>\n\t\t\t</data>\n\t\t</hook>\n\t</hooks>\n</root>\n\n"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/trs.exe?cgi=eStore_clt_gift_history": {
+      "get": {
+        "tags": ["Account"],
+        "summary": "Gift card history.",
+        "description": "<a href=\"#request\">Request Parameters</a><br /><br /><br /><br />Optional Parameters\n<br />NONE\n",
+        "security": [{ "SessionCN": [] }],
+        "parameters": [
+          {
+            "name": "1577",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Gift card number/Alternate Customer Number",
+            "example": "12345678910"
+          },
+          {
+            "name": "ExtGridStart",
+            "in": "query",
+            "schema": {
+              "type": "number"
+            },
+            "description": "Grid start index",
+            "example": "0"
+          },
+          {
+            "name": "ExtMaxRecords",
+            "in": "query",
+            "schema": {
+              "type": "number"
+            },
+            "description": "Maximum number of records",
+            "example": "50"
+          },
+          { "name": "CN", "in": "query", "schema": { "type": "string" }, "example": ""},
+          { "$ref": "#/components/parameters/DN" },
+          { "$ref": "#/components/parameters/DisableCache" },
+          { "$ref": "#/components/parameters/DatabaseTimeout" },
+          { "$ref": "#/components/parameters/BW" }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful XML response",
+            "content": {
+              "application/xml": {
+                "schema": { "type": "object", "xml": { "name": "root" } },
+                "example": "<record>\n\t<F1034>208</F1034>\n\t<F1039>Prepaid increase</F1039>\n\t<F254>01/09/2026</F254>\n\t<F65>10.00</F65>\n\t<F253>01/09/2026</F253>\n</record>\n"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/trs.exe?cgi=eStore_trs_rct_list": {
+      "get": {
+        "tags": ["Account"],
+        "summary": "Generates a list of receipt totals and relevant information.",
+        "description": "<a href=\"#request\">Request Parameters</a><br /><br /><br /><br />Required Parameters\n<br />NONE\n",
+        "security": [{ "SessionCN": [] }],
+        "parameters": [
+          {
+            "name": "D254",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date"
+            },
+            "description": "Start date for transaction.",
+            "example": "09/12/2024"
+          },
+          {
+            "name": "F254",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date"
+            },
+            "description": "End date for transaction.",
+            "example": "09/12/2030"
+          },
+          {
+            "name": "F1056",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Store number",
+            "example": "001"
+          },
+          {
+            "name": "D65",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "float"
+            },
+            "description": "Minimum transaction amount",
+            "example": "0.01"
+          },
+          {
+            "name": "F65",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "float"
+            },
+            "description": "Minimum transaction amount",
+            "example": "100"
+          },
+          {
+            "name": "F1034",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "number"
+            },
+            "description": "Totalizer number.",
+            "example": "2"
+          },
+          { "name": "CN", "in": "query", "schema": { "type": "string" }, "example": ""},
+          { "$ref": "#/components/parameters/DN" },
+          { "$ref": "#/components/parameters/DisableCache" },
+          { "$ref": "#/components/parameters/DatabaseTimeout" },
+          { "$ref": "#/components/parameters/BW" }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful XML response",
+            "content": {
+              "application/xml": {
+                "schema": { "type": "object", "xml": { "name": "root" } },
+                "example": "<record>\n\t<F1034>208</F1034>\n\t<F1039>Prepaid increase</F1039>\n\t<F254>01/09/2026</F254>\n\t<F65>10.00</F65>\n\t<F253>01/09/2026</F253>\n</record>\n"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/trs.exe?cgi=eStore_pos_start_balance": {
+      "get": {
+        "tags": ["Account"],
+        "summary": "Returns customer balances and personalized offers. ",
+        "description": "<a href=\"#request\">Request Parameters</a><br /><br />Required Parameters\n<br />NONE<br /><br />Optional Parameters\n<br />NONE\n\n",
+        "security": [{ "SessionCN": [] }],
+        "parameters": [
+          { "name": "CN", "in": "query", "schema": { "type": "string" }, "example": ""},
+          { "$ref": "#/components/parameters/DN" },
+          { "$ref": "#/components/parameters/DisableCache" },
+          { "$ref": "#/components/parameters/DatabaseTimeout" },
+          { "$ref": "#/components/parameters/BW" }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful XML response",
+            "content": {
+              "application/xml": {
+                "schema": { "type": "object", "xml": { "name": "root" } },
+                "example": "<hook>\n\t<alias>TrsCltBalance</alias>\n\t<data>\n\t\t<record>\n\t\t\t<F1034>7901</F1034>\n\t\t\t<F1039>Points 1 balance</F1039>\n\t\t\t<F64>1000</F64>\n\t\t\t<F1281>10</F1281>\n\t\t</record>\n\t\t<record>\n\t\t\t<F1034>14</F1034>\n\t\t\t<F1039>Personalized offers</F1039>\n\t\t\t<F64>2</F64>\n\t\t</record>\n\t</data>\n</hook>\n"
               }
             }
           }
@@ -526,9 +883,9 @@
     },
     "/trs.exe?cgi=eStore_base_store_list.xml": {
       "get": {
-        "tags": ["Stores"],
-        "summary": "Retrieve a list of stores using your location (latitude and longitude)",
-        "description": "PUBLIC CN or session CN from login",
+        "tags": ["Auxiliaries"],
+        "summary": "Returns a list of stores and their detailed information.",
+        "description": "<a href=\"#request\">Request Parameters</a><br /><br />",
         "security": [{ "SessionCN": [] }],
         "parameters": [
           { "name": "F2842", "in": "query", "schema": { "type": "number", "format": "float" }, "example": -72.4926464, "description": "Longitude" },
@@ -545,7 +902,78 @@
             "content": {
               "application/xml": {
                 "schema": { "type": "object", "xml": { "name": "root" } },
-                "example": "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n<root>\n  <hooks>\n    <hook>\n      <type>hookExec</type>\n      <alias>PopupStoreSelect</alias>\n      <data>\n        <record>\n          <F1056>001</F1056>\n          <F1531>Company Name</F1531>\n          <F1532>Address</F1532>\n          <F1534>City</F1534>\n          <F1549>State</F1549>\n          <F2842>75</F2842>\n          <F2843>-43</F2843>\n          <F2937>WEB</F2937>\n          <distance>17430.6824889372</distance>\n        </record>\n      </data>\n    </hook>\n  </hooks>\n</root>"
+                "example": "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n<root>\n  <hooks>\n    <hook>\n      <type>hookExec</type>\n      <alias>PopupStoreSelect</alias>\n      <data>\n        <record>\n          <F1056>001</F1056>\n          <F1531>Company Name</F1531>\n          <F1532>Address</F1532>\n          <F1534>City</F1534>\n          <F1549>State</F1549>\n          <F2842>75</F2842>\n          <F2843>-43</F2843>\n          <F2937>WEB</F2937>\n          <distance>17430.6824889372</distance>\n        </record>\n      </data>\n    </hook>\n  </hooks>\n</root>\n"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/trs.exe?cgi=eStore_pos_dpt_list": {
+      "get": {
+        "tags": ["Auxiliaries"],
+        "summary": "Returns a list of departments.",
+        "description": "<a href=\"#request\">Request Parameters</a><br /><br />Required Parameters<br /><br />\n NONE\n",
+        "security": [{ "SessionCN": [] }],
+        "parameters": [
+          {
+            "name": "ExtGridStart",
+            "in": "query",
+            "schema": {
+              "type": "number"
+            },
+            "description": "Grid start index",
+            "example": "0"
+          },
+          {
+            "name": "ExtMaxRecords",
+            "in": "query",
+            "schema": {
+              "type": "number"
+            },
+            "description": "Maximum number of records.",
+            "example": "50"
+          },
+          {
+            "name": "ExtGridSort",
+            "in": "query",
+            "schema": {
+              "type": "number"
+            },
+            "description": "Grid sort definition.",
+            "example": "F1965,F238"
+          },
+          {
+            "name": "F1966",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Show filter",
+            "example": "X"
+          },
+          {
+            "name": "quick",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Quick search value",
+            "example": ""
+          },
+          { "name": "CN", "in": "query", "schema": { "type": "string" }, "example": ""},
+          { "$ref": "#/components/parameters/DN" },
+          { "$ref": "#/components/parameters/DisableCache" },
+          { "$ref": "#/components/parameters/DatabaseTimeout" },
+          { "$ref": "#/components/parameters/BW" }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful XML response",
+            "content": {
+              "application/xml": {
+                "schema": { "type": "object", "xml": { "name": "root" } },
+                "example": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<root>\n\t<hooks>\n\t\t<hook>\n\t\t\t<type>modeChange</type>\n\t\t\t<mode>CLT</mode>\n\t\t\t<state>2</state>\n\t\t\t<step>2</step>\n\t\t</hook>\n\t\t<hook>\n\t\t\t<type>hookExec</type>\n\t\t\t<alias>PosSalHdr</alias>\n\t\t\t<data>\n\t\t\t\t<record>\n\t\t\t\t\t<SAL_HDR-F1032>439</SAL_HDR-F1032>\n\t\t\t\t\t<SAL_HDR-F1068>ORDER</SAL_HDR-F1068>\n\t\t\t\t\t<SAL_HDR-F1067>001901</SAL_HDR-F1067>\n\t\t\t\t\t<SAL_HDR-F1763>00000160</SAL_HDR-F1763>\n\t\t\t\t\t<SAL_HDR-F1764></SAL_HDR-F1764>\n\t\t\t\t\t<SAL_HDR-F254>03/04/2026</SAL_HDR-F254>\n\t\t\t\t\t<SAL_HDR-F1185></SAL_HDR-F1185>\n\t\t\t\t\t<SAL_HDR-F1127>eCommerce</SAL_HDR-F1127>\n\t\t\t\t\t<SAL_HDR-F1245></SAL_HDR-F1245>\n\t\t\t\t\t<SAL_HDR-F1056>001</SAL_HDR-F1056>\n\t\t\t\t\t<SAL_HDR-F1057>901</SAL_HDR-F1057>\n\t\t\t\t\t<CLT_TAB-F1583></CLT_TAB-F1583>\n\t\t\t\t\t<CLT_TAB-F1584></CLT_TAB-F1584>\n\t\t\t\t\t<cltTokenExists>0</cltTokenExists>\n\t\t\t\t\t<STD_TAB-F1531>SMS Store</STD_TAB-F1531>\n\t\t\t\t\t<STD_TAB-F1532>2600 W Ann Rd #1183, North</STD_TAB-F1532>\n\t\t\t\t\t<STD_TAB-F1533></STD_TAB-F1533>\n\t\t\t\t\t<STD_TAB-F1534>Las Vegas</STD_TAB-F1534>\n\t\t\t\t\t<STD_TAB-F1535>89031</STD_TAB-F1535>\n\t\t\t\t\t<STD_TAB-F1536>(555) 327-7448</STD_TAB-F1536>\n\t\t\t\t\t<STD_TAB-F1538></STD_TAB-F1538>\n\t\t\t\t\t<STD_TAB-F1549>NV</STD_TAB-F1549>\n\t\t\t\t\t<STD_TAB-F2842>-115.1797</STD_TAB-F2842>\n\t\t\t\t\t<STD_TAB-F2843>36.2626</STD_TAB-F2843>\n\t\t\t\t\t<preAuthAmount></preAuthAmount>\n\t\t\t\t\t<SAL_HDR-TRACK></SAL_HDR-TRACK>\n\t\t\t\t\t<SAL_HDR-F1148>0199804432</SAL_HDR-F1148>\n\t\t\t\t\t<SAL_HDR-F1149>Nick Alexiou</SAL_HDR-F1149>\n\t\t\t\t\t<SAL_HDR-F1150>Alexiou</SAL_HDR-F1150>\n\t\t\t\t\t<SAL_HDR-F1155>Alexiou, Nick Alexiou</SAL_HDR-F1155>\n\t\t\t\t\t<SAL_HDR-F1156>905 Las Vegas Blvd N</SAL_HDR-F1156>\n\t\t\t\t\t<SAL_HDR-F1157></SAL_HDR-F1157>\n\t\t\t\t\t<SAL_HDR-F1158>Las Vegas</SAL_HDR-F1158>\n\t\t\t\t\t<SAL_HDR-F1159>89101</SAL_HDR-F1159>\n\t\t\t\t\t<SAL_HDR-F1170>NV</SAL_HDR-F1170>\n\t\t\t\t\t<SAL_HDR-F1171>US</SAL_HDR-F1171>\n\t\t\t\t\t<SAL_HDR-F1172>5147267441</SAL_HDR-F1172>\n\t\t\t\t\t<SAL_HDR-F1173></SAL_HDR-F1173>\n\t\t\t\t\t<SAL_HDR-F1573>nick.alexiou@gmail.com</SAL_HDR-F1573>\n\t\t\t\t\t<SAL_HDR-F1238>0</SAL_HDR-F1238>\n\t\t\t\t\t<SAL_HDR-F1242>0</SAL_HDR-F1242>\n\t\t\t\t\t<SAL_HDR-F1642></SAL_HDR-F1642>\n\t\t\t\t\t<SAL_HDR-F1643></SAL_HDR-F1643>\n\t\t\t\t\t<SAL_HDR-F1644>Nicko</SAL_HDR-F1644>\n\t\t\t\t\t<SAL_HDR-F1645>468 85e av</SAL_HDR-F1645>\n\t\t\t\t\t<SAL_HDR-F1646>4545</SAL_HDR-F1646>\n\t\t\t\t\t<SAL_HDR-F1647>Laval</SAL_HDR-F1647>\n\t\t\t\t\t<SAL_HDR-F1648>AL</SAL_HDR-F1648>\n\t\t\t\t\t<SAL_HDR-F1649>H7W2Z5</SAL_HDR-F1649>\n\t\t\t\t\t<SAL_HDR-F1650>5554447777</SAL_HDR-F1650>\n\t\t\t\t\t<SAL_HDR-F1651></SAL_HDR-F1651>\n\t\t\t\t\t<SAL_HDR-F1692></SAL_HDR-F1692>\n\t\t\t\t\t<SAL_HDR-F2934></SAL_HDR-F2934>\n\t\t\t\t\t<SAL_HDR-F2904>DELIVERY</SAL_HDR-F2904>\n\t\t\t\t\t<SAL_HDR-F1697></SAL_HDR-F1697>\n\t\t\t\t\t<SAL_HDR-F2889>US</SAL_HDR-F2889>\n\t\t\t\t\t<SAL_HDR-F2816></SAL_HDR-F2816>\n\t\t\t\t\t<SAL_HDR-F1654>0</SAL_HDR-F1654>\n\t\t\t\t\t<SAL_HDR-F1655>0</SAL_HDR-F1655>\n\t\t\t\t\t<SAL_HDR-F2619>0</SAL_HDR-F2619>\n\t\t\t\t\t<SAL_HDR-F91></SAL_HDR-F91>\n\t\t\t\t\t<SAL_HDR-F1152>2</SAL_HDR-F1152>\n\t\t\t\t\t<SAL_HDR-F1153>1</SAL_HDR-F1153>\n\t\t\t\t\t<SAL_TTL-T2>0</SAL_TTL-T2>\n\t\t\t\t\t<SAL_TTL-T3>0</SAL_TTL-T3>\n\t\t\t\t\t<SAL_TTL-T3F64>0</SAL_TTL-T3F64>\n\t\t\t\t\t<SAL_TTL-T22>0</SAL_TTL-T22>\n\t\t\t\t\t<SAL_TTL-T26>0</SAL_TTL-T26>\n\t\t\t\t\t<SAL_TTL-T30>0</SAL_TTL-T30>\n\t\t\t\t\t<SAL_TTL-T34>0</SAL_TTL-T34>\n\t\t\t\t\t<SAL_TTL-T37>0</SAL_TTL-T37>\n\t\t\t\t\t<SAL_TTL-T39>0</SAL_TTL-T39>\n\t\t\t\t\t<SAL_TTL-T40>0</SAL_TTL-T40>\n\t\t\t\t\t<SAL_TTL-T42>0</SAL_TTL-T42>\n\t\t\t\t\t<SAL_TTL-T49>0</SAL_TTL-T49>\n\t\t\t\t\t<SAL_TTL-T51>0</SAL_TTL-T51>\n\t\t\t\t\t<SAL_TTL-T52>0</SAL_TTL-T52>\n\t\t\t\t\t<SAL_TTL-T53>0</SAL_TTL-T53>\n\t\t\t\t\t<SAL_TTL-T54>0</SAL_TTL-T54>\n\t\t\t\t\t<SAL_TTL-T90>0</SAL_TTL-T90>\n\t\t\t\t\t<SAL_TTL-T92>0</SAL_TTL-T92>\n\t\t\t\t\t<SAL_TTL-T1299>0</SAL_TTL-T1299>\n\t\t\t\t\t<SAL_TTL-T3401>0</SAL_TTL-T3401>\n\t\t\t\t\t<SAL_TTL-T3411>0</SAL_TTL-T3411>\n\t\t\t\t\t<SAL_TTL-T3551>0</SAL_TTL-T3551>\n\t\t\t\t\t<SAL_TTL-T7501>0</SAL_TTL-T7501>\n\t\t\t\t\t<SAL_TTL-T7901>0</SAL_TTL-T7901>\n\t\t\t\t\t<SAL_TTL-T3585F64>0</SAL_TTL-T3585F64>\n\t\t\t\t\t<SAL_TTL-T3585F65>0</SAL_TTL-T3585F65>\n\t\t\t\t\t<SAL_TTL-T29999>0</SAL_TTL-T29999>\n\t\t\t\t\t<SAL_TTL-USAVE>0</SAL_TTL-USAVE>\n\t\t\t\t\t<SAL_TTL-GROSS>0</SAL_TTL-GROSS>\n\t\t\t\t\t<unavailRecQty>0</unavailRecQty>\n\t\t\t\t</record>\n\t\t\t</data>\n\t\t</hook>\n\t\t<hook>\n\t\t\t<type>hookExec</type>\n\t\t\t<alias>PosSalRegLoad</alias>\n\t\t\t<data></data>\n\t\t</hook>\n\t\t<hook>\n\t\t\t<type>hookExec</type>\n\t\t\t<alias>TrsCltPrograms</alias>\n\t\t\t<data>\n\t\t\t\t<record>\n\t\t\t\t\t<letter>1</letter>\n\t\t\t\t\t<num>1</num>\n\t\t\t\t\t<desc>Points 1 balance</desc>\n\t\t\t\t\t<optin>0</optin>\n\t\t\t\t\t<long></long>\n\t\t\t\t\t<balance>0</balance>\n\t\t\t\t</record>\n\t\t\t</data>\n\t\t</hook>\n\t</hooks>\n</root>\n\n"
               }
             }
           }
