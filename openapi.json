@@ -30,7 +30,6 @@
         "in": "query",
         "required": true,
         "description": "The Device Name is used allow only web services with this namespace (eStore, mStore)",
-        "properties": { "x-ui-bg": "#fff0f0"},
         "schema": {
           "type": "string",
           "enum": ["eStore", "mStore"]
@@ -360,7 +359,6 @@
         "tags": ["Items"],
         "security": [{ "SessionCN": [] }],
         "parameters": [
-          { "name": "_dc", "in": "query", "schema": { "type": "string" }, "example": "1761063682693", "description": "Disable cache"  },
           { "name": "ENTRY", "in": "query", "schema": { "type": "string" }, "example": "0000000004011" },
           { "name": "CN", "in": "query", "schema": { "type": "string" }, "example": "" },
           { "$ref": "#/components/parameters/DN" },
@@ -973,7 +971,265 @@
             "content": {
               "application/xml": {
                 "schema": { "type": "object", "xml": { "name": "root" } },
-                "example": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<root>\n\t<hooks>\n\t\t<hook>\n\t\t\t<type>modeChange</type>\n\t\t\t<mode>CLT</mode>\n\t\t\t<state>2</state>\n\t\t\t<step>2</step>\n\t\t</hook>\n\t\t<hook>\n\t\t\t<type>hookExec</type>\n\t\t\t<alias>PosSalHdr</alias>\n\t\t\t<data>\n\t\t\t\t<record>\n\t\t\t\t\t<SAL_HDR-F1032>439</SAL_HDR-F1032>\n\t\t\t\t\t<SAL_HDR-F1068>ORDER</SAL_HDR-F1068>\n\t\t\t\t\t<SAL_HDR-F1067>001901</SAL_HDR-F1067>\n\t\t\t\t\t<SAL_HDR-F1763>00000160</SAL_HDR-F1763>\n\t\t\t\t\t<SAL_HDR-F1764></SAL_HDR-F1764>\n\t\t\t\t\t<SAL_HDR-F254>03/04/2026</SAL_HDR-F254>\n\t\t\t\t\t<SAL_HDR-F1185></SAL_HDR-F1185>\n\t\t\t\t\t<SAL_HDR-F1127>eCommerce</SAL_HDR-F1127>\n\t\t\t\t\t<SAL_HDR-F1245></SAL_HDR-F1245>\n\t\t\t\t\t<SAL_HDR-F1056>001</SAL_HDR-F1056>\n\t\t\t\t\t<SAL_HDR-F1057>901</SAL_HDR-F1057>\n\t\t\t\t\t<CLT_TAB-F1583></CLT_TAB-F1583>\n\t\t\t\t\t<CLT_TAB-F1584></CLT_TAB-F1584>\n\t\t\t\t\t<cltTokenExists>0</cltTokenExists>\n\t\t\t\t\t<STD_TAB-F1531>SMS Store</STD_TAB-F1531>\n\t\t\t\t\t<STD_TAB-F1532>2600 W Ann Rd #1183, North</STD_TAB-F1532>\n\t\t\t\t\t<STD_TAB-F1533></STD_TAB-F1533>\n\t\t\t\t\t<STD_TAB-F1534>Las Vegas</STD_TAB-F1534>\n\t\t\t\t\t<STD_TAB-F1535>89031</STD_TAB-F1535>\n\t\t\t\t\t<STD_TAB-F1536>(555) 327-7448</STD_TAB-F1536>\n\t\t\t\t\t<STD_TAB-F1538></STD_TAB-F1538>\n\t\t\t\t\t<STD_TAB-F1549>NV</STD_TAB-F1549>\n\t\t\t\t\t<STD_TAB-F2842>-115.1797</STD_TAB-F2842>\n\t\t\t\t\t<STD_TAB-F2843>36.2626</STD_TAB-F2843>\n\t\t\t\t\t<preAuthAmount></preAuthAmount>\n\t\t\t\t\t<SAL_HDR-TRACK></SAL_HDR-TRACK>\n\t\t\t\t\t<SAL_HDR-F1148>0199804432</SAL_HDR-F1148>\n\t\t\t\t\t<SAL_HDR-F1149>Nick Alexiou</SAL_HDR-F1149>\n\t\t\t\t\t<SAL_HDR-F1150>Alexiou</SAL_HDR-F1150>\n\t\t\t\t\t<SAL_HDR-F1155>Alexiou, Nick Alexiou</SAL_HDR-F1155>\n\t\t\t\t\t<SAL_HDR-F1156>905 Las Vegas Blvd N</SAL_HDR-F1156>\n\t\t\t\t\t<SAL_HDR-F1157></SAL_HDR-F1157>\n\t\t\t\t\t<SAL_HDR-F1158>Las Vegas</SAL_HDR-F1158>\n\t\t\t\t\t<SAL_HDR-F1159>89101</SAL_HDR-F1159>\n\t\t\t\t\t<SAL_HDR-F1170>NV</SAL_HDR-F1170>\n\t\t\t\t\t<SAL_HDR-F1171>US</SAL_HDR-F1171>\n\t\t\t\t\t<SAL_HDR-F1172>5147267441</SAL_HDR-F1172>\n\t\t\t\t\t<SAL_HDR-F1173></SAL_HDR-F1173>\n\t\t\t\t\t<SAL_HDR-F1573>nick.alexiou@gmail.com</SAL_HDR-F1573>\n\t\t\t\t\t<SAL_HDR-F1238>0</SAL_HDR-F1238>\n\t\t\t\t\t<SAL_HDR-F1242>0</SAL_HDR-F1242>\n\t\t\t\t\t<SAL_HDR-F1642></SAL_HDR-F1642>\n\t\t\t\t\t<SAL_HDR-F1643></SAL_HDR-F1643>\n\t\t\t\t\t<SAL_HDR-F1644>Nicko</SAL_HDR-F1644>\n\t\t\t\t\t<SAL_HDR-F1645>468 85e av</SAL_HDR-F1645>\n\t\t\t\t\t<SAL_HDR-F1646>4545</SAL_HDR-F1646>\n\t\t\t\t\t<SAL_HDR-F1647>Laval</SAL_HDR-F1647>\n\t\t\t\t\t<SAL_HDR-F1648>AL</SAL_HDR-F1648>\n\t\t\t\t\t<SAL_HDR-F1649>H7W2Z5</SAL_HDR-F1649>\n\t\t\t\t\t<SAL_HDR-F1650>5554447777</SAL_HDR-F1650>\n\t\t\t\t\t<SAL_HDR-F1651></SAL_HDR-F1651>\n\t\t\t\t\t<SAL_HDR-F1692></SAL_HDR-F1692>\n\t\t\t\t\t<SAL_HDR-F2934></SAL_HDR-F2934>\n\t\t\t\t\t<SAL_HDR-F2904>DELIVERY</SAL_HDR-F2904>\n\t\t\t\t\t<SAL_HDR-F1697></SAL_HDR-F1697>\n\t\t\t\t\t<SAL_HDR-F2889>US</SAL_HDR-F2889>\n\t\t\t\t\t<SAL_HDR-F2816></SAL_HDR-F2816>\n\t\t\t\t\t<SAL_HDR-F1654>0</SAL_HDR-F1654>\n\t\t\t\t\t<SAL_HDR-F1655>0</SAL_HDR-F1655>\n\t\t\t\t\t<SAL_HDR-F2619>0</SAL_HDR-F2619>\n\t\t\t\t\t<SAL_HDR-F91></SAL_HDR-F91>\n\t\t\t\t\t<SAL_HDR-F1152>2</SAL_HDR-F1152>\n\t\t\t\t\t<SAL_HDR-F1153>1</SAL_HDR-F1153>\n\t\t\t\t\t<SAL_TTL-T2>0</SAL_TTL-T2>\n\t\t\t\t\t<SAL_TTL-T3>0</SAL_TTL-T3>\n\t\t\t\t\t<SAL_TTL-T3F64>0</SAL_TTL-T3F64>\n\t\t\t\t\t<SAL_TTL-T22>0</SAL_TTL-T22>\n\t\t\t\t\t<SAL_TTL-T26>0</SAL_TTL-T26>\n\t\t\t\t\t<SAL_TTL-T30>0</SAL_TTL-T30>\n\t\t\t\t\t<SAL_TTL-T34>0</SAL_TTL-T34>\n\t\t\t\t\t<SAL_TTL-T37>0</SAL_TTL-T37>\n\t\t\t\t\t<SAL_TTL-T39>0</SAL_TTL-T39>\n\t\t\t\t\t<SAL_TTL-T40>0</SAL_TTL-T40>\n\t\t\t\t\t<SAL_TTL-T42>0</SAL_TTL-T42>\n\t\t\t\t\t<SAL_TTL-T49>0</SAL_TTL-T49>\n\t\t\t\t\t<SAL_TTL-T51>0</SAL_TTL-T51>\n\t\t\t\t\t<SAL_TTL-T52>0</SAL_TTL-T52>\n\t\t\t\t\t<SAL_TTL-T53>0</SAL_TTL-T53>\n\t\t\t\t\t<SAL_TTL-T54>0</SAL_TTL-T54>\n\t\t\t\t\t<SAL_TTL-T90>0</SAL_TTL-T90>\n\t\t\t\t\t<SAL_TTL-T92>0</SAL_TTL-T92>\n\t\t\t\t\t<SAL_TTL-T1299>0</SAL_TTL-T1299>\n\t\t\t\t\t<SAL_TTL-T3401>0</SAL_TTL-T3401>\n\t\t\t\t\t<SAL_TTL-T3411>0</SAL_TTL-T3411>\n\t\t\t\t\t<SAL_TTL-T3551>0</SAL_TTL-T3551>\n\t\t\t\t\t<SAL_TTL-T7501>0</SAL_TTL-T7501>\n\t\t\t\t\t<SAL_TTL-T7901>0</SAL_TTL-T7901>\n\t\t\t\t\t<SAL_TTL-T3585F64>0</SAL_TTL-T3585F64>\n\t\t\t\t\t<SAL_TTL-T3585F65>0</SAL_TTL-T3585F65>\n\t\t\t\t\t<SAL_TTL-T29999>0</SAL_TTL-T29999>\n\t\t\t\t\t<SAL_TTL-USAVE>0</SAL_TTL-USAVE>\n\t\t\t\t\t<SAL_TTL-GROSS>0</SAL_TTL-GROSS>\n\t\t\t\t\t<unavailRecQty>0</unavailRecQty>\n\t\t\t\t</record>\n\t\t\t</data>\n\t\t</hook>\n\t\t<hook>\n\t\t\t<type>hookExec</type>\n\t\t\t<alias>PosSalRegLoad</alias>\n\t\t\t<data></data>\n\t\t</hook>\n\t\t<hook>\n\t\t\t<type>hookExec</type>\n\t\t\t<alias>TrsCltPrograms</alias>\n\t\t\t<data>\n\t\t\t\t<record>\n\t\t\t\t\t<letter>1</letter>\n\t\t\t\t\t<num>1</num>\n\t\t\t\t\t<desc>Points 1 balance</desc>\n\t\t\t\t\t<optin>0</optin>\n\t\t\t\t\t<long></long>\n\t\t\t\t\t<balance>0</balance>\n\t\t\t\t</record>\n\t\t\t</data>\n\t\t</hook>\n\t</hooks>\n</root>\n\n"
+                "example": "<root>\n<hooks>\n<hook>\n<type>hookExec</type>\n<alias>ComboQuery</alias>\n<data>\n<record>\n<F2926>MAIN</F2926>\n<F2929>DEPT910.jpg</F2929>\n<F03>910</F03>\n<F238>Administration</F238>\n<totalCount>40</totalCount>\n</record>\n</data>\n</hook>\n</hooks>\n</root>\n"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/trs.exe?cgi=eStore_pos_cat_list": {
+      "get": {
+        "tags": ["Auxiliaries"],
+        "summary": "Returns a list of categories.",
+        "description": "<a href=\"#request\">Request Parameters</a><br /><br />Required Parameters<br /><br />\n NONE\n",
+        "security": [{ "SessionCN": [] }],
+        "parameters": [
+          {
+            "name": "ExtGridStart",
+            "in": "query",
+            "schema": {
+              "type": "number"
+            },
+            "description": "Grid start index",
+            "example": "0"
+          },
+          {
+            "name": "ExtMaxRecords",
+            "in": "query",
+            "schema": {
+              "type": "number"
+            },
+            "description": "Maximum number of records.",
+            "example": "5000"
+          },
+          {
+            "name": "ExtGridSort",
+            "in": "query",
+            "schema": {
+              "type": "number"
+            },
+            "description": "Grid sort definition.",
+            "example": "F1023"
+          },
+          {
+            "name": "F03",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Department",
+            "example": "1"
+          },
+          {
+            "name": "F1966",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Show filter",
+            "example": "X"
+          },
+          {
+            "name": "quick",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Quick search value",
+            "example": ""
+          },
+          { "name": "CN", "in": "query", "schema": { "type": "string" }, "example": ""},
+          { "$ref": "#/components/parameters/DN" },
+          { "$ref": "#/components/parameters/DisableCache" },
+          { "$ref": "#/components/parameters/DatabaseTimeout" },
+          { "$ref": "#/components/parameters/BW" }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful XML response",
+            "content": {
+              "application/xml": {
+                "schema": { "type": "object", "xml": { "name": "root" } },
+                "example": "<record>\n\t<F2926>ZZZZZZZZZZZZ</F2926>\n\t<F17>10000709</F17>\n\t<F1023>Antiseptics</F1023>\n\t<totalCount>415</totalCount>\n</record>\n"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/trs.exe?cgi=eStore_pos_sdp_list": {
+      "get": {
+        "tags": ["Auxiliaries"],
+        "summary": "Returns a list of subdepartments.",
+        "description": "<a href=\"#request\">Request Parameters</a><br /><br />Required Parameters<br /><br />\n NONE\n",
+        "security": [{ "SessionCN": [] }],
+        "parameters": [
+          {
+            "name": "ExtGridStart",
+            "in": "query",
+            "schema": {
+              "type": "number"
+            },
+            "description": "Grid start index",
+            "example": "0"
+          },
+          {
+            "name": "ExtMaxRecords",
+            "in": "query",
+            "schema": {
+              "type": "number"
+            },
+            "description": "Maximum number of records.",
+            "example": "50"
+          },
+          {
+            "name": "ExtGridSort",
+            "in": "query",
+            "schema": {
+              "type": "number"
+            },
+            "description": "Grid sort definition.",
+            "example": "F1022"
+          },
+          {
+            "name": "F03",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Department",
+            "example": "1"
+          },
+          {
+            "name": "F1966",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Show filter",
+            "example": "X"
+          },
+          {
+            "name": "quick",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Quick search value",
+            "example": ""
+          },
+          { "name": "CN", "in": "query", "schema": { "type": "string" }, "example": ""},
+          { "$ref": "#/components/parameters/DN" },
+          { "$ref": "#/components/parameters/DisableCache" },
+          { "$ref": "#/components/parameters/DatabaseTimeout" },
+          { "$ref": "#/components/parameters/BW" }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful XML response",
+            "content": {
+              "application/xml": {
+                "schema": { "type": "object", "xml": { "name": "root" } },
+                "example": "<record>\n\t<F04>140</F04>\n\t<F1022>Bakery</F1022>\n\t<totalCount>4</totalCount>\n\t<BMP_TAB-F2929/>\n</record>\n"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/trs.exe?cgi=eStore_pos_fam_list": {
+      "get": {
+        "tags": ["Auxiliaries"],
+        "summary": "Returns a list of products by family code.",
+        "description": "<a href=\"#request\">Request Parameters</a><br /><br />Required Parameters<br /><br />\n NONE\n",
+        "security": [{ "SessionCN": [] }],
+        "parameters": [
+          {
+            "name": "ExtGridStart",
+            "in": "query",
+            "schema": {
+              "type": "number"
+            },
+            "description": "Grid start index",
+            "example": "0"
+          },
+          {
+            "name": "ExtMaxRecords",
+            "in": "query",
+            "schema": {
+              "type": "number"
+            },
+            "description": "Maximum number of records.",
+            "example": "500"
+          },
+          {
+            "name": "ExtGridSort",
+            "in": "query",
+            "schema": {
+              "type": "number"
+            },
+            "description": "Grid sort definition.",
+            "example": "F1040"
+          },
+          {
+            "name": "F1040",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Family description filter (LIKE)",
+            "example": "05557742027"
+          },
+          {
+            "name": "F16",
+            "in": "query",
+            "schema": {
+              "type": "number"
+            },
+            "description": "Department",
+            "example": "1"
+          },
+          {
+            "name": "F03",
+            "in": "query",
+            "schema": {
+              "type": "number"
+            },
+            "description": "Department",
+            "example": "1"
+          },
+          {
+            "name": "F1966",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Show filter",
+            "example": "X"
+          },
+          {
+            "name": "quick",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Quick search value",
+            "example": ""
+          },
+          { "name": "CN", "in": "query", "schema": { "type": "string" }, "example": ""},
+          { "$ref": "#/components/parameters/DN" },
+          { "$ref": "#/components/parameters/DisableCache" },
+          { "$ref": "#/components/parameters/DatabaseTimeout" },
+          { "$ref": "#/components/parameters/BW" }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful XML response",
+            "content": {
+              "application/xml": {
+                "schema": { "type": "object", "xml": { "name": "root" } },
+                "example": "<record>\n<F16>300</F16>\n<F1040>COFFEE</F1040>\n<totalCount>9</totalCount>\n<BMP_TAB-F2929/>\n</record>\n"
               }
             }
           }
