@@ -29,10 +29,10 @@
         "name": "DN",
         "in": "query",
         "required": true,
-        "description": "The Device Name is used allow only web services with this namespace (eStore, mStore)",
+        "description": "The Device Name is used allow only web services with this namespace",
         "schema": {
           "type": "string",
-          "enum": ["eStore", "mStore"]
+          "default": "xStore"
         }
       },
       "DatabaseTimeout": {
@@ -135,7 +135,7 @@
         }
       }
     },
-    "/trs.exe?sqi=eStore_clt_new": {
+    "/trs.exe?sqi=xStore_clt_new": {
       "get": {
         "tags": ["Account"],
         "summary": "Create a new account. *",
@@ -171,7 +171,7 @@
         }
       }
     },
-    "/trs.exe?cgi=eStore_clt_new_captcha": {
+    "/trs.exe?cgi=xStore_clt_new_captcha": {
       "get": {
         "tags": ["Account"],
         "summary": "Web service to generate captcha.",
@@ -196,7 +196,7 @@
         }
       }
     },
-    "/trs.exe?sqi=eStore_clt_forgot": {
+    "/trs.exe?sqi=xStore_clt_forgot": {
       "get": {
         "tags": ["Account"],
         "summary": "Start the password recovery process.",
@@ -222,7 +222,7 @@
         }
       }
     },
-    "/trs.exe?sqi=eStore_clt_forgot_change": {
+    "/trs.exe?sqi=xStore_clt_forgot_change": {
       "get": {
         "tags": ["Account"],
         "summary": "Completes the password recovery process.",
@@ -250,37 +250,7 @@
         }
       }
     },
-    "/trs.exe?sqi=eStore_pay_clt_acctlookup": {
-      "get": {
-        "tags": ["Account"],
-        "summary": "Performs account lookup and initiates recovery.",
-        "description": "<a href=\"#request\">Request Parameters</a><br><br>Optional Parameters\n<br />NONE\n",
-        "parameters": [
-          { "name": "CN", "in": "query", "required": true, "schema": { "type": "string" }, "example": "PUBLIC" },
-          { "name": "F1573", "in": "query", "required": true, "schema": { "type": "string" }, "example": "development@locsoftware.com", "description": "Email address" },
-          { "name": "F2975", "in": "query", "required": true, "schema": { "type": "string" }, "example": "1234", "description": "Secret code printed on receipt." },
-          { "name": "F1578", "in": "query", "required": true, "schema": { "type": "string" }, "example": "PS", "description": "Alternate Type" },
-          { "name": "F1172", "in": "query",  "schema": { "type": "string" }, "example": "9168675309", "description": "Phone number" },
-          { "name": "F2875", "in": "query",  "schema": { "type": "string" }, "example": "9518675309", "description": "Cell number" },
-          { "$ref": "#/components/parameters/DN" },
-          { "$ref": "#/components/parameters/DisableCache" },
-          { "$ref": "#/components/parameters/DatabaseTimeout" },
-          { "$ref": "#/components/parameters/BW" }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful XML response.",
-            "content": {
-              "application/xml": {
-                "schema": { "type": "object", "xml": { "name": "root" } },
-                "example": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<root>\n\t<hooks>\n\t\t<hook>\n\t\t\t<type>hookExec</type>\n\t\t\t<alias>PopupLoginForgotChange</alias>\n\t\t</hook>\n\t</hooks>\n</root>\n"
-              }
-            }
-          }
-        }
-      }
-    },
-    "/trs.exe?cgi=eStore_clt_edit_get.xml": {
+    "/trs.exe?cgi=xStore_clt_edit_get.xml": {
       "get": {
         "tags": ["Account"],
         "summary": "Returns all required fields for the customer account.",
@@ -306,7 +276,7 @@
         }
       }
     },
-    "/trs.exe?cgi=eStore_clt_edit_set.xml": {
+    "/trs.exe?cgi=xStore_clt_edit_set.xml": {
       "get": {
         "tags": ["Account"],
         "summary": "Update customer account fields",
@@ -379,14 +349,14 @@
                     "name": "root"
                   }
                 },
-                "example": "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n<root>\n  <hooks>\n    <hook>\n      <type>hookExec</type>\n      <alias>TrsCltEdit</alias>\n      <data>\n        <record>\n          <CLT_TAB-F1148>2</CLT_TAB-F1148>\n          <CLT_TAB-F902>ESTORE</CLT_TAB-F902>\n          <CLT_TAB-F1000>PAL</CLT_TAB-F1000>\n          <CLT_TAB-F1001></CLT_TAB-F1001>\n          <CLT_TAB-F1150>Customer</CLT_TAB-F1150>\n          <CLT_TAB-F1152></CLT_TAB-F1152>\n          <CLT_TAB-F1153></CLT_TAB-F1153>\n          <CLT_TAB-F1172>6019521325</CLT_TAB-F1172>\n          <CLT_TAB-F1573>nick.alexiou@gmail.com</CLT_TAB-F1573>\n          <CLT_TAB-F253>09/09/2025</CLT_TAB-F253>\n          <CLT_TAB-F1149>Jonkd</CLT_TAB-F1149>\n          <CLT_TAB-F1155>Select customer</CLT_TAB-F1155>\n          <CLT_TAB-F1156>1867 berlier</CLT_TAB-F1156>\n          <CLT_TAB-F1158>Laval</CLT_TAB-F1158>\n          <CLT_TAB-F1159>H7L3S4</CLT_TAB-F1159>\n          <CLT_TAB-F1170>Québec</CLT_TAB-F1170>\n          <CLT_TAB-F1171>Canada</CLT_TAB-F1171>\n          <CLT_TAB-F1264>05/15/2018</CLT_TAB-F1264>\n          <CLT_TAB-F1525>001</CLT_TAB-F1525>\n          <CLT_TAB-F1964>001</CLT_TAB-F1964>\n          <CLT_TAB-F2875>5147267441</CLT_TAB-F2875>\n          <!-- Delivery Address (eStore) -->\n          <CLT_TAB-F1643></CLT_TAB-F1643>\n          <CLT_TAB-F1644></CLT_TAB-F1644>\n          <CLT_TAB-F1645></CLT_TAB-F1645>\n          <CLT_TAB-F1646></CLT_TAB-F1646>\n          <CLT_TAB-F1647></CLT_TAB-F1647>\n          <CLT_TAB-F1648></CLT_TAB-F1648>\n          <CLT_TAB-F1649></CLT_TAB-F1649>\n          <CLT_TAB-F1650></CLT_TAB-F1650>\n          <CLT_TAB-F2889></CLT_TAB-F2889>\n          <!-- Store Information -->\n          <STD_TAB-F1056>001</STD_TAB-F1056>\n          <STD_TAB-F1531>Company Name</STD_TAB-F1531>\n          <STD_TAB-F1532>Address</STD_TAB-F1532>\n          <STD_TAB-F1534>City</STD_TAB-F1534>\n          <STD_TAB-F1549>State</STD_TAB-F1549>\n          <STD_TAB-F2842>75</STD_TAB-F2842>\n          <STD_TAB-F2843>-43</STD_TAB-F2843>\n        </record>\n      </data>\n      <comm>\n        <record><data>HOTSMS</data><caption>Immediate offers</caption></record>\n        <record><data>OFFER</data><caption>Receive offers by email</caption></record>\n        <record><data>BIRTHDAY</data><caption>Receive birthday offers by email</caption></record>\n        <record><data>NEWS</data><caption>Receive our newsletter by email</caption></record>\n        <record><data>FLYER</data><caption>Email me deals and recommendations</caption></record>\n        <record><data>RECEIPTS</data><caption>Receive eReceipt by email</caption></record>\n      </comm>\n      <food>\n        <record><data>VEGE</data><caption>Vegetarian</caption></record>\n        <record><data>VEGA</data><caption>Vegan</caption></record>\n        <record><data>GLUTEN</data><caption>Gluten free</caption></record>\n        <record><data>NUTFREE</data><caption>Nut free</caption></record>\n        <record><data>LOWCARB</data><caption>Reduced/low carb</caption></record>\n        <record><data>LOWSODIUM</data><caption>Reduced/low sodium</caption></record>\n        <record><data>DAIRYFREE</data><caption>Lactose free</caption></record>\n        <record><data>SUGARFREE</data><caption>Sugar free</caption></record>\n      </food>\n    </hook>\n  </hooks>\n</root>"
+                "example": "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n<root>\n  <hooks>\n    <hook>\n      <type>hookExec</type>\n      <alias>TrsCltEdit</alias>\n      <data>\n        <record>\n          <CLT_TAB-F1148>2</CLT_TAB-F1148>\n          <CLT_TAB-F902>ESTORE</CLT_TAB-F902>\n          <CLT_TAB-F1000>PAL</CLT_TAB-F1000>\n          <CLT_TAB-F1001></CLT_TAB-F1001>\n          <CLT_TAB-F1150>Customer</CLT_TAB-F1150>\n          <CLT_TAB-F1152></CLT_TAB-F1152>\n          <CLT_TAB-F1153></CLT_TAB-F1153>\n          <CLT_TAB-F1172>6019521325</CLT_TAB-F1172>\n          <CLT_TAB-F1573>nick.alexiou@gmail.com</CLT_TAB-F1573>\n          <CLT_TAB-F253>09/09/2025</CLT_TAB-F253>\n          <CLT_TAB-F1149>Jonkd</CLT_TAB-F1149>\n          <CLT_TAB-F1155>Select customer</CLT_TAB-F1155>\n          <CLT_TAB-F1156>1867 berlier</CLT_TAB-F1156>\n          <CLT_TAB-F1158>Laval</CLT_TAB-F1158>\n          <CLT_TAB-F1159>H7L3S4</CLT_TAB-F1159>\n          <CLT_TAB-F1170>Québec</CLT_TAB-F1170>\n          <CLT_TAB-F1171>Canada</CLT_TAB-F1171>\n          <CLT_TAB-F1264>05/15/2018</CLT_TAB-F1264>\n          <CLT_TAB-F1525>001</CLT_TAB-F1525>\n          <CLT_TAB-F1964>001</CLT_TAB-F1964>\n          <CLT_TAB-F2875>5147267441</CLT_TAB-F2875>\n          <!-- Delivery Address (xStore) -->\n          <CLT_TAB-F1643></CLT_TAB-F1643>\n          <CLT_TAB-F1644></CLT_TAB-F1644>\n          <CLT_TAB-F1645></CLT_TAB-F1645>\n          <CLT_TAB-F1646></CLT_TAB-F1646>\n          <CLT_TAB-F1647></CLT_TAB-F1647>\n          <CLT_TAB-F1648></CLT_TAB-F1648>\n          <CLT_TAB-F1649></CLT_TAB-F1649>\n          <CLT_TAB-F1650></CLT_TAB-F1650>\n          <CLT_TAB-F2889></CLT_TAB-F2889>\n          <!-- Store Information -->\n          <STD_TAB-F1056>001</STD_TAB-F1056>\n          <STD_TAB-F1531>Company Name</STD_TAB-F1531>\n          <STD_TAB-F1532>Address</STD_TAB-F1532>\n          <STD_TAB-F1534>City</STD_TAB-F1534>\n          <STD_TAB-F1549>State</STD_TAB-F1549>\n          <STD_TAB-F2842>75</STD_TAB-F2842>\n          <STD_TAB-F2843>-43</STD_TAB-F2843>\n        </record>\n      </data>\n      <comm>\n        <record><data>HOTSMS</data><caption>Immediate offers</caption></record>\n        <record><data>OFFER</data><caption>Receive offers by email</caption></record>\n        <record><data>BIRTHDAY</data><caption>Receive birthday offers by email</caption></record>\n        <record><data>NEWS</data><caption>Receive our newsletter by email</caption></record>\n        <record><data>FLYER</data><caption>Email me deals and recommendations</caption></record>\n        <record><data>RECEIPTS</data><caption>Receive eReceipt by email</caption></record>\n      </comm>\n      <food>\n        <record><data>VEGE</data><caption>Vegetarian</caption></record>\n        <record><data>VEGA</data><caption>Vegan</caption></record>\n        <record><data>GLUTEN</data><caption>Gluten free</caption></record>\n        <record><data>NUTFREE</data><caption>Nut free</caption></record>\n        <record><data>LOWCARB</data><caption>Reduced/low carb</caption></record>\n        <record><data>LOWSODIUM</data><caption>Reduced/low sodium</caption></record>\n        <record><data>DAIRYFREE</data><caption>Lactose free</caption></record>\n        <record><data>SUGARFREE</data><caption>Sugar free</caption></record>\n      </food>\n    </hook>\n  </hooks>\n</root>"
               }
             }
           }
         }
       }
     },
-    "/trs.exe?cgi=eStore_clt_programs_set": {
+    "/trs.exe?cgi=xStore_clt_programs_set.xml": {
       "get": {
         "tags": ["Account"],
         "summary": "Allows the customer to change the opt-in status of a program or programs.",
@@ -422,7 +392,7 @@
         }
       }
     },
-    "/trs.exe?cgi=eStore_clt_programs_get": {
+    "/trs.exe?cgi=xStore_clt_programs_get.xml": {
       "get": {
         "tags": ["Account"],
         "summary": "Returns the points programs letter, number, opt in status and balance. ",
@@ -448,7 +418,7 @@
         }
       }
     },
-    "/trs.exe?cgi=eStore_clt_point_history": {
+    "/trs.exe?cgi=xStore_clt_point_history.xml": {
       "get": {
         "tags": ["Account"],
         "summary": "Return the point history can be filtered by point program.",
@@ -494,14 +464,14 @@
             "content": {
               "application/xml": {
                 "schema": { "type": "object", "xml": { "name": "root" } },
-                "example": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<root>\n\t<hooks>\n\t\t<hook>\n\t\t\t<type>modeChange</type>\n\t\t\t<mode>CLT</mode>\n\t\t\t<state>2</state>\n\t\t\t<step>2</step>\n\t\t</hook>\n\t\t<hook>\n\t\t\t<type>hookExec</type>\n\t\t\t<alias>PosSalHdr</alias>\n\t\t\t<data>\n\t\t\t\t<record>\n\t\t\t\t\t<SAL_HDR-F1032>439</SAL_HDR-F1032>\n\t\t\t\t\t<SAL_HDR-F1068>ORDER</SAL_HDR-F1068>\n\t\t\t\t\t<SAL_HDR-F1067>001901</SAL_HDR-F1067>\n\t\t\t\t\t<SAL_HDR-F1763>00000160</SAL_HDR-F1763>\n\t\t\t\t\t<SAL_HDR-F1764></SAL_HDR-F1764>\n\t\t\t\t\t<SAL_HDR-F254>03/04/2026</SAL_HDR-F254>\n\t\t\t\t\t<SAL_HDR-F1185></SAL_HDR-F1185>\n\t\t\t\t\t<SAL_HDR-F1127>eCommerce</SAL_HDR-F1127>\n\t\t\t\t\t<SAL_HDR-F1245></SAL_HDR-F1245>\n\t\t\t\t\t<SAL_HDR-F1056>001</SAL_HDR-F1056>\n\t\t\t\t\t<SAL_HDR-F1057>901</SAL_HDR-F1057>\n\t\t\t\t\t<CLT_TAB-F1583></CLT_TAB-F1583>\n\t\t\t\t\t<CLT_TAB-F1584></CLT_TAB-F1584>\n\t\t\t\t\t<cltTokenExists>0</cltTokenExists>\n\t\t\t\t\t<STD_TAB-F1531>SMS Store</STD_TAB-F1531>\n\t\t\t\t\t<STD_TAB-F1532>2600 W Ann Rd #1183, North</STD_TAB-F1532>\n\t\t\t\t\t<STD_TAB-F1533></STD_TAB-F1533>\n\t\t\t\t\t<STD_TAB-F1534>Las Vegas</STD_TAB-F1534>\n\t\t\t\t\t<STD_TAB-F1535>89031</STD_TAB-F1535>\n\t\t\t\t\t<STD_TAB-F1536>(555) 327-7448</STD_TAB-F1536>\n\t\t\t\t\t<STD_TAB-F1538></STD_TAB-F1538>\n\t\t\t\t\t<STD_TAB-F1549>NV</STD_TAB-F1549>\n\t\t\t\t\t<STD_TAB-F2842>-115.1797</STD_TAB-F2842>\n\t\t\t\t\t<STD_TAB-F2843>36.2626</STD_TAB-F2843>\n\t\t\t\t\t<preAuthAmount></preAuthAmount>\n\t\t\t\t\t<SAL_HDR-TRACK></SAL_HDR-TRACK>\n\t\t\t\t\t<SAL_HDR-F1148>0199804432</SAL_HDR-F1148>\n\t\t\t\t\t<SAL_HDR-F1149>Nick Alexiou</SAL_HDR-F1149>\n\t\t\t\t\t<SAL_HDR-F1150>Alexiou</SAL_HDR-F1150>\n\t\t\t\t\t<SAL_HDR-F1155>Alexiou, Nick Alexiou</SAL_HDR-F1155>\n\t\t\t\t\t<SAL_HDR-F1156>905 Las Vegas Blvd N</SAL_HDR-F1156>\n\t\t\t\t\t<SAL_HDR-F1157></SAL_HDR-F1157>\n\t\t\t\t\t<SAL_HDR-F1158>Las Vegas</SAL_HDR-F1158>\n\t\t\t\t\t<SAL_HDR-F1159>89101</SAL_HDR-F1159>\n\t\t\t\t\t<SAL_HDR-F1170>NV</SAL_HDR-F1170>\n\t\t\t\t\t<SAL_HDR-F1171>US</SAL_HDR-F1171>\n\t\t\t\t\t<SAL_HDR-F1172>5147267441</SAL_HDR-F1172>\n\t\t\t\t\t<SAL_HDR-F1173></SAL_HDR-F1173>\n\t\t\t\t\t<SAL_HDR-F1573>nick.alexiou@gmail.com</SAL_HDR-F1573>\n\t\t\t\t\t<SAL_HDR-F1238>0</SAL_HDR-F1238>\n\t\t\t\t\t<SAL_HDR-F1242>0</SAL_HDR-F1242>\n\t\t\t\t\t<SAL_HDR-F1642></SAL_HDR-F1642>\n\t\t\t\t\t<SAL_HDR-F1643></SAL_HDR-F1643>\n\t\t\t\t\t<SAL_HDR-F1644>Nicko</SAL_HDR-F1644>\n\t\t\t\t\t<SAL_HDR-F1645>468 85e av</SAL_HDR-F1645>\n\t\t\t\t\t<SAL_HDR-F1646>4545</SAL_HDR-F1646>\n\t\t\t\t\t<SAL_HDR-F1647>Laval</SAL_HDR-F1647>\n\t\t\t\t\t<SAL_HDR-F1648>AL</SAL_HDR-F1648>\n\t\t\t\t\t<SAL_HDR-F1649>H7W2Z5</SAL_HDR-F1649>\n\t\t\t\t\t<SAL_HDR-F1650>5554447777</SAL_HDR-F1650>\n\t\t\t\t\t<SAL_HDR-F1651></SAL_HDR-F1651>\n\t\t\t\t\t<SAL_HDR-F1692></SAL_HDR-F1692>\n\t\t\t\t\t<SAL_HDR-F2934></SAL_HDR-F2934>\n\t\t\t\t\t<SAL_HDR-F2904>DELIVERY</SAL_HDR-F2904>\n\t\t\t\t\t<SAL_HDR-F1697></SAL_HDR-F1697>\n\t\t\t\t\t<SAL_HDR-F2889>US</SAL_HDR-F2889>\n\t\t\t\t\t<SAL_HDR-F2816></SAL_HDR-F2816>\n\t\t\t\t\t<SAL_HDR-F1654>0</SAL_HDR-F1654>\n\t\t\t\t\t<SAL_HDR-F1655>0</SAL_HDR-F1655>\n\t\t\t\t\t<SAL_HDR-F2619>0</SAL_HDR-F2619>\n\t\t\t\t\t<SAL_HDR-F91></SAL_HDR-F91>\n\t\t\t\t\t<SAL_HDR-F1152>2</SAL_HDR-F1152>\n\t\t\t\t\t<SAL_HDR-F1153>1</SAL_HDR-F1153>\n\t\t\t\t\t<SAL_TTL-T2>0</SAL_TTL-T2>\n\t\t\t\t\t<SAL_TTL-T3>0</SAL_TTL-T3>\n\t\t\t\t\t<SAL_TTL-T3F64>0</SAL_TTL-T3F64>\n\t\t\t\t\t<SAL_TTL-T22>0</SAL_TTL-T22>\n\t\t\t\t\t<SAL_TTL-T26>0</SAL_TTL-T26>\n\t\t\t\t\t<SAL_TTL-T30>0</SAL_TTL-T30>\n\t\t\t\t\t<SAL_TTL-T34>0</SAL_TTL-T34>\n\t\t\t\t\t<SAL_TTL-T37>0</SAL_TTL-T37>\n\t\t\t\t\t<SAL_TTL-T39>0</SAL_TTL-T39>\n\t\t\t\t\t<SAL_TTL-T40>0</SAL_TTL-T40>\n\t\t\t\t\t<SAL_TTL-T42>0</SAL_TTL-T42>\n\t\t\t\t\t<SAL_TTL-T49>0</SAL_TTL-T49>\n\t\t\t\t\t<SAL_TTL-T51>0</SAL_TTL-T51>\n\t\t\t\t\t<SAL_TTL-T52>0</SAL_TTL-T52>\n\t\t\t\t\t<SAL_TTL-T53>0</SAL_TTL-T53>\n\t\t\t\t\t<SAL_TTL-T54>0</SAL_TTL-T54>\n\t\t\t\t\t<SAL_TTL-T90>0</SAL_TTL-T90>\n\t\t\t\t\t<SAL_TTL-T92>0</SAL_TTL-T92>\n\t\t\t\t\t<SAL_TTL-T1299>0</SAL_TTL-T1299>\n\t\t\t\t\t<SAL_TTL-T3401>0</SAL_TTL-T3401>\n\t\t\t\t\t<SAL_TTL-T3411>0</SAL_TTL-T3411>\n\t\t\t\t\t<SAL_TTL-T3551>0</SAL_TTL-T3551>\n\t\t\t\t\t<SAL_TTL-T7501>0</SAL_TTL-T7501>\n\t\t\t\t\t<SAL_TTL-T7901>0</SAL_TTL-T7901>\n\t\t\t\t\t<SAL_TTL-T3585F64>0</SAL_TTL-T3585F64>\n\t\t\t\t\t<SAL_TTL-T3585F65>0</SAL_TTL-T3585F65>\n\t\t\t\t\t<SAL_TTL-T29999>0</SAL_TTL-T29999>\n\t\t\t\t\t<SAL_TTL-USAVE>0</SAL_TTL-USAVE>\n\t\t\t\t\t<SAL_TTL-GROSS>0</SAL_TTL-GROSS>\n\t\t\t\t\t<unavailRecQty>0</unavailRecQty>\n\t\t\t\t</record>\n\t\t\t</data>\n\t\t</hook>\n\t\t<hook>\n\t\t\t<type>hookExec</type>\n\t\t\t<alias>PosSalRegLoad</alias>\n\t\t\t<data></data>\n\t\t</hook>\n\t\t<hook>\n\t\t\t<type>hookExec</type>\n\t\t\t<alias>TrsCltPrograms</alias>\n\t\t\t<data>\n\t\t\t\t<record>\n\t\t\t\t\t<letter>1</letter>\n\t\t\t\t\t<num>1</num>\n\t\t\t\t\t<desc>Points 1 balance</desc>\n\t\t\t\t\t<optin>0</optin>\n\t\t\t\t\t<long></long>\n\t\t\t\t\t<balance>0</balance>\n\t\t\t\t</record>\n\t\t\t</data>\n\t\t</hook>\n\t</hooks>\n</root>\n\n"
+                "example": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<root>\n    <hooks>\n        <hook>\n            <type>hookExec</type>\n            <alias>EmbeddedGrid</alias>\n            <data>\n                <record>\n                    <F1056>340</F1056>\n                    <F1530></F1530>\n                    <F1531>Demo Store</F1531>\n                    <F1057>001</F1057>\n                    <F1032>32179</F1032>\n                    <F254>01/19/2026</F254>\n                    <F1036>121953</F1036>\n                    <F253>01/19/2026 14:04:50</F253>\n                    <F1034>7701</F1034>\n                    <F1039>Points given</F1039>\n                    <F64>6</F64>\n                    <F65>0</F65>\n                    <totalCount>1</totalCount>\n                </record>\n            </data>\n        </hook>\n    </hooks>\n</root>"
               }
             }
           }
         }
       }
     },
-    "/trs.exe?cgi=eStore_clt_gift_history": {
+    "/trs.exe?cgi=xStore_clt_gift_history.xml": {
       "get": {
         "tags": ["Account"],
         "summary": "Gift card history.",
@@ -509,7 +479,7 @@
         "security": [{ "SessionCN": [] }],
         "parameters": [
           {
-            "name": "1577",
+            "name": "F1577",
             "in": "query",
             "required": true,
             "schema": {
@@ -555,7 +525,7 @@
         }
       }
     },
-    "/trs.exe?cgi=eStore_trs_rct_list": {
+    "/trs.exe?cgi=xStore_trs_rct_list.xml": {
       "get": {
         "tags": ["Account"],
         "summary": "Generates a list of receipt totals and relevant information.",
@@ -570,7 +540,7 @@
               "format": "date"
             },
             "description": "Start date for transaction.",
-            "example": "09/12/2024"
+            "example": "09-12-2024"
           },
           {
             "name": "F254",
@@ -580,7 +550,7 @@
               "format": "date"
             },
             "description": "End date for transaction.",
-            "example": "09/12/2030"
+            "example": "09-12-2030"
           },
           {
             "name": "F1056",
@@ -633,14 +603,14 @@
             "content": {
               "application/xml": {
                 "schema": { "type": "object", "xml": { "name": "root" } },
-                "example": "<record>\n\t<F1034>208</F1034>\n\t<F1039>Prepaid increase</F1039>\n\t<F254>01/09/2026</F254>\n\t<F65>10.00</F65>\n\t<F253>01/09/2026</F253>\n</record>\n"
+                "example": "<?xml version=\"1.0\" encoding=\"ISO-8859-1\" ?>\n<root>\n    <hooks>\n        <hook>\n            <type>hookExec</type>\n            <alias></alias>\n            <data>\n                <record>\n                    <F1056>001</F1056>\n                    <F1057>901</F1057>\n                    <F1530></F1530>\n                    <F1531>Company Name</F1531>\n                    <F254>03/10/2026</F254>\n                    <F1036>0806</F1036>\n                    <F253>03/10/2026 08:15:09</F253>\n                    <F1032>103</F1032>\n                    <F65>1.71</F65>\n                </record>\n                <record>\n                    <F1056>001</F1056>\n                    <F1057>901</F1057>\n                    <F1530></F1530>\n                    <F1531>Company Name</F1531>\n                    <F254>11/10/2025</F254>\n                    <F1036>1523</F1036>\n                    <F253>11/10/2025 15:24:16</F253>\n                    <F1032>81</F1032>\n                    <F65>1.42</F65>\n                </record>\n            </data>\n        </hook>\n    </hooks>\n</root>"
               }
             }
           }
         }
       }
     },
-    "/trs.exe?cgi=eStore_pos_start_balance": {
+    "/trs.exe?cgi=xStore_pos_start_balance.xml": {
       "get": {
         "tags": ["Account"],
         "summary": "Returns customer balances and personalized offers. ",
@@ -666,7 +636,7 @@
         }
       }
     },
-    "/trs.exe?cgi=eStore_base_store_list.xml": {
+    "/trs.exe?cgi=xStore_base_store_list.xml": {
       "get": {
         "tags": ["Auxiliaries"],
         "summary": "Returns a list of stores and their detailed information.",
@@ -694,7 +664,7 @@
         }
       }
     },
-    "/trs.exe?cgi=eStore_pos_dpt_list": {
+    "/trs.exe?cgi=xStore_pos_dpt_list.xml": {
       "get": {
         "tags": ["Auxiliaries"],
         "summary": "Returns a list of departments.",
@@ -723,7 +693,7 @@
             "name": "ExtGridSort",
             "in": "query",
             "schema": {
-              "type": "number"
+              "type": "string"
             },
             "description": "Grid sort definition.",
             "example": "F1965,F238"
@@ -765,7 +735,7 @@
         }
       }
     },
-    "/trs.exe?cgi=eStore_pos_cat_list": {
+    "/trs.exe?cgi=xStore_pos_cat_list.xml": {
       "get": {
         "tags": ["Auxiliaries"],
         "summary": "Returns a list of categories.",
@@ -794,7 +764,7 @@
             "name": "ExtGridSort",
             "in": "query",
             "schema": {
-              "type": "number"
+              "type": "string"
             },
             "description": "Grid sort definition.",
             "example": "F1023"
@@ -845,7 +815,7 @@
         }
       }
     },
-    "/trs.exe?cgi=eStore_pos_sdp_list": {
+    "/trs.exe?cgi=xStore_pos_sdp_list.xml": {
       "get": {
         "tags": ["Auxiliaries"],
         "summary": "Returns a list of subdepartments.",
@@ -874,7 +844,7 @@
             "name": "ExtGridSort",
             "in": "query",
             "schema": {
-              "type": "number"
+              "type": "string"
             },
             "description": "Grid sort definition.",
             "example": "F1022"
@@ -925,7 +895,7 @@
         }
       }
     },
-    "/trs.exe?cgi=eStore_pos_fam_list": {
+    "/trs.exe?cgi=xStore_pos_fam_list.xml": {
       "get": {
         "tags": ["Auxiliaries"],
         "summary": "Returns a list of products by family code.",
@@ -954,7 +924,7 @@
             "name": "ExtGridSort",
             "in": "query",
             "schema": {
-              "type": "number"
+              "type": "string"
             },
             "description": "Grid sort definition.",
             "example": "F1040"
@@ -966,7 +936,7 @@
               "type": "string"
             },
             "description": "Family description (LIKE)",
-            "example": "05557742027"
+            "example": ""
           },
           {
             "name": "F16",
@@ -975,7 +945,7 @@
               "type": "number"
             },
             "description": "Department",
-            "example": "1"
+            "example": ""
           },
           {
             "name": "F03",
@@ -984,7 +954,7 @@
               "type": "number"
             },
             "description": "Department",
-            "example": "1"
+            "example": ""
           },
           {
             "name": "F1966",
@@ -1023,7 +993,203 @@
         }
       }
     },
-    "/trs.exe?sqi=eStore_pos_itm_add&HOT=1&TENTATIVE=1": {
+    "/trs.exe?cgi=xStore_pos_cls_list.xml": {
+      "get": {
+        "tags": ["Auxiliaries"],
+        "summary": "Returns a list values that are set in the classification table.",
+        "description": "<a href=\"#request\">Request Parameters</a><br /><br />Required Parameters<br /><br />\n NONE\n",
+        "security": [{ "SessionCN": [] }],
+        "parameters": [
+          {
+            "name": "ExtGridStart",
+            "in": "query",
+            "schema": {
+              "type": "number"
+            },
+            "description": "Grid start index",
+            "example": "0"
+          },
+          {
+            "name": "ExtMaxRecords",
+            "in": "query",
+            "schema": {
+              "type": "number"
+            },
+            "description": "Maximum number of records.",
+            "example": "5000"
+          },
+          {
+            "name": "ExtGridSort",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Grid sort definition.",
+            "example": "F2936"
+          },
+          {
+            "name": "F2935",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Classification ID",
+            "example": ""
+          },
+          {
+            "name": "F2936",
+            "in": "query",
+            "schema": {
+              "type": "number"
+            },
+            "description": "Classification description",
+            "example": ""
+          },
+          {
+            "name": "F03",
+            "in": "query",
+            "schema": {
+              "type": "number"
+            },
+            "description": "Department",
+            "example": ""
+          },
+          {
+            "name": "F17",
+            "in": "query",
+            "schema": {
+              "type": "number"
+            },
+            "description": "Category",
+            "example": ""
+          },
+          {
+            "name": "quick",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Quick search value",
+            "example": ""
+          },
+          { "name": "CN", "in": "query", "schema": { "type": "string" }},
+          { "$ref": "#/components/parameters/DN" },
+          { "$ref": "#/components/parameters/DisableCache" },
+          { "$ref": "#/components/parameters/DatabaseTimeout" },
+          { "$ref": "#/components/parameters/BW" }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful XML response",
+            "content": {
+              "application/xml": {
+                "schema": { "type": "object", "xml": { "name": "root" } },
+                "example": "<record>\n<F2935>8</F2935>\n<F2936>HOTDRINK</F2936>\n<totalCount>3</totalCount>\n</record\n"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/trs.exe?cgi=xStore_pos_rcp_list.xml": {
+      "get": {
+        "tags": ["Auxiliaries"],
+        "summary": "Returns a list of recipes.",
+        "description": "<a href=\"#request\">Request Parameters</a><br /><br />Required Parameters<br /><br />\n NONE\n",
+        "security": [{ "SessionCN": [] }],
+        "parameters": [
+          {
+            "name": "ExtGridStart",
+            "in": "query",
+            "schema": {
+              "type": "number"
+            },
+            "description": "Grid start index",
+            "example": "0"
+          },
+          {
+            "name": "ExtMaxRecords",
+            "in": "query",
+            "schema": {
+              "type": "number"
+            },
+            "description": "Maximum number of records.",
+            "example": "50"
+          },
+          {
+            "name": "ExtGridSort",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Grid sort definition.",
+            "example": "F2909"
+          },
+          {
+            "name": "rating",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Rating filter flag",
+            "example": "1"
+          },
+          {
+            "name": "F2911",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Recipe servings",
+            "example": ""
+          },
+          {
+            "name": "F2919",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Recipe status",
+            "example": ""
+          },
+          {
+            "name": "F2924",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Recipe type",
+            "example": ""
+          },
+          {
+            "name": "quick",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Quick search value",
+            "example": ""
+          },
+          { "name": "CN", "in": "query", "schema": { "type": "string" }, "example": ""},
+          { "$ref": "#/components/parameters/DN" },
+          { "$ref": "#/components/parameters/DisableCache" },
+          { "$ref": "#/components/parameters/DatabaseTimeout" },
+          { "$ref": "#/components/parameters/BW" }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful XML response",
+            "content": {
+              "application/xml": {
+                "schema": { "type": "object", "xml": { "name": "root" } },
+                "example": "<record>\n\t<F04>140</F04>\n\t<F1022>Bakery</F1022>\n\t<totalCount>4</totalCount>\n\t<BMP_TAB-F2929/>\n</record>\n"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/trs.exe?sqi=xStore_pos_itm_add&HOT=1&TENTATIVE=1": {
       "get": {
         "summary": "Returns the detailed information for 1 item and associated coupons.",
         "description": "<a href=\"#request\">Request Parameters</a><br /><br />Required Parameters<br /><br />\n NONE\n",
@@ -1052,7 +1218,7 @@
         }
       }
     },
-    "/trs.exe?sqi=eStore_pos_itm_add&HOT=1": {
+    "/trs.exe?sqi=xStore_pos_itm_add&HOT=1": {
       "get": {
         "summary": "Add to cart (UPC code) item",
         "description": "Requires session CN from login",
@@ -1082,7 +1248,7 @@
         }
       }
     },
-    "/trs.exe?cgi=eStore_pos_itm_history": {
+    "/trs.exe?cgi=xStore_pos_itm_history.xml": {
       "get": {
         "tags": ["Items"],
         "summary": "Returns a list of previously purchased products.",
@@ -1111,7 +1277,7 @@
             "name": "ExtGridSort",
             "in": "query",
             "schema": {
-              "type": "number"
+              "type": "string"
             },
             "description": "Grid sort definition.",
             "example": "F1147"
@@ -1183,7 +1349,7 @@
         }
       }
     },
-    "/trs.exe?cgi=eStore_pos_itm_list.xml": {
+    "/trs.exe?cgi=xStore_pos_itm_list.xml": {
       "get": {
         "summary": "Returns a list of items.",
         "description": "<a href=\"#request\">Request Parameters</a><br /><br />Required Parameters<br /><br />\n NONE\n",
@@ -1268,7 +1434,7 @@
         }
       }
     },
-    "/trs.exe?cgi=eStore_pos_brand_list.xml": {
+    "/trs.exe?cgi=xStore_pos_brand_list.xml": {
       "get": {
         "summary": "Returns a list of brands.",
         "description": "<a href=\"#request\">Request Parameters</a><br /><br />Required Parameters<br /><br />\n NONE\n",
@@ -1297,7 +1463,7 @@
             "name": "ExtGridSort",
             "in": "query",
             "schema": {
-              "type": "number"
+              "type": "string"
             },
             "description": "Grid sort definition.",
             "example": "F1147"
@@ -1348,13 +1514,52 @@
         }
       }
     },
-    "/trs.exe?cgi=eStore_pos_cpn_list.xml": {
+    "/trs.exe?cgi=xStore_pos_cpn_list.xml": {
       "get": {
         "tags": ["Coupons"],
         "summary": "Retrieve a list of coupons",
-        "description": "Requires session CN from login",
+        "description": "<a href=\"#request\">Request Parameters</a><br /><br />Required Parameters<br /><br />\n NONE\n",
         "security": [{ "SessionCN": [] }],
         "parameters": [
+          {
+            "name": "ExtGridStart",
+            "in": "query",
+            "schema": {
+              "type": "number"
+            },
+            "description": "Grid start index",
+            "example": "0"
+          },
+          {
+            "name": "ExtMaxRecords",
+            "in": "query",
+            "schema": {
+              "type": "number"
+            },
+            "description": "Maximum number of records.",
+            "example": "50"
+          },
+          {
+            "name": "ExtGridSort",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Grid sort definition.",
+            "example": "offerBuyDesc"
+          },
+          { "name": "F110", "in": "query", "schema": { "type": "string" }, "description":"0 Manual\n1 Electronic\n2 Targeted\n3 Automatic\n4 Public\n", "example": "" },
+          { "name": "status", "in": "query", "schema": { "type": "string" }, "description":"CLIP, CPN, ECPN", "example": "" },
+          { "name": "criteria", "in": "query", "schema": { "type": "string" }, "description":" 1 Show coupon criteria", "example": "" },
+          {
+            "name": "quick",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Quick search value",
+            "example": ""
+          },
           { "name": "CN", "in": "query", "schema": { "type": "string" }, "example": "" },
           { "$ref": "#/components/parameters/DN" },
           { "$ref": "#/components/parameters/DisableCache" },
@@ -1376,14 +1581,17 @@
         }
       }
     },
-    "/trs.exe?cgi=eStore_trs_cpn_detail.xml": {
+    "/trs.exe?cgi=xStore_trs_cpn_detail.xml": {
       "get": {
         "tags": ["Coupons"],
-        "summary": "Get Coupon detail specifying entry (code)",
-        "description": "Requires session CN from login",
+        "summary": "Returns the detail of one coupon, given the offer code. ",
+        "description": "<a href=\"#request\">Request Parameters</a><br /><br />",
         "security": [{ "SessionCN": [] }],
         "parameters": [
-          { "name": "offerCode", "in": "query", "schema": { "type": "string" }, "example": "0960210001702" },
+          { "name": "offerCode", "in": "query",
+            "required": true,
+            "schema": { "type": "string" }, "example": "0960210001702" },
+          { "name": "criteria", "in": "query", "schema": { "type": "string" }, "description":" 1 Show coupon criteria", "example": "" },
           { "name": "CN", "in": "query", "schema": { "type": "string" }, "example": ""},
           { "$ref": "#/components/parameters/DN" },
           { "$ref": "#/components/parameters/DisableCache" },
@@ -1403,14 +1611,14 @@
         }
       }
     },
-    "/trs.exe?sqi=eStore_trs_cpn_clip": {
+    "/trs.exe?sqi=xStore_trs_cpn_clip": {
       "get": {
         "tags": ["Coupons"],
-        "summary": "Clip a coupon entry",
+        "summary": "Changes the coupon status, given the offer code. ",
         "description": "<a href=\"#request\">Request Parameters</a><br /><br />",
         "security": [{ "SessionCN": [] }],
         "parameters": [
-          { "name": "ENTRY", "in": "query", "schema": { "type": "string" }, "example": "0960500000001" },
+          { "name": "ENTRY", "in": "query", "required": "true", "schema": { "type": "string" }, "example": "0960500000001" },
           { "name": "offerClip", "in": "query", "schema": { "type": "string" }, "example": "CLIP" },
           { "name": "CN", "in": "query", "schema": { "type": "string" }, "example": ""},
           { "$ref": "#/components/parameters/DN" },
@@ -1452,62 +1660,6 @@
                 "schema": {
                   "type": "object", "xml": { "name": "root" } ,
                   "example": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<root>\n    <hooks>\n        <hook>\n            <type>hookExec</type>\n            <alias>PosSalRegAdd</alias>\n            <data>\n                <record>\n                    <SAL_REG-F1032>11585</SAL_REG-F1032>\n                    <SAL_REG-F1101>1</SAL_REG-F1101>\n                    <SAL_REG-F126>1</SAL_REG-F126>\n                    <SAL_REG-F01>0000000004055</SAL_REG-F01>\n                    <SAL_REG-F03>110</SAL_REG-F03>\n                    <SAL_REG-F04>110</SAL_REG-F04>\n                    <SAL_REG-F1079></SAL_REG-F1079>\n                    <SAL_REG-F1041>100 CT TANGERINE</SAL_REG-F1041>\n                    <SAL_REG-F1691></SAL_REG-F1691>\n                    <SAL_REG-F1071>0</SAL_REG-F1071>\n                    <SAL_REG-F1069>0</SAL_REG-F1069>\n                    <SAL_REG-F1874>0</SAL_REG-F1874>\n                    <SAL_REG-F1120></SAL_REG-F1120>\n                    <SAL_REG-F1785></SAL_REG-F1785>\n                    <SAL_REG-F270>0</SAL_REG-F270>\n                    <SAL_REG-F24>0</SAL_REG-F24>\n                    <SAL_REG-F1739>3</SAL_REG-F1739>\n                    <SAL_REG-F1740>0</SAL_REG-F1740>\n                    <SAL_REG-F64>3</SAL_REG-F64>\n                    <SAL_REG-F67>0</SAL_REG-F67>\n                    <SAL_REG-F1732></SAL_REG-F1732>\n                    <RCT_QTY>3 @ $4.59 each</RCT_QTY>\n                    <SAL_REG-F1730>13.77</SAL_REG-F1730>\n                    <SAL_REG-F65>13.77</SAL_REG-F65>\n                    <SAL_REG-T65>13.77</SAL_REG-T65>\n                    <SAL_REG-DSCREG>0</SAL_REG-DSCREG>\n                    <SAL_REG-F1007>4.59</SAL_REG-F1007>\n                    <SAL_REG-F1006>1</SAL_REG-F1006>\n                    <SAL_REG-F1203></SAL_REG-F1203>\n                    <SAL_REG-F1204></SAL_REG-F1204>\n                    <SAL_REG-F1733></SAL_REG-F1733>\n                    <SAL_REG-F1205></SAL_REG-F1205>\n                    <SAL_REG-F1206></SAL_REG-F1206>\n                    <SAL_REG-F1734></SAL_REG-F1734>\n                    <SAL_REG-F1224></SAL_REG-F1224>\n                    <SAL_REG-F1726></SAL_REG-F1726>\n                    <SAL_REG-F1225></SAL_REG-F1225>\n                    <SAL_REG-F1727></SAL_REG-F1727>\n                    <SAL_REG-F1209></SAL_REG-F1209>\n                    <SAL_REG-F169></SAL_REG-F169>\n                    <SAL_REG-F30>4.59</SAL_REG-F30>\n                    <SAL_REG-F31>1</SAL_REG-F31>\n                    <SAL_REG-F113>REG</SAL_REG-F113>\n                    <SAL_REG-F1208></SAL_REG-F1208>\n                    <SAL_REG-F1932></SAL_REG-F1932>\n                    <SAL_REG-F1925></SAL_REG-F1925>\n                    <SAL_REG-F1728></SAL_REG-F1728>\n                    <SAL_REG-F88></SAL_REG-F88>\n                    <SAL_REG-F104></SAL_REG-F104>\n                    <SAL_REG-F1924></SAL_REG-F1924>\n                    <SAL_REG-F1728></SAL_REG-F1728>\n                    <SAL_REG-F1256></SAL_REG-F1256>\n                    <SAL_REG-F1729></SAL_REG-F1729>\n                    <SAL_REG-F1164></SAL_REG-F1164>\n                    <SAL_REG-F1241></SAL_REG-F1241>\n                    <SAL_REG-F1720></SAL_REG-F1720>\n                    <SAL_REG-F1789></SAL_REG-F1789>\n                    <SAL_REG-F1719></SAL_REG-F1719>\n                    <SAL_REG-F1863></SAL_REG-F1863>\n                    <SAL_REG-F1723></SAL_REG-F1723>\n                    <SAL_REG-F1864></SAL_REG-F1864>\n                    <SAL_REG-F1722></SAL_REG-F1722>\n                    <SAL_REG-F1861></SAL_REG-F1861>\n                    <SAL_REG-F1724></SAL_REG-F1724>\n                    <SAL_REG-F1240></SAL_REG-F1240>\n                    <SAL_REG-F1936></SAL_REG-F1936>\n                    <SAL_REG-F1926></SAL_REG-F1926>\n                    <PRICE_TAB-F1228></PRICE_TAB-F1228>\n                    <SAL_REG-F1832></SAL_REG-F1832>\n                    <SAL_REG-F1833></SAL_REG-F1833>\n                    <PRICE_TAB-F1229></PRICE_TAB-F1229>\n                    <PRICE_TAB-F1232></PRICE_TAB-F1232>\n                    <SAL_REG-F1803></SAL_REG-F1803>\n                    <SAL_REG-F50></SAL_REG-F50>\n                    <SAL_REG-F1715></SAL_REG-F1715>\n                    <SAL_REG-F1595></SAL_REG-F1595>\n                    <SAL_REG-F1716></SAL_REG-F1716>\n                    <SAL_REG-F1683></SAL_REG-F1683>\n                    <SAL_REG-F1684></SAL_REG-F1684>\n                    <SAL_REG-F2551></SAL_REG-F2551>\n                    <SAL_REG-F2552></SAL_REG-F2552>\n                    <SAL_REG-F2553></SAL_REG-F2553>\n                    <SAL_REG-F2554></SAL_REG-F2554>\n                    <SAL_REG-F2555></SAL_REG-F2555>\n                    <SAL_REG-F82>0</SAL_REG-F82>\n                    <SAL_REG-F08></SAL_REG-F08>\n                    <SAL_REG-F79></SAL_REG-F79>\n                    <SAL_REG-F80></SAL_REG-F80>\n                    <SAL_REG-F178></SAL_REG-F178>\n                    <SAL_REG-F150></SAL_REG-F150>\n                    <SAL_REG-F81></SAL_REG-F81>\n                    <SAL_REG-F96></SAL_REG-F96>\n                    <SAL_REG-F97></SAL_REG-F97>\n                    <SAL_REG-F98></SAL_REG-F98>\n                    <SAL_REG-F99></SAL_REG-F99>\n                    <SAL_REG-F100></SAL_REG-F100>\n                    <SAL_REG-F101></SAL_REG-F101>\n                    <SAL_REG-F1136></SAL_REG-F1136>\n                    <OBJ_TAB-F155></OBJ_TAB-F155>\n                    <OBJ_TAB-F29>100 CT TANGERINE</OBJ_TAB-F29>\n                    <OBJ_TAB-F22></OBJ_TAB-F22>\n                    <OBJ_TAB-F255></OBJ_TAB-F255>\n                    <OBJ_TAB-F17>803000</OBJ_TAB-F17>\n                    <OBJ_TAB-F1957></OBJ_TAB-F1957>\n                    <SHF_TAB-F117></SHF_TAB-F117>\n                    <SHF_TAB-F2836>n/a</SHF_TAB-F2836>\n                    <SHF_TAB-F2837>n/a</SHF_TAB-F2837>\n                    <SHF_TAB-F2838>n/a</SHF_TAB-F2838>\n                    <KIT_TAB-F1507></KIT_TAB-F1507>\n                    <T8501></T8501>\n                    <BMP_TAB-F2929>0000000004055.jpg</BMP_TAB-F2929>\n                    <SalDet>\n                        <dbTable>\n                            <detail></detail>\n                        </dbTable>\n                    </SalDet>\n                </record>\n            </data>\n        </hook>\n        <hook>\n            <type>hookExec</type>\n            <alias>PosSalHdr</alias>\n            <data>\n                <record>\n                    <SAL_HDR-F1032>11585</SAL_HDR-F1032>\n                    <SAL_HDR-F1068>ORDER</SAL_HDR-F1068>\n                    <SAL_HDR-F1067>999001</SAL_HDR-F1067>\n                    <SAL_HDR-F1763>00010181</SAL_HDR-F1763>\n                    <SAL_HDR-F1764></SAL_HDR-F1764>\n                    <SAL_HDR-F254>03/09/2026</SAL_HDR-F254>\n                    <SAL_HDR-F1185></SAL_HDR-F1185>\n                    <SAL_HDR-F1127>eCommerce</SAL_HDR-F1127>\n                    <SAL_HDR-F1245></SAL_HDR-F1245>\n                    <SAL_HDR-F1056>001</SAL_HDR-F1056>\n                    <SAL_HDR-F1057>001</SAL_HDR-F1057>\n                    <CLT_TAB-F1583></CLT_TAB-F1583>\n                    <CLT_TAB-F1584></CLT_TAB-F1584>\n                    <cltTokenExists>0</cltTokenExists>\n                    <STD_TAB-F1531>Store 1</STD_TAB-F1531>\n                    <STD_TAB-F1532>2186 De Bergame</STD_TAB-F1532>\n                    <STD_TAB-F1533></STD_TAB-F1533>\n                    <STD_TAB-F1534>Laval</STD_TAB-F1534>\n                    <STD_TAB-F1535>H7M5S2</STD_TAB-F1535>\n                    <STD_TAB-F1536>(555) 327-7448</STD_TAB-F1536>\n                    <STD_TAB-F1538></STD_TAB-F1538>\n                    <STD_TAB-F1549>PQ</STD_TAB-F1549>\n                    <STD_TAB-F2842>-114.0883</STD_TAB-F2842>\n                    <STD_TAB-F2843>51.1211</STD_TAB-F2843>\n                    <preAuthAmount></preAuthAmount>\n                    <SAL_HDR-TRACK></SAL_HDR-TRACK>\n                    <SAL_HDR-F1148>0180134552</SAL_HDR-F1148>\n                    <SAL_HDR-F1149>Rick</SAL_HDR-F1149>\n                    <SAL_HDR-F1150>Moranis</SAL_HDR-F1150>\n                    <SAL_HDR-F1155>Alexiou, Nick</SAL_HDR-F1155>\n                    <SAL_HDR-F1156>2175 barnes</SAL_HDR-F1156>\n                    <SAL_HDR-F1157>Apartment 1</SAL_HDR-F1157>\n                    <SAL_HDR-F1158>saint Laurent</SAL_HDR-F1158>\n                    <SAL_HDR-F1159>H4k1l2</SAL_HDR-F1159>\n                    <SAL_HDR-F1170>QC</SAL_HDR-F1170>\n                    <SAL_HDR-F1171>US</SAL_HDR-F1171>\n                    <SAL_HDR-F1172>4507775554</SAL_HDR-F1172>\n                    <SAL_HDR-F1173></SAL_HDR-F1173>\n                    <SAL_HDR-F1573>development@locsoftware.com</SAL_HDR-F1573>\n                    <SAL_HDR-F1238>0</SAL_HDR-F1238>\n                    <SAL_HDR-F1242>0</SAL_HDR-F1242>\n                    <SAL_HDR-F1642></SAL_HDR-F1642>\n                    <SAL_HDR-F1643></SAL_HDR-F1643>\n                    <SAL_HDR-F1644></SAL_HDR-F1644>\n                    <SAL_HDR-F1645></SAL_HDR-F1645>\n                    <SAL_HDR-F1646></SAL_HDR-F1646>\n                    <SAL_HDR-F1647></SAL_HDR-F1647>\n                    <SAL_HDR-F1648></SAL_HDR-F1648>\n                    <SAL_HDR-F1649></SAL_HDR-F1649>\n                    <SAL_HDR-F1650></SAL_HDR-F1650>\n                    <SAL_HDR-F1651></SAL_HDR-F1651>\n                    <SAL_HDR-F1692></SAL_HDR-F1692>\n                    <SAL_HDR-F2934></SAL_HDR-F2934>\n                    <SAL_HDR-F2904>PICKUP</SAL_HDR-F2904>\n                    <SAL_HDR-F1697></SAL_HDR-F1697>\n                    <SAL_HDR-F2889></SAL_HDR-F2889>\n                    <SAL_HDR-F2816></SAL_HDR-F2816>\n                    <SAL_HDR-F1654>0</SAL_HDR-F1654>\n                    <SAL_HDR-F1655>0</SAL_HDR-F1655>\n                    <SAL_HDR-F2619>0</SAL_HDR-F2619>\n                    <SAL_HDR-F91></SAL_HDR-F91>\n                    <SAL_HDR-F1152>2</SAL_HDR-F1152>\n                    <SAL_HDR-F1153>1</SAL_HDR-F1153>\n                    <SAL_TTL-T2>13.77</SAL_TTL-T2>\n                    <SAL_TTL-T3>13.77</SAL_TTL-T3>\n                    <SAL_TTL-T3F64>3</SAL_TTL-T3F64>\n                    <SAL_TTL-T22>0</SAL_TTL-T22>\n                    <SAL_TTL-T26>0</SAL_TTL-T26>\n                    <SAL_TTL-T30>0</SAL_TTL-T30>\n                    <SAL_TTL-T34>0</SAL_TTL-T34>\n                    <SAL_TTL-T37>0</SAL_TTL-T37>\n                    <SAL_TTL-T39>0</SAL_TTL-T39>\n                    <SAL_TTL-T40>0</SAL_TTL-T40>\n                    <SAL_TTL-T42>0</SAL_TTL-T42>\n                    <SAL_TTL-T49>0</SAL_TTL-T49>\n                    <SAL_TTL-T51>0</SAL_TTL-T51>\n                    <SAL_TTL-T52>0</SAL_TTL-T52>\n                    <SAL_TTL-T53>0</SAL_TTL-T53>\n                    <SAL_TTL-T54>0</SAL_TTL-T54>\n                    <SAL_TTL-T90>0</SAL_TTL-T90>\n                    <SAL_TTL-T92>0</SAL_TTL-T92>\n                    <SAL_TTL-T1299>0</SAL_TTL-T1299>\n                    <SAL_TTL-T3401>0</SAL_TTL-T3401>\n                    <SAL_TTL-T3411>0</SAL_TTL-T3411>\n                    <SAL_TTL-T3551>0</SAL_TTL-T3551>\n                    <SAL_TTL-T7501>0</SAL_TTL-T7501>\n                    <SAL_TTL-T7901>0</SAL_TTL-T7901>\n                    <SAL_TTL-T3585F64>0</SAL_TTL-T3585F64>\n                    <SAL_TTL-T3585F65>0</SAL_TTL-T3585F65>\n                    <SAL_TTL-T29999>13.77</SAL_TTL-T29999>\n                    <SAL_TTL-USAVE>0</SAL_TTL-USAVE>\n                    <SAL_TTL-GROSS>0</SAL_TTL-GROSS>\n                    <unavailRecQty>0</unavailRecQty>\n                </record>\n            </data>\n        </hook>\n        <hook>\n            <type>hookExec</type>\n            <alias>PosSalOpen</alias>\n            <data>\n                <record>\n                    <CLT_TAB-F1148>0180134552</CLT_TAB-F1148>\n                    <CLT_TAB-F902>00029991</CLT_TAB-F902>\n                    <CLT_TAB-F1000>PAL</CLT_TAB-F1000>\n                    <CLT_TAB-F1001>1</CLT_TAB-F1001>\n                    <CLT_TAB-F1150>Moranis</CLT_TAB-F1150>\n                    <CLT_TAB-F1152>2</CLT_TAB-F1152>\n                    <CLT_TAB-F1153>1</CLT_TAB-F1153>\n                    <CLT_TAB-F1172>4507775554</CLT_TAB-F1172>\n                    <CLT_TAB-F1573>development@locsoftware.com</CLT_TAB-F1573>\n                    <CLT_TAB-F253>02/26/2026 10:58:52</CLT_TAB-F253>\n                    <CLT_TAB-F1149>Rick</CLT_TAB-F1149>\n                    <CLT_TAB-F1155>Alexiou, Nick</CLT_TAB-F1155>\n                    <CLT_TAB-F1156>2175 barnes</CLT_TAB-F1156>\n                    <CLT_TAB-F1157>Apartment 1</CLT_TAB-F1157>\n                    <CLT_TAB-F1158>saint Laurent</CLT_TAB-F1158>\n                    <CLT_TAB-F1159>H4k1l2</CLT_TAB-F1159>\n                    <CLT_TAB-F1170>QC</CLT_TAB-F1170>\n                    <CLT_TAB-F1171>US</CLT_TAB-F1171>\n                    <CLT_TAB-F1264>04/15/2022</CLT_TAB-F1264>\n                    <CLT_TAB-F1504>EN</CLT_TAB-F1504>\n                    <CLT_TAB-F1520>06/25/1975</CLT_TAB-F1520>\n                    <CLT_TAB-F1521>04/15/2022 15:36:18</CLT_TAB-F1521>\n                    <CLT_TAB-F1525>001</CLT_TAB-F1525>\n                    <CLT_TAB-F1581>{Z}eG5jYXJZWmFMc0Iw</CLT_TAB-F1581>\n                    <CLT_TAB-F1950></CLT_TAB-F1950>\n                    <CLT_TAB-F1964>999</CLT_TAB-F1964>\n                    <CLT_TAB-F2875>5147775555</CLT_TAB-F2875>\n                    <CLT_TAB-F2900></CLT_TAB-F2900>\n                    <CLT_TAB-F2977>evQGppUWV0v1kYyMGZ1mL-:APA91bHrBmd7KGuVeMExD8OZ4WSin0SENvhkliym12F6lt9AFR10i4q4Wid7JfpQMdb2MtvcEeTBc6x4Kt3b-_GS-CjHVfgJTl88w45SuQUiUDOomAtP3_o</CLT_TAB-F2977>\n                    <CLT_TAB-F2978>FCM</CLT_TAB-F2978>\n                </record>\n            </data>\n        </hook>\n    </hooks>\n</root>"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/trs.exe?cgi=eStore_pos_reg_item": {
-      "get": {
-        "summary": "Returns the items in the transaction.",
-        "description": "<a href=\"#request\">Request Parameters</a><br /><br />Required Parameters<br /><br />\n NONE\n",
-        "tags": ["Checkout"],
-        "security": [{ "SessionCN": [] }],
-        "parameters": [
-          { "$ref": "#/components/parameters/DN" },
-          { "$ref": "#/components/parameters/DisableCache" },
-          { "$ref": "#/components/parameters/DatabaseTimeout" },
-          { "$ref": "#/components/parameters/BW" },
-          { "name": "CN", "in": "query", "schema": { "type": "string" }, "example": ""}
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful response returning XML",
-            "content": {
-              "application/xml": {
-                "schema": {
-                  "type": "object", "xml": { "name": "root" } ,
-                  "example": "<hook>\n\t<type>hookExec</type>\n\t<alias>PosSalRegAdd</alias>\n\t<data>\n\t\t<record>\n\t\t\t<SAL_REG-F1032>11394</SAL_REG-F1032>\n\t\t\t<SAL_REG-F1101>1</SAL_REG-F1101>\n\t\t\t<SAL_REG-F126>1</SAL_REG-F126>\n\t\t\t<SAL_REG-F01>0000000002022</SAL_REG-F01>\n\t\t\t<SAL_REG-F03>7</SAL_REG-F03>\n\t\t\t<SAL_REG-F04>7</SAL_REG-F04>\n\t\t\t<SAL_REG-F1079></SAL_REG-F1079>\n\t\t\t<SAL_REG-F1041>NAIL POLISH - SUNBURN 15 ml</SAL_REG-F1041>\n\t\t\t<SAL_REG-F1691></SAL_REG-F1691>\n\t\t\t<SAL_REG-F1071>0</SAL_REG-F1071>\n\t\t\t<SAL_REG-F1069>0</SAL_REG-F1069>\n\t\t\t<SAL_REG-F1874>0</SAL_REG-F1874>\n\t\t\t<SAL_REG-F1120></SAL_REG-F1120>\n\t\t\t<SAL_REG-F1785></SAL_REG-F1785>\n\t\t\t<SAL_REG-F270>0</SAL_REG-F270>\n\t\t\t<SAL_REG-F24>0</SAL_REG-F24>\n\t\t\t<SAL_REG-F1739>10</SAL_REG-F1739>\n\t\t\t<SAL_REG-F1740>0</SAL_REG-F1740>\n\t\t\t<SAL_REG-F64>10</SAL_REG-F64>\n\t\t\t<SAL_REG-F67>0</SAL_REG-F67>\n\t\t\t<SAL_REG-F1732></SAL_REG-F1732>\n\t\t\t<RCT_QTY>10 @ $13.99 each</RCT_QTY>\n\t\t\t<SAL_REG-F1730>139.9</SAL_REG-F1730>\n\t\t\t<SAL_REG-F65>139.9</SAL_REG-F65>\n\t\t\t<SAL_REG-T65>139.9</SAL_REG-T65>\n\t\t\t<SAL_REG-DSCREG>0</SAL_REG-DSCREG>\n\t\t\t<SAL_REG-F1007>13.99</SAL_REG-F1007>\n\t\t\t<SAL_REG-F1006>1</SAL_REG-F1006>\n\t\t\t<SAL_REG-F1203></SAL_REG-F1203>\n\t\t\t<SAL_REG-F1204></SAL_REG-F1204>\n\t\t\t<SAL_REG-F1733></SAL_REG-F1733>\n\t\t\t<SAL_REG-F1205></SAL_REG-F1205>\n\t\t\t<SAL_REG-F1206></SAL_REG-F1206>\n\t\t\t<SAL_REG-F1734></SAL_REG-F1734>\n\t\t\t<SAL_REG-F1224></SAL_REG-F1224>\n\t\t\t<SAL_REG-F1726></SAL_REG-F1726>\n\t\t\t<SAL_REG-F1225></SAL_REG-F1225>\n\t\t\t<SAL_REG-F1727></SAL_REG-F1727>\n\t\t\t<SAL_REG-F1209></SAL_REG-F1209>\n\t\t\t<SAL_REG-F169></SAL_REG-F169>\n\t\t\t<SAL_REG-F30>13.99</SAL_REG-F30>\n\t\t\t<SAL_REG-F31>1</SAL_REG-F31>\n\t\t\t<SAL_REG-F113>REG</SAL_REG-F113>\n\t\t\t<SAL_REG-F1208></SAL_REG-F1208>\n\t\t\t<SAL_REG-F1932></SAL_REG-F1932>\n\t\t\t<SAL_REG-F1925></SAL_REG-F1925>\n\t\t\t<SAL_REG-F1728></SAL_REG-F1728>\n\t\t\t<SAL_REG-F88></SAL_REG-F88>\n\t\t\t<SAL_REG-F104></SAL_REG-F104>\n\t\t\t<SAL_REG-F1924></SAL_REG-F1924>\n\t\t\t<SAL_REG-F1728></SAL_REG-F1728>\n\t\t\t<SAL_REG-F1256></SAL_REG-F1256>\n\t\t\t<SAL_REG-F1729></SAL_REG-F1729>\n\t\t\t<SAL_REG-F1164></SAL_REG-F1164>\n\t\t\t<SAL_REG-F1241></SAL_REG-F1241>\n\t\t\t<SAL_REG-F1720></SAL_REG-F1720>\n\t\t\t<SAL_REG-F1789></SAL_REG-F1789>\n\t\t\t<SAL_REG-F1719></SAL_REG-F1719>\n\t\t\t<SAL_REG-F1863></SAL_REG-F1863>\n\t\t\t<SAL_REG-F1723></SAL_REG-F1723>\n\t\t\t<SAL_REG-F1864></SAL_REG-F1864>\n\t\t\t<SAL_REG-F1722></SAL_REG-F1722>\n\t\t\t<SAL_REG-F1861></SAL_REG-F1861>\n\t\t\t<SAL_REG-F1724></SAL_REG-F1724>\n\t\t\t<SAL_REG-F1240></SAL_REG-F1240>\n\t\t\t<SAL_REG-F1936></SAL_REG-F1936>\n\t\t\t<SAL_REG-F1926></SAL_REG-F1926>\n\t\t\t<PRICE_TAB-F1228></PRICE_TAB-F1228>\n\t\t\t<SAL_REG-F1832></SAL_REG-F1832>\n\t\t\t<SAL_REG-F1833></SAL_REG-F1833>\n\t\t\t<PRICE_TAB-F1229></PRICE_TAB-F1229>\n\t\t\t<PRICE_TAB-F1232></PRICE_TAB-F1232>\n\t\t\t<SAL_REG-F1803></SAL_REG-F1803>\n\t\t\t<SAL_REG-F50></SAL_REG-F50>\n\t\t\t<SAL_REG-F1715></SAL_REG-F1715>\n\t\t\t<SAL_REG-F1595></SAL_REG-F1595>\n\t\t\t<SAL_REG-F1716></SAL_REG-F1716>\n\t\t\t<SAL_REG-F1683></SAL_REG-F1683>\n\t\t\t<SAL_REG-F1684></SAL_REG-F1684>\n\t\t\t<SAL_REG-F2551></SAL_REG-F2551>\n\t\t\t<SAL_REG-F2552></SAL_REG-F2552>\n\t\t\t<SAL_REG-F2553></SAL_REG-F2553>\n\t\t\t<SAL_REG-F2554></SAL_REG-F2554>\n\t\t\t<SAL_REG-F2555></SAL_REG-F2555>\n\t\t\t<SAL_REG-F82>0</SAL_REG-F82>\n\t\t\t<SAL_REG-F08></SAL_REG-F08>\n\t\t\t<SAL_REG-F79></SAL_REG-F79>\n\t\t\t<SAL_REG-F80></SAL_REG-F80>\n\t\t\t<SAL_REG-F178></SAL_REG-F178>\n\t\t\t<SAL_REG-F150></SAL_REG-F150>\n\t\t\t<SAL_REG-F81>1</SAL_REG-F81>\n\t\t\t<SAL_REG-F96>1</SAL_REG-F96>\n\t\t\t<SAL_REG-F97></SAL_REG-F97>\n\t\t\t<SAL_REG-F98></SAL_REG-F98>\n\t\t\t<SAL_REG-F99></SAL_REG-F99>\n\t\t\t<SAL_REG-F100></SAL_REG-F100>\n\t\t\t<SAL_REG-F101></SAL_REG-F101>\n\t\t\t<SAL_REG-F1136></SAL_REG-F1136>\n\t\t\t<OBJ_TAB-F155>BKIND</OBJ_TAB-F155>\n\t\t\t<OBJ_TAB-F29> NAIL POLISH - SUNBURN</OBJ_TAB-F29>\n\t\t\t<OBJ_TAB-F22>15 ml</OBJ_TAB-F22>\n\t\t\t<OBJ_TAB-F255></OBJ_TAB-F255>\n\t\t\t<OBJ_TAB-F17>10000360</OBJ_TAB-F17>\n\t\t\t<OBJ_TAB-F1957></OBJ_TAB-F1957>\n\t\t\t<SHF_TAB-F117></SHF_TAB-F117>\n\t\t\t<SHF_TAB-F2836>n/a</SHF_TAB-F2836>\n\t\t\t<SHF_TAB-F2837>n/a</SHF_TAB-F2837>\n\t\t\t<SHF_TAB-F2838>n/a</SHF_TAB-F2838>\n\t\t\t<KIT_TAB-F1507></KIT_TAB-F1507>\n\t\t\t<T8501></T8501>\n\t\t\t<BMP_TAB-F2929></BMP_TAB-F2929>\n\t\t\t<SalDet>\n\t\t\t\t<dbTable>\n\t\t\t\t\t<detail></detail>\n\t\t\t\t</dbTable>\n\t\t\t</SalDet>\n\t\t</record>\n\t</data>\n</hook>\n"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/trs.exe?cgi=eStore_pos_hdr_common": {
-      "get": {
-        "summary": "Returns the sales header and the totalizers",
-        "description": "<a href=\"#request\">Request Parameters</a><br /><br />Required Parameters<br /><br />\n NONE\n",
-        "tags": ["Checkout"],
-        "security": [{ "SessionCN": [] }],
-        "parameters": [
-          { "$ref": "#/components/parameters/DN" },
-          { "$ref": "#/components/parameters/DisableCache" },
-          { "$ref": "#/components/parameters/DatabaseTimeout" },
-          { "$ref": "#/components/parameters/BW" },
-          { "name": "CN", "in": "query", "schema": { "type": "string" }, "example": ""}
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful response returning XML",
-            "content": {
-              "application/xml": {
-                "schema": {
-                  "type": "object", "xml": { "name": "root" } ,
-                  "example": "<hook>\n    <type>hookExec</type>\n    <alias>PosSalHdr</alias>\n    <data>\n        <record>\n            <SAL_HDR-F1032>11214</SAL_HDR-F1032>\n            <SAL_HDR-F1068>ORDER</SAL_HDR-F1068>\n            <SAL_HDR-F1067>999001</SAL_HDR-F1067>\n            <SAL_HDR-F1763>00009863</SAL_HDR-F1763>\n            <SAL_HDR-F1764></SAL_HDR-F1764>\n            <SAL_HDR-F254>12/09/2025</SAL_HDR-F254>\n            <SAL_HDR-F1185></SAL_HDR-F1185>\n            <SAL_HDR-F1127>eCommerce</SAL_HDR-F1127>\n            <SAL_HDR-F1245></SAL_HDR-F1245>\n            <SAL_HDR-F1056>001</SAL_HDR-F1056>\n            <SAL_HDR-F1057>001</SAL_HDR-F1057>\n            <CLT_TAB-F1583></CLT_TAB-F1583>\n            <CLT_TAB-F1584></CLT_TAB-F1584>\n            <cltTokenExists>1</cltTokenExists>\n            <STD_TAB-F1531>Store 1</STD_TAB-F1531>\n            <STD_TAB-F1532>2186 De Bergame</STD_TAB-F1532>\n            <STD_TAB-F1533></STD_TAB-F1533>\n            <STD_TAB-F1534>Laval</STD_TAB-F1534>\n            <STD_TAB-F1535>H7M5S2</STD_TAB-F1535>\n            <STD_TAB-F1536>(555) 327-7448</STD_TAB-F1536>\n            <STD_TAB-F1538></STD_TAB-F1538>\n            <STD_TAB-F1549>PQ</STD_TAB-F1549>\n            <STD_TAB-F2842>-114.0883</STD_TAB-F2842>\n            <STD_TAB-F2843>51.1211</STD_TAB-F2843>\n            <preAuthAmount></preAuthAmount>\n            <SAL_HDR-TRACK></SAL_HDR-TRACK>\n            <SAL_HDR-F1148>0185473371</SAL_HDR-F1148>\n            <SAL_HDR-F1149>wwww</SAL_HDR-F1149>\n            <SAL_HDR-F1150>Alexiou</SAL_HDR-F1150>\n            <SAL_HDR-F1155>Alexiou, Nick</SAL_HDR-F1155>\n            <SAL_HDR-F1156></SAL_HDR-F1156>\n            <SAL_HDR-F1157></SAL_HDR-F1157>\n            <SAL_HDR-F1158></SAL_HDR-F1158>\n            <SAL_HDR-F1159></SAL_HDR-F1159>\n            <SAL_HDR-F1170></SAL_HDR-F1170>\n            <SAL_HDR-F1171></SAL_HDR-F1171>\n            <SAL_HDR-F1172>5147267441</SAL_HDR-F1172>\n            <SAL_HDR-F1173></SAL_HDR-F1173>\n            <SAL_HDR-F1573>nick.alexiou@locsoftware.com</SAL_HDR-F1573>\n            <SAL_HDR-F1238>0</SAL_HDR-F1238>\n            <SAL_HDR-F1242>0</SAL_HDR-F1242>\n            <SAL_HDR-F1642></SAL_HDR-F1642>\n            <SAL_HDR-F1643></SAL_HDR-F1643>\n            <SAL_HDR-F1644></SAL_HDR-F1644>\n            <SAL_HDR-F1645></SAL_HDR-F1645>\n            <SAL_HDR-F1646></SAL_HDR-F1646>\n            <SAL_HDR-F1647></SAL_HDR-F1647>\n            <SAL_HDR-F1648></SAL_HDR-F1648>\n            <SAL_HDR-F1649></SAL_HDR-F1649>\n            <SAL_HDR-F1650></SAL_HDR-F1650>\n            <SAL_HDR-F1651></SAL_HDR-F1651>\n            <SAL_HDR-F1692></SAL_HDR-F1692>\n            <SAL_HDR-F2934></SAL_HDR-F2934>\n            <SAL_HDR-F2904>PICKUP</SAL_HDR-F2904>\n            <SAL_HDR-F1697></SAL_HDR-F1697>\n            <SAL_HDR-F2889></SAL_HDR-F2889>\n            <SAL_HDR-F2816></SAL_HDR-F2816>\n            <SAL_HDR-F1654>0</SAL_HDR-F1654>\n            <SAL_HDR-F1655>0</SAL_HDR-F1655>\n            <SAL_HDR-F2619>0</SAL_HDR-F2619>\n            <SAL_HDR-F91></SAL_HDR-F91>\n            <SAL_HDR-F1152>2</SAL_HDR-F1152>\n            <SAL_HDR-F1153>1</SAL_HDR-F1153>\n            <SAL_TTL-T2>500</SAL_TTL-T2>\n            <SAL_TTL-T3>500</SAL_TTL-T3>\n            <SAL_TTL-T3F64>1</SAL_TTL-T3F64>\n            <SAL_TTL-T22>0</SAL_TTL-T22>\n            <SAL_TTL-T26>0</SAL_TTL-T26>\n            <SAL_TTL-T30>0</SAL_TTL-T30>\n            <SAL_TTL-T34>0</SAL_TTL-T34>\n            <SAL_TTL-T37>0</SAL_TTL-T37>\n            <SAL_TTL-T39>0</SAL_TTL-T39>\n            <SAL_TTL-T40>0</SAL_TTL-T40>\n            <SAL_TTL-T42>0</SAL_TTL-T42>\n            <SAL_TTL-T49>0</SAL_TTL-T49>\n            <SAL_TTL-T51>0</SAL_TTL-T51>\n            <SAL_TTL-T52>0</SAL_TTL-T52>\n            <SAL_TTL-T53>0</SAL_TTL-T53>\n            <SAL_TTL-T54>0</SAL_TTL-T54>\n            <SAL_TTL-T90>0</SAL_TTL-T90>\n            <SAL_TTL-T92>0</SAL_TTL-T92>\n            <SAL_TTL-T1299>0</SAL_TTL-T1299>\n            <SAL_TTL-T3401>0</SAL_TTL-T3401>\n            <SAL_TTL-T3411>0</SAL_TTL-T3411>\n            <SAL_TTL-T3551>0</SAL_TTL-T3551>\n            <SAL_TTL-T7501>0</SAL_TTL-T7501>\n            <SAL_TTL-T7901>0</SAL_TTL-T7901>\n            <SAL_TTL-T3585F64>0</SAL_TTL-T3585F64>\n            <SAL_TTL-T3585F65>0</SAL_TTL-T3585F65>\n            <SAL_TTL-T29999>500</SAL_TTL-T29999>\n            <SAL_TTL-USAVE>0</SAL_TTL-USAVE>\n            <SAL_TTL-GROSS>0</SAL_TTL-GROSS>\n            <unavailRecQty>0</unavailRecQty>\n        </record>\n    </data>\n</hook>"
                 }
               }
             }
@@ -1577,6 +1729,38 @@
         }
       }
     },
+    "/trs.exe?FCT=335": {
+      "get": {
+        "summary": "Change the store for the current transaction.",
+        "description": "<a href=\"#request\">Request Parameters</a><br /><br />",
+        "tags": ["Checkout"],
+        "security": [{ "SessionCN": [] }],
+        "parameters": [
+          { "name": "ENTRY", "in": "query", "required": true, "schema": { "type": "string" }, "description": "Store number", "example": "002" },
+          { "name": "FORCE_STORE_GLOBAL", "in": "query", "required": true, "schema": { "type": "string" }, "description": "Force global store. ", "example": "1" },
+          { "name": "FORCE_STORE_TRANS", "in": "query", "required": true, "schema": { "type": "string" }, "description": "Force store transaction. ",  "example": "1" },
+          { "name": "FORCE_ECOUPON_CHECK", "in": "query", "required": true, "schema": { "type": "string" }, "description": "Forces the addition of the electronic coupons. ",  "example": "1" },
+          { "$ref": "#/components/parameters/DN" },
+          { "$ref": "#/components/parameters/DisableCache" },
+          { "$ref": "#/components/parameters/DatabaseTimeout" },
+          { "$ref": "#/components/parameters/BW" },
+          { "name": "CN", "in": "query", "schema": { "type": "string" }, "example": ""}
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response returning XML",
+            "content": {
+              "application/xml": {
+                "schema": {
+                  "type": "object", "xml": { "name": "root" } ,
+                  "example": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<root>\n    <hooks>\n        <hook>\n            <type>hookExec</type>\n            <alias>TrsCltBalance</alias>\n            <data>\n                <record>\n                    <F1034>7901</F1034>\n                    <F1039>Points balance</F1039>\n                    <F64>5</F64>\n                    <F1281>1</F1281>\n                </record>\n                <record>\n                    <F1034>14</F1034>\n                    <F1039>Personalized offers</F1039>\n                    <F64>1</F64>\n                </record>\n            </data>\n        </hook>\n        <hook>\n            <type>modeChange</type>\n            <mode>CLT</mode>\n            <state>2</state>\n            <step>2</step>\n        </hook>\n        <hook>\n            <type>hookExec</type>\n            <alias>PosSalHdr</alias>\n            <data>\n                <record>\n                    <SAL_HDR-F1032>104</SAL_HDR-F1032>\n                    <SAL_HDR-F1068>ORDER</SAL_HDR-F1068>\n                    <SAL_HDR-F1067>001901</SAL_HDR-F1067>\n                    <SAL_HDR-F1763>00000079</SAL_HDR-F1763>\n                    <SAL_HDR-F1764></SAL_HDR-F1764>\n                    <SAL_HDR-F254>03/10/2026</SAL_HDR-F254>\n                    <SAL_HDR-F1185></SAL_HDR-F1185>\n                    <SAL_HDR-F1127>eCommerce</SAL_HDR-F1127>\n                    <SAL_HDR-F1245></SAL_HDR-F1245>\n                    <SAL_HDR-F1056>001</SAL_HDR-F1056>\n                    <SAL_HDR-F1057>901</SAL_HDR-F1057>\n                    <CLT_TAB-F1583></CLT_TAB-F1583>\n                    <CLT_TAB-F1584></CLT_TAB-F1584>\n                    <cltTokenExists>0</cltTokenExists>\n                    <STD_TAB-F1531>Company Name</STD_TAB-F1531>\n                    <STD_TAB-F1532>Address</STD_TAB-F1532>\n                    <STD_TAB-F1533></STD_TAB-F1533>\n                    <STD_TAB-F1534>City</STD_TAB-F1534>\n                    <STD_TAB-F1535></STD_TAB-F1535>\n                    <STD_TAB-F1536></STD_TAB-F1536>\n                    <STD_TAB-F1538>nick.alexiou@locsoftware.com</STD_TAB-F1538>\n                    <STD_TAB-F1549>State</STD_TAB-F1549>\n                    <STD_TAB-F2842>75</STD_TAB-F2842>\n                    <STD_TAB-F2843>-43</STD_TAB-F2843>\n                    <preAuthAmount></preAuthAmount>\n                    <SAL_HDR-TRACK></SAL_HDR-TRACK>\n                    <SAL_HDR-F1148>2</SAL_HDR-F1148>\n                    <SAL_HDR-F1149>Nick</SAL_HDR-F1149>\n                    <SAL_HDR-F1150>Alexiou</SAL_HDR-F1150>\n                    <SAL_HDR-F1155>Select customer</SAL_HDR-F1155>\n                    <SAL_HDR-F1156>1867 berlier</SAL_HDR-F1156>\n                    <SAL_HDR-F1157></SAL_HDR-F1157>\n                    <SAL_HDR-F1158>Laval</SAL_HDR-F1158>\n                    <SAL_HDR-F1159>H7L3S4</SAL_HDR-F1159>\n                    <SAL_HDR-F1170>Québec</SAL_HDR-F1170>\n                    <SAL_HDR-F1171>Canada</SAL_HDR-F1171>\n                    <SAL_HDR-F1172>4507775555</SAL_HDR-F1172>\n                    <SAL_HDR-F1173></SAL_HDR-F1173>\n                    <SAL_HDR-F1573>nick.alexiou@gmail.com</SAL_HDR-F1573>\n                    <SAL_HDR-F1642></SAL_HDR-F1642>\n                    <SAL_HDR-F1643></SAL_HDR-F1643>\n                    <SAL_HDR-F1644></SAL_HDR-F1644>\n                    <SAL_HDR-F1645></SAL_HDR-F1645>\n                    <SAL_HDR-F1646></SAL_HDR-F1646>\n                    <SAL_HDR-F1647></SAL_HDR-F1647>\n                    <SAL_HDR-F1648></SAL_HDR-F1648>\n                    <SAL_HDR-F1649></SAL_HDR-F1649>\n                    <SAL_HDR-F1650></SAL_HDR-F1650>\n                    <SAL_HDR-F1651></SAL_HDR-F1651>\n                    <SAL_HDR-F1692></SAL_HDR-F1692>\n                    <SAL_HDR-F2934></SAL_HDR-F2934>\n                    <SAL_HDR-F2904></SAL_HDR-F2904>\n                    <SAL_HDR-F1697></SAL_HDR-F1697>\n                    <SAL_HDR-F2889></SAL_HDR-F2889>\n                    <SAL_HDR-F2816></SAL_HDR-F2816>\n                    <SAL_HDR-F1654>0</SAL_HDR-F1654>\n                    <SAL_HDR-F1655>0</SAL_HDR-F1655>\n                    <SAL_HDR-F2619>0</SAL_HDR-F2619>\n                    <SAL_HDR-F91></SAL_HDR-F91>\n                    <SAL_HDR-F1152>2</SAL_HDR-F1152>\n                    <SAL_HDR-F1153>1</SAL_HDR-F1153>\n                    <SAL_TTL-T2>0</SAL_TTL-T2>\n                    <SAL_TTL-T3>0</SAL_TTL-T3>\n                    <SAL_TTL-T3F64>0</SAL_TTL-T3F64>\n                    <SAL_TTL-T22>0</SAL_TTL-T22>\n                    <SAL_TTL-T26>0</SAL_TTL-T26>\n                    <SAL_TTL-T30>0</SAL_TTL-T30>\n                    <SAL_TTL-T34>0</SAL_TTL-T34>\n                    <SAL_TTL-T37>0</SAL_TTL-T37>\n                    <SAL_TTL-T39>0</SAL_TTL-T39>\n                    <SAL_TTL-T40>0</SAL_TTL-T40>\n                    <SAL_TTL-T42>0</SAL_TTL-T42>\n                    <SAL_TTL-T49>0</SAL_TTL-T49>\n                    <SAL_TTL-T51>0</SAL_TTL-T51>\n                    <SAL_TTL-T52>0</SAL_TTL-T52>\n                    <SAL_TTL-T53>0</SAL_TTL-T53>\n                    <SAL_TTL-T54>0</SAL_TTL-T54>\n                    <SAL_TTL-T90>0</SAL_TTL-T90>\n                    <SAL_TTL-T92>0</SAL_TTL-T92>\n                    <SAL_TTL-T1299>0</SAL_TTL-T1299>\n                    <SAL_TTL-T3401>0</SAL_TTL-T3401>\n                    <SAL_TTL-T3411>0</SAL_TTL-T3411>\n                    <SAL_TTL-T3551>0</SAL_TTL-T3551>\n                    <SAL_TTL-T7501>0</SAL_TTL-T7501>\n                    <SAL_TTL-T7901>5</SAL_TTL-T7901>\n                    <SAL_TTL-T3585F64>0</SAL_TTL-T3585F64>\n                    <SAL_TTL-T3585F65>0</SAL_TTL-T3585F65>\n                    <SAL_TTL-T29999>0</SAL_TTL-T29999>\n                    <SAL_TTL-USAVE>0</SAL_TTL-USAVE>\n                    <SAL_TTL-GROSS>0</SAL_TTL-GROSS>\n                    <unavailRecQty>0</unavailRecQty>\n                </record>\n            </data>\n        </hook>\n        <hook>\n            <type>hookExec</type>\n            <alias>PosSalRegLoad</alias>\n            <data></data>\n        </hook>\n    </hooks>\n</root>"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/trs.exe?FCT=620": {
       "get": {
         "summary": "Void an item. ",
@@ -1586,7 +1770,7 @@
         "parameters": [
           { "name": "ENTRY", "in": "query", "required": true, "schema": { "type": "string" }, "description": "Line", "example": "1" },
           { "name": "KEEP", "in": "query", "required": true, "schema": { "type": "string" }, "description": "This alpha parameter allows you to enter the quantity for an item AFTER the selection.", "example": "1" },
-          { "name": "GotoLine", "in": "query", "required": true, "schema": { "type": "string" }, "description": "Line number F1101 if not current",  "example": "" },
+          { "name": "GotoLine", "in": "query", "required": true, "schema": { "type": "string" }, "description": "Line number F1101 if not current",  "example": "1" },
           { "$ref": "#/components/parameters/DN" },
           { "$ref": "#/components/parameters/DisableCache" },
           { "$ref": "#/components/parameters/DatabaseTimeout" },
@@ -1637,7 +1821,7 @@
         }
       }
     },
-    "/trs.exe?sqi=eStore_pos_doc_suspend": {
+    "/trs.exe?sqi=xStore_pos_doc_suspend": {
       "get": {
         "summary": "Suspend a transaction.",
         "description": "<a href=\"#request\">Request Parameters</a><br /><br />",
@@ -1666,7 +1850,7 @@
         }
       }
     },
-    "/trs.exe?sqi=eStore_pos_itm_promocode": {
+    "/trs.exe?sqi=xStore_pos_itm_promocode": {
       "get": {
         "summary": "Add a discount to the order.",
         "description": "When the item is identified as a voucher, it is added to the basket, the subtotal is recalculated, and the script terminates.\n\n\nWhen the item is identified as a manual coupon, it is added to the basket.\n<br /><br /><a href=\"#request\">Request Parameters</a><br /><br />",
@@ -1695,7 +1879,7 @@
         }
       }
     },
-    "/trs.exe?sqi=eStore_pos_doc_list": {
+    "/trs.exe?sqi=xStore_pos_doc_list": {
       "get": {
         "tags": ["Checkout"],
         "summary": "Returns a list of orders.",
@@ -1783,7 +1967,7 @@
         }
       }
     },
-    "/trs.exe?sqi=eStore_pos_doc_open": {
+    "/trs.exe?sqi=xStore_pos_doc_open": {
       "get": {
         "tags": ["Checkout"],
         "summary": "Reopens an old order.",
@@ -1826,7 +2010,7 @@
         }
       }
     },
-    "/trs.exe?sqi=cgi=eStore_pos_old_reg": {
+    "/trs.exe?sqi=cgi=xStore_pos_old_reg": {
       "get": {
         "tags": ["Checkout"],
         "summary": "Views the contents of an old order. ",
