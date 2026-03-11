@@ -1413,6 +1413,7 @@
             "description": "Quick search value",
             "example": ""
           },
+          { "name": "ExtGridUsp", "in": "query", "schema": { "type": "string" }, "example": "xStore_pos_itm_searchGeneral"},
           { "name": "CN", "in": "query", "schema": { "type": "string" }, "example": ""},
           { "$ref": "#/components/parameters/DN" },
           { "$ref": "#/components/parameters/DisableCache" },
@@ -1466,7 +1467,7 @@
               "type": "string"
             },
             "description": "Grid sort definition.",
-            "example": "F1147"
+            "example": "F155"
           },
           {
             "name": "F03",
