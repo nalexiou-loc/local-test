@@ -68,6 +68,10 @@
     {
       "url": "http://localhost:8126/scripts",
       "description": "Local Server"
+    },
+    {
+      "url": "https://localexpress.locdevops.com/scripts",
+      "description": "LE Devops"
     }
   ],
   "paths": {
