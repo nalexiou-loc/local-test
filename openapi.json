@@ -1623,7 +1623,7 @@
         "description": "<a href=\"#request\">Request Parameters</a><br /><br />",
         "security": [{ "SessionCN": [] }],
         "parameters": [
-          { "name": "ENTRY", "in": "query", "required": "true", "schema": { "type": "string" }, "example": "0960500000001" },
+          { "name": "ENTRY", "in": "query", "required": true, "schema": { "type": "string" }, "example": "0960500000001" },
           { "name": "offerClip", "in": "query", "schema": { "type": "string" }, "example": "CLIP" },
           { "name": "CN", "in": "query", "schema": { "type": "string" }, "example": ""},
           { "$ref": "#/components/parameters/DN" },
