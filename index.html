@@ -11,9 +11,9 @@
     <script src="https://unpkg.com/swagger-ui-dist@3/swagger-ui-bundle.js"></script>
     <script src="https://unpkg.com/swagger-ui-dist@3/swagger-ui-standalone-preset.js"></script>
     <script>
-      const ui = SwaggerUIBundle({      
+      const ui = SwaggerUIBundle({
+        url: "/openapi.json",
         dom_id: '#swagger-ui',
-		queryConfigEnabled: false,
         presets: [
           SwaggerUIBundle.presets.apis,
           SwaggerUIStandalonePreset
