@@ -806,80 +806,19 @@
     "/trs.exe?cgi=xStore_clt_card_new.xml": {
       "get": {
         "tags": ["Account"],
-        "summary": "Creates a card. ",
+        "summary": "Creates a virtual card. ",
         "description": " <br /><a href=\"#request\">Request Parameters</a><br /><br /><br />Required Parameters<br />\nNONE\n<br />Optional Parameters",
         "security": [{ "SessionCN": [] }],
         "parameters": [
           {
             "name": "F1578",
             "in": "query",
-            "required": false,
+            "required": true,
             "schema": {
               "type": "string"
             },
             "description": "PS/GIFT Alternate cust type",
             "example": "GIFT"
-          },
-          {
-            "name": "F2966",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "string"
-            },
-            "description": "Alternate cust status",
-            "example": "Active"
-          },
-          {
-            "name": "F2967",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "string"
-            },
-            "description": "Alternate cust desc",
-            "example": "Test Card"
-          },
-          {
-            "name": "F2971",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "string"
-            },
-            "description": "Card recharge type",
-            "example": ""
-          },
-          {
-            "name": "F2972",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "string"
-            },
-            "description": "Card recharge frequency",
-            "example": ""
-          },
-          {
-            "name": "F2973",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "string"
-            },
-            "description": "Card recharge value",
-            "example": ""
-          },
-          {
-            "name": "F2974",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "string",
-              "default": ""
-            },
-            "description": "Card recharge minimum",
-            "example": ""
           },
           { "name": "CN", "in": "query", "schema": { "type": "string" }, "example": ""},
           { "$ref": "#/components/parameters/DN" },
