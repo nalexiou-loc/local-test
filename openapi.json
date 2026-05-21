@@ -529,6 +529,377 @@
         }
       }
     },
+
+    "/trs.exe?cgi=xStore_clt_card_add.xml": {
+      "get": {
+        "tags": ["Account"],
+        "summary": "Adds an existing loyalty card to the customer's account. ",
+        "description": " *If enabled, it will be visible on the purchase receipt. <br /><a href=\"#request\">Request Parameters</a><br /><br /><br />",
+        "security": [{ "SessionCN": [] }],
+        "parameters": [
+          {
+            "name": "F1577",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Card number/Alternate Customer Number",
+            "example": "12345678910"
+          },
+          {
+            "name": "F1578",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "PS/GIFT Alternate cust type",
+            "example": "PS"
+          },
+          {
+            "name": "F2975",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": ""
+            },
+            "description": "Activation code*",
+            "example": "1234"
+          },
+          { "name": "CN", "in": "query", "schema": { "type": "string" }, "example": ""},
+          { "$ref": "#/components/parameters/DN" },
+          { "$ref": "#/components/parameters/DisableCache" },
+          { "$ref": "#/components/parameters/DatabaseTimeout" },
+          { "$ref": "#/components/parameters/BW" }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful XML response",
+            "content": {
+              "application/xml": {
+                "schema": { "type": "object", "xml": { "name": "root" } },
+                "example": "   <hooks>\n       <hook>\n           <type>hookExec</type>\n           <alias>TrsCltCards</alias>\n           <data>\n                <record>\n                    <F1577>234424234244</F1577>\n                    <F1578>PS</F1578>\n                </record>\n           </data>\n       </hook>\n   </hooks>\n"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/trs.exe?cgi=xStore_clt_card_block.xml": {
+      "get": {
+        "tags": ["Account"],
+        "summary": "Blocks a loyalty card in the customer's account.  ",
+        "description": " <br /><a href=\"#request\">Request Parameters</a><br /><br /><br />Required Parameters\n<br />",
+        "security": [{ "SessionCN": [] }],
+        "parameters": [
+          {
+            "name": "F1577",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Card number/Alternate Customer Number",
+            "example": "12345678910"
+          },
+          {
+            "name": "F1578",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "PS/GIFT Alternate cust type",
+            "example": "PS"
+          },
+          { "name": "CN", "in": "query", "schema": { "type": "string" }, "example": ""},
+          { "$ref": "#/components/parameters/DN" },
+          { "$ref": "#/components/parameters/DisableCache" },
+          { "$ref": "#/components/parameters/DatabaseTimeout" },
+          { "$ref": "#/components/parameters/BW" }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful XML response",
+            "content": {
+              "application/xml": {
+                "schema": { "type": "object", "xml": { "name": "root" } },
+                "example": "   <hooks>\n       <hook>\n           <type>hookExec</type>\n           <alias>TrsCltCards</alias>\n           <data>\n                <record>\n                    <F1577>234424234244</F1577>\n                    <F1578>PS</F1578>\n                </record>\n           </data>\n       </hook>\n   </hooks>\n"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/trs.exe?cgi=xStore_clt_card_del.xml": {
+      "get": {
+        "tags": ["Account"],
+        "summary": "Deletes a loyalty card in the customer's account.  ",
+        "description": " <br /><a href=\"#request\">Request Parameters</a><br /><br /><br />Required Parameter\n<br />",
+        "security": [{ "SessionCN": [] }],
+        "parameters": [
+          {
+            "name": "F1577",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Card number/Alternate Customer Number",
+            "example": "12345678910"
+          },
+          { "name": "CN", "in": "query", "schema": { "type": "string" }, "example": ""},
+          { "$ref": "#/components/parameters/DN" },
+          { "$ref": "#/components/parameters/DisableCache" },
+          { "$ref": "#/components/parameters/DatabaseTimeout" },
+          { "$ref": "#/components/parameters/BW" }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful XML response",
+            "content": {
+              "application/xml": {
+                "schema": { "type": "object", "xml": { "name": "root" } },
+                "example": "<hooks>\n       <hook>\n           <type>hookExec</type>\n           <alias>TrsCltCards</alias>\n           <data>\n                <record>\n                    <F1577>234424234244</F1577>\n                </record>\n           </data>\n       </hook>\n   </hooks>\n"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/trs.exe?cgi=xStore_clt_card_list.xml": {
+      "get": {
+        "tags": ["Account"],
+        "summary": "Lists all the cards in the customer's account.  ",
+        "description": " <br /><a href=\"#request\">Request Parameters</a><br /><br /><br />Optional Parameters<br />\nNONE\n",
+        "security": [{ "SessionCN": [] }],
+        "parameters": [
+          {
+            "name": "F1578",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": ""
+            },
+            "description": "Alternate cust type Loyalty/Gift cards (PS/GIFT)",
+            "example": "PS"
+          },
+          { "name": "CN", "in": "query", "schema": { "type": "string" }, "example": ""},
+          { "$ref": "#/components/parameters/DN" },
+          { "$ref": "#/components/parameters/DisableCache" },
+          { "$ref": "#/components/parameters/DatabaseTimeout" },
+          { "$ref": "#/components/parameters/BW" }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful XML response",
+            "content": {
+              "application/xml": {
+                "schema": { "type": "object", "xml": { "name": "root" } },
+                "example": "   <hooks>\n       <hook>\n           <type>hookExec</type>\n           <alias>TrsCltCards</alias>\n           <data>\n                <record>\n                    <F1577>234424234244</F1577>\n                    <F1578>PS</F1578>\n                </record>\n           </data>\n       </hook>\n   </hooks>\n"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/trs.exe?cgi=xStore_clt_card_set.xml": {
+      "get": {
+        "tags": ["Account"],
+        "summary": "Updates a single card.",
+        "description": " <br /><a href=\"#request\">Request Parameters</a><br /><br /><br />Required Parameters<br />\nNONE\n<br />Optional Parameters",
+        "security": [{ "SessionCN": [] }],
+        "parameters": [
+          {
+            "name": "F1578",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "PS/GIFT Alternate cust type",
+            "example": "PS"
+          },
+          {
+            "name": "F2966",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Alternate cust status",
+            "example": "Active"
+          },
+          {
+            "name": "F2967",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Alternate cust desc",
+            "example": "Test Card"
+          },
+          {
+            "name": "F2971",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Card recharge type",
+            "example": ""
+          },
+          {
+            "name": "F2972",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Card recharge frequency",
+            "example": ""
+          },
+          {
+            "name": "F2973",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Card recharge value",
+            "example": ""
+          },
+          {
+            "name": "F2974",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": ""
+            },
+            "description": "Card recharge minimum",
+            "example": ""
+          },
+          { "name": "CN", "in": "query", "schema": { "type": "string" }, "example": ""},
+          { "$ref": "#/components/parameters/DN" },
+          { "$ref": "#/components/parameters/DisableCache" },
+          { "$ref": "#/components/parameters/DatabaseTimeout" },
+          { "$ref": "#/components/parameters/BW" }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful XML response",
+            "content": {
+              "application/xml": {
+                "schema": { "type": "object", "xml": { "name": "root" } },
+                "example": "<root>\n    <hooks>\n        <hook>\n            <type>hookExec</type>\n            <alias>TrsCltPrepaySave</alias>\n            <data>\n                <record>\n                    <F1577>23423424242423424</F1577>\n                    <F1578>GIFT</F1578>\n                    <F2967>Test Card</F2967>\n                </record>\n            </data>\n        </hook>\n    </hooks>\n</root>\n"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/trs.exe?cgi=xStore_clt_card_new.xml": {
+      "get": {
+        "tags": ["Account"],
+        "summary": "Creates a card. ",
+        "description": " <br /><a href=\"#request\">Request Parameters</a><br /><br /><br />Required Parameters<br />\nNONE\n<br />Optional Parameters",
+        "security": [{ "SessionCN": [] }],
+        "parameters": [
+          {
+            "name": "F1578",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "PS/GIFT Alternate cust type",
+            "example": "GIFT"
+          },
+          {
+            "name": "F2966",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Alternate cust status",
+            "example": "Active"
+          },
+          {
+            "name": "F2967",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Alternate cust desc",
+            "example": "Test Card"
+          },
+          {
+            "name": "F2971",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Card recharge type",
+            "example": ""
+          },
+          {
+            "name": "F2972",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Card recharge frequency",
+            "example": ""
+          },
+          {
+            "name": "F2973",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Card recharge value",
+            "example": ""
+          },
+          {
+            "name": "F2974",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": ""
+            },
+            "description": "Card recharge minimum",
+            "example": ""
+          },
+          { "name": "CN", "in": "query", "schema": { "type": "string" }, "example": ""},
+          { "$ref": "#/components/parameters/DN" },
+          { "$ref": "#/components/parameters/DisableCache" },
+          { "$ref": "#/components/parameters/DatabaseTimeout" },
+          { "$ref": "#/components/parameters/BW" }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful XML response",
+            "content": {
+              "application/xml": {
+                "schema": { "type": "object", "xml": { "name": "root" } },
+                "example": "<root>\n\t<hooks>\n\t\t<hook>\n\t\t\t<type>hookExec</type>\n\t\t\t<alias>TrsPayCards</alias>\n\t\t\t<data>\n\t\t\t\t<record>\n\t\t\t\t\t<F1577>40158749077</F1577>\n\t\t\t\t\t<F1578>GIFT</F1578>\n\t\t\t\t\t<F65>0</F65>\n\t\t\t\t</record>\n\t\t\t</data>\n\t\t</hook>\n\t</hooks>\n</root>\n"
+              }
+            }
+          }
+        }
+      }
+    },
     "/trs.exe?cgi=xStore_trs_rct_list.xml": {
       "get": {
         "tags": ["Account"],
