@@ -3,7 +3,7 @@
   "info": {
     "title": "SmsHttps API",
     "version": "4.6.1.5",
-    "description": "Swagger definition for xStore Web Services<br/><br/><br/><h2 id=\"request\">Request Parameters (Required)</h2>\n\n\nCN= Session ID received after login<br/>DN= The Device Name is used allow only web services with this namespace<br/>BW= Client browser ID (IE, FF, CH, OP)\n<br /><br /><a href=\"SMSMembers_V4.chm\">SMS Members V4</a><br /><br />"
+    "description": "Swagger definition for xStore Web Services<br/><br/><br/><h2 id=\"request\">Request Parameters (Required)</h2>\n\n\nCN= Session ID received after login<br/>DN= The Device Name is used allow only web services with this namespace<br/>BW= Client browser ID (IE, FF, CH, OP)\n<br /><br /><a href=\"https://drive.google.com/file/d/1kx0erSXCU6BFi2jIknIZnRd2SeBgutkD/view?usp=sharing\">SMS Members V4</a><br /><br />"
   },
   "components": {
     "securitySchemes": {
