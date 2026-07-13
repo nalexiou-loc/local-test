@@ -2251,31 +2251,13 @@
             "example": "50"
           },
           {
-            "name": "F1032",
+            "name": "AGE",
             "in": "query",
             "schema": {
               "type": "string"
             },
-            "description": "Transaction number",
-            "example": "1052"
-          },
-          {
-            "name": "F1056",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            },
-            "description": "Store number",
-            "example": "001"
-          },
-          {
-            "name": "F1067",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            },
-            "description": "Document state",
-            "example": "OPEN"
+            "description": "Last number of days",
+            "example": "30"
           },
           {
             "name": "F1068",
@@ -2287,12 +2269,21 @@
             "example": "ORDER"
           },
           {
-            "name": "type",
+            "name": "TYPE",
             "in": "query",
+            "description": "Order type",
+            "required": true,
             "schema": {
-              "type": "string"
-            },
-            "example": "READY"
+              "type": "string",
+              "enum": [
+                "OPEN",
+                "READY",
+                "SUBMIT",
+                "BACKUP",
+                "CLOSE",
+                "SAVE"
+              ]
+            }
           },
           { "name": "CN", "in": "query", "schema": { "type": "string" }, "example": ""},
           { "$ref": "#/components/parameters/DN" },
